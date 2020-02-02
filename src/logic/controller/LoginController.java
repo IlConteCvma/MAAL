@@ -1,15 +1,19 @@
 package logic.controller;
 
+import logic.model.StudentDao;
+
 public class LoginController {
 	
-	public boolean findStudent(String username, String password) {
-		System.out.println("Lo studente e' "+ username);
-		/*
-		 * 
-		 Si dovrà fare la chiamata alla classe DAO che interfaccerà con il database
-		 * 
-		 */
-		return true;
+	StudentDao sd = new StudentDao();
+	
+	public boolean findStudent(String username, String password) throws Exception {
+		boolean found = false;
+		
+		if(StudentDao.findStudentLog(username, password) != null) {
+			found = true;
+		}
+		
+		return found;
 	}
 	
 }

@@ -20,7 +20,7 @@ public class LoginGraphicController{
 	LoginController lg = new LoginController();
 	
 	@FXML
-	public void signIn(ActionEvent e) {
+	public void signIn(ActionEvent e) throws Exception {
 		lg.findStudent(user.getText(),psw.getText());
 	}
 	
