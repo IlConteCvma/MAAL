@@ -33,42 +33,42 @@ public class StudentDao {
             ResultSet rs = StudentQueries.selectStudent(stmt, user, psw);
 
             if (!rs.first()){ // rs empty
-            	Exception e = new Exception("No Student Found matching with name: "+ user);
-            	throw e;
+            	studLog = null;
+            	System.out.println("username not found");
             }else {
             
-            // riposizionamento del cursore
-            rs.first();
+            	// riposizionamento del cursore
+            	rs.first();
             
-            // lettura delle colonne "by username"
-            String nome = rs.getString("Nome");
-	        String cognome = rs.getString("Cognome");
-	        String username = rs.getString("Username");
-	        String password = rs.getString("Password");
+            	// lettura delle colonne "by username"
+            	String nome = rs.getString("Nome");
+            	String cognome = rs.getString("Cognome");
+            	String username = rs.getString("Username");
+            	String password = rs.getString("Password");
 	        
-	        System.out.println("Lo studente e' "+ nome + " "+ cognome );
-            studLog = new Student("nome", "cognome", "username", "password");
-                
-            // STEP 5.1: Clean-up dell'ambiente
-            rs.close();
+            	System.out.println("Lo studente e' "+ nome + " "+ cognome );
+            	studLog = new Student(nome,cognome,username,password);
             }
-            return studLog;
+            
+            rs.close();
+            
         } finally {
             // STEP 5.2: Clean-up dell'ambiente
             try {
-                if (stmt != null)
-                    stmt.close();
+                if (stmt != null) {
+                	stmt.close();
+                }       
             } catch (SQLException se2) {
             }
             try {
-                if (conn != null)
-                    conn.close();
+                if (conn != null) {
+                	conn.close();
+                }    
             } catch (SQLException se) {
                 se.printStackTrace();
             }
         }
-        
-        
 	
+        return studLog;
     }
 }

@@ -2,7 +2,7 @@ package logic.model;
 
 public class Student {
 	
-	private String nome;
+	public String nome;
 	private String cognome;
 	private String username;
 	private String password;

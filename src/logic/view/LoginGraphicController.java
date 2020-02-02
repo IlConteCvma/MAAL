@@ -21,7 +21,7 @@ public class LoginGraphicController{
 	
 	@FXML
 	public void signIn(ActionEvent e) throws Exception {
-		lg.findStudent(user.getText(),psw.getText());
+		lg.login(user.getText(),psw.getText());
 	}
 	
 	public void forgotPassword(ActionEvent e) {

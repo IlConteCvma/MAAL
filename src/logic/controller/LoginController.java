@@ -1,19 +1,14 @@
 package logic.controller;
 
+import logic.model.Student;
 import logic.model.StudentDao;
 
 public class LoginController {
 	
-	StudentDao sd = new StudentDao();
-	
-	public boolean findStudent(String username, String password) throws Exception {
-		boolean found = false;
+	private Student stud;
 		
-		if(StudentDao.findStudentLog(username, password) != null) {
-			found = true;
-		}
-		
-		return found;
+	public void login(String username, String password) throws Exception {
+		stud = StudentDao.findStudentLog(username, password);
 	}
 	
 }
