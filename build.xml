@@ -15,6 +15,7 @@
     <path id="MAAL.classpath">
         <pathelement location="bin"/>
         <path refid="JavaFX SDK.libraryclasspath"/>
+        <pathelement location="../../../Desktop/mysql-connector-java-5.1.25.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -51,8 +52,18 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
+    <target name="LoginGraphicController (1)">
+        <java classname="logic.view.LoginGraphicController" failonerror="true" fork="yes">
+            <classpath refid="MAAL.classpath"/>
+        </java>
+    </target>
     <target name="LoginGraphicController">
-        <java classname="controller.LoginGraphicController" failonerror="true" fork="yes">
+        <java classname="logic.view.resources.LoginGraphicController" failonerror="true" fork="yes">
+            <classpath refid="MAAL.classpath"/>
+        </java>
+    </target>
+    <target name="LoginView (1)">
+        <java classname="view.LoginView" failonerror="true" fork="yes">
             <classpath refid="MAAL.classpath"/>
         </java>
     </target>
