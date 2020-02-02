@@ -4,11 +4,9 @@ import logic.model.Student;
 import logic.model.StudentDao;
 
 public class LoginController {
-	
-	private Student stud;
 		
 	public void login(String username, String password) throws Exception {
-		stud = StudentDao.findStudentLog(username, password);
+		Student stud = StudentDao.findStudentLog(username, password);
 	}
 	
 }
