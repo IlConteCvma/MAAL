@@ -44,7 +44,6 @@ public class StudentDao {
             	String username = rs.getString("Username");
             	String password = rs.getString("Password");
 	        
-            	System.out.println("Lo studente e' "+ nome + " "+ cognome );
             	studLog = new Student(nome,cognome,username,password);
             }
             

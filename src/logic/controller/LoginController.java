@@ -5,8 +5,15 @@ import logic.model.StudentDao;
 
 public class LoginController {
 		
-	public void login(String username, String password) throws Exception {
+	public boolean login(String username, String password) throws Exception {
+		boolean found = false;
 		Student stud = StudentDao.findStudentLog(username, password);
+		
+		if(stud != null) {
+			found = true;
+		}
+		
+		return found;
 	}
 	
 }

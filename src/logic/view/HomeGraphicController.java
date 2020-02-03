@@ -1,16 +1,23 @@
 package logic.view;
 
 
+import java.io.IOException;
+
 import javafx.fxml.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import logic.MainClass;
 
 
 public class HomeGraphicController {
 
 	
 	@FXML
-	public void homeButton(MouseEvent e) {
-		System.out.println("HOME");
+	public void homeButton(MouseEvent e) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("../view/resources/HomeView.fxml"));
+		Scene scene = new Scene(root);
+		MainClass.getStage().setScene(scene);
 	}
 	
 	public void calendarButton(MouseEvent e) {
@@ -37,8 +44,14 @@ public class HomeGraphicController {
 		System.out.println("NEXT Lesson");
 	}
 	
-	public void logOutButton(MouseEvent e) {
-		System.out.println("LOGOUT");
+	public void logOutButton(MouseEvent e) throws IOException {
+		goToLoginPage();
+	}
+	
+	public void goToLoginPage() throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("../view/resources/LoginView.fxml"));
+		Scene scene = new Scene(root);
+		MainClass.getStage().setScene(scene);
 	}
 	
 	
