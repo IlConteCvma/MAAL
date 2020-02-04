@@ -34,31 +34,31 @@ public class HomeGraphicController implements Initializable{
 		controLog.goToHomepage();
 	}
 	
-	public void calendarButton(MouseEvent e) {
+	public void calendarButton(ActionEvent e) {
 		System.out.println("CALENDAR");
 	}
 	
-	public void forumButton(MouseEvent e) {
+	public void forumButton(ActionEvent e) {
 		System.out.println("FORUM");
 	}
 	
-	public void profileButton(MouseEvent e) {
+	public void profileButton(ActionEvent e) {
 		System.out.println("PROFILE");
 	}
 	
-	public void todayLessonButton(MouseEvent e) {
+	public void todayLessonButton(ActionEvent e) {
 		System.out.println("LESSON");
 	}
 	
-	public void communicationButton(MouseEvent e) {
+	public void communicationButton(ActionEvent e) {
 		System.out.println("COMMUNICATION");
 	}
 	
-	public void nextLessonButton(MouseEvent e) {
+	public void nextLessonButton(ActionEvent e) {
 		System.out.println("NEXT Lesson");
 	}
 	
-	public void logOutButton(MouseEvent e) throws IOException {
+	public void logOutButton(ActionEvent e) throws IOException {
 		goToLoginPage();
 	}
 	public void getStarted(ActionEvent e) {
