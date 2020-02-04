@@ -48,6 +48,10 @@ public class HomeGraphicController {
 		goToLoginPage();
 	}
 	
+	public void getStarted(MouseEvent e) {
+		controlUC.estimateTimeToExit();
+	}
+	
 	public void goToLoginPage() throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("../view/resources/LoginView.fxml"));
 		Scene scene = new Scene(root);
