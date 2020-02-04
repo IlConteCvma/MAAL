@@ -1,15 +1,10 @@
 package logic;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import logic.view.graphicElements.Navbar;
+import logic.view.LoginPage;
 
 
 public class MainClass extends Application{
@@ -21,19 +16,7 @@ public class MainClass extends Application{
 	public void start(Stage stage) throws Exception {
 		
 		stageRoot = stage;
-		
-		//Parent root = FXMLLoader.load(getClass().getResource("view/resources/LoginView.fxml"));
-		root = new VBox();
-		
-		Navbar nav = new Navbar();
-		root.getChildren().add(nav.draw());
-		
-		Button ciao = new Button();
-		root.getChildren().add(ciao);
-		
-		
-		
-		
+		root = new LoginPage();
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.setTitle("MAAL Assistant");

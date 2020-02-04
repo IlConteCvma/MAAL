@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import logic.MainClass;
 import logic.controller.LoginController;
+import logic.view.HomePage;
 
 import java.io.IOException;
 
@@ -30,7 +31,10 @@ public class LoginGraphicController{
 	}
 	
 	public void goToHomepage() throws IOException {
+		/*
 		Parent root = FXMLLoader.load(getClass().getResource("resources/HomeView.fxml"));
+		*/
+		HomePage root = new HomePage();
 		Scene scene = new Scene(root);
 		MainClass.getStage().setScene(scene);
 	}
