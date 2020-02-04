@@ -2,22 +2,36 @@ package logic.view.graphicController;
 
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import logic.MainClass;
+import logic.controller.ViewTimeToExitController;
+import logic.model.SingletonConnectionDB;
+import logic.view.LoginPage;
 
 
-public class HomeGraphicController {
+public class HomeGraphicController implements Initializable{
 
+	private LoginGraphicController controLog = new LoginGraphicController();
+	private ViewTimeToExitController controlUC = new ViewTimeToExitController();
+	
+	@FXML private Label dataOfStudent;
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		//dataOfStudent.setText(""+SingletonConnectionDB.getStudent().getName()+" "+SingletonConnectionDB.getStudent().getSurname());
+	}
 	
 	@FXML
-	public void homeButton(MouseEvent e) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("../view/resources/HomeView.fxml"));
-		Scene scene = new Scene(root);
-		MainClass.getStage().setScene(scene);
+	public void homeButton(ActionEvent e) throws IOException {
+		controLog.goToHomepage();
 	}
 	
 	public void calendarButton(MouseEvent e) {
@@ -47,13 +61,13 @@ public class HomeGraphicController {
 	public void logOutButton(MouseEvent e) throws IOException {
 		goToLoginPage();
 	}
-	
-	public void getStarted(MouseEvent e) {
+	public void getStarted(ActionEvent e) {
 		controlUC.estimateTimeToExit();
 	}
 	
 	public void goToLoginPage() throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("../view/resources/LoginView.fxml"));
+		LoginPage root = new LoginPage();
+		
 		Scene scene = new Scene(root);
 		MainClass.getStage().setScene(scene);
 	}

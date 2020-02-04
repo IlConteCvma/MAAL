@@ -15,15 +15,15 @@ public class StudentDao {
     public static Student findStudentLog(String user, String psw) throws SQLException {
         Statement stmt = null;
         Connection conn = null;
-        Student studLog;
+        Student studLog = null;
         
         try {
         	
         	conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
-            
+        	
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
-    
+            
             ResultSet rs = StudentQueries.selectStudent(stmt, user, psw);
 
             if (!rs.first()){
@@ -37,13 +37,14 @@ public class StudentDao {
             	String password = rs.getString("Password");
 	        
             	studLog = new Student(nome,cognome,username,password);
+            	SingletonConnectionDB.studLog = studLog;
             }
             
             rs.close();
             
         } finally {      
             try {
-                if (conn != null) {
+                if (conn != null && studLog != null) {
                 	conn.close();
                 }    
             } catch (SQLException se) {

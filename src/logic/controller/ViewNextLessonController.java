@@ -1,9 +1,12 @@
 package logic.controller;
 
-import java.time.*;
+import java.time.LocalTime;
+import java.util.GregorianCalendar;
+import java.util.Vector;
+
+import logic.model.Lesson;
 
 public class ViewNextLessonController {
-
 	private Lesson nextLesson;
 	private LocalTime date;
 	
@@ -11,16 +14,15 @@ public class ViewNextLessonController {
 		return nextLesson;
 	}
 	
-	public int[] getActualHour() {
+	public Vector<Integer> getActualHour() {
 		GregorianCalendar dataAttuale=new GregorianCalendar();
 		int ore = dataAttuale.get(GregorianCalendar.HOUR);
 		int minuti = dataAttuale.get(GregorianCalendar.MINUTE);
 		int secondi = dataAttuale.get(GregorianCalendar.SECOND);
-		int oraEsatta[] = new int[3];
-		oraEsatta[0] = ore;
-		oraEsatta[1] = minuti;
-		oraEsatta[2] = secondi;
-		return oraEsatta;
+		Vector<Integer> actualHour = new Vector<>();
+		actualHour.add(ore);
+		actualHour.add(minuti);
+		actualHour.add(secondi);
+		return actualHour;
 	}
-
 }

@@ -1,6 +1,8 @@
 package logic.controller;
 
 import java.time.ZonedDateTime;
+import java.util.Vector;
+
 import logic.model.Seat;
 import logic.model.Student;
 
@@ -18,8 +20,9 @@ public class ViewTimeToExitController {
 	}
 	
 	public void estimateTimeToExit() {
-		int actualHour[] = new int[3]; 
+		Vector<Integer> actualHour = new Vector<>();
 		actualHour = nextLesson.getActualHour();
+		System.out.println("L'ora esatta è " + actualHour.elementAt(0) + ":" + actualHour.elementAt(1) + ":" + actualHour.elementAt(2)); 
 	}
 	
 	public void estimateOccupationRoom() {
@@ -29,5 +32,4 @@ public class ViewTimeToExitController {
 	public void occupateSeat(Seat seatToOccupy) {
 		seatToOccupy.occupateSeat();
 	}
-
 }

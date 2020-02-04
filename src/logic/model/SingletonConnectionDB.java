@@ -8,6 +8,8 @@ public class SingletonConnectionDB {
 	
 	private static SingletonConnectionDB instance = null;
 	private static Connection conn;
+	public static Student studLog;
+	
 	
 	protected SingletonConnectionDB() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -29,4 +31,12 @@ public class SingletonConnectionDB {
         }
 		return instance;
 	}
+	
+
+	public static Student getStudent() {
+		// TODO Auto-generated method stub
+		return studLog;
+	}
+	
+	
 }

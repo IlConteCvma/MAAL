@@ -2,41 +2,32 @@ package logic.view.graphicController;
 
 import java.io.IOException;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import logic.MainClass;
+
 
 public class NavbarGraphicController {
 	
+	private HomeGraphicController controlHome = new HomeGraphicController();
+	
 	@FXML
-	public void homeButton(MouseEvent e) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("../resources/HomeView.fxml"));
-		Scene scene = new Scene(root);
-		MainClass.getStage().setScene(scene);
+	public void homeButton(ActionEvent e) throws IOException {
+		controlHome.homeButton(e);
 	}
 	
-	public void calendarButton(MouseEvent e) {
+	public void calendarButton(ActionEvent e) {
 		System.out.println("CALENDAR");
 	}
 	
-	public void forumButton(MouseEvent e) {
+	public void forumButton(ActionEvent e) {
 		System.out.println("FORUM");
 	}
 	
-	
-	public void profileButton(MouseEvent e) {
+	public void profileButton(ActionEvent e) {
 		System.out.println("PROFILE");
 	}
-	public void logOutButton(MouseEvent e) throws IOException {
-		goToLoginPage();
+	public void logOutButton(ActionEvent e) throws IOException {
+		controlHome.goToLoginPage();
 	}
-	
-	public void goToLoginPage() throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("../resources/LoginView.fxml"));
-		Scene scene = new Scene(root);
-		MainClass.getStage().setScene(scene);
-	}				
+			
 }

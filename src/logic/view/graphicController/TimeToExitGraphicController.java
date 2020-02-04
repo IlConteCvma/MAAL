@@ -1,5 +1,7 @@
 package logic.view.graphicController;
 
+import logic.controller.ViewTimeToExitController;
+
 public class TimeToExitGraphicController {
 
 	private ViewTimeToExitController ucController;
