@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 
 public class NavbarGraphicController {
 	
-	private HomeGraphicController controlHome = new HomeGraphicController();
+	private HomeMenuGraphicController controlHome = new HomeMenuGraphicController();
 	
 	@FXML
 	public void homeButton(ActionEvent e) throws IOException {
