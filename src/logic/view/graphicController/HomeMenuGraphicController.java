@@ -2,16 +2,10 @@ package logic.view.graphicController;
 
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import logic.MainClass;
-import logic.controller.ViewTimeToExitController;
-import logic.model.SingletonConnectionDB;
 import logic.view.Page;
 import logic.view.PageFactory;
 

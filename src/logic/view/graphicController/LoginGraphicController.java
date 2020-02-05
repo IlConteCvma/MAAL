@@ -25,10 +25,10 @@ public class LoginGraphicController{
 	
 	@FXML
 	public void signIn(ActionEvent e) throws IOException, SQLException {
-		if(lg.login(user.getText(),psw.getText())) {
+		/*if(lg.login(user.getText(),psw.getText())) {
 			goToHomepage();
-		}
-		//goToHomepage();
+		}*/
+		goToHomepage();
 	}
 	
 	public void goToHomepage() throws IOException {
