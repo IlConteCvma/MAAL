@@ -15,7 +15,7 @@ import logic.view.Page;
 import logic.view.PageFactory;
 
 
-public class HomeGraphicController implements Initializable{
+public class HomeMenuGraphicController implements Initializable{
 
 	private LoginGraphicController controLog = new LoginGraphicController();
 	private ViewTimeToExitController controlUC = new ViewTimeToExitController();
