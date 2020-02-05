@@ -9,6 +9,7 @@ import logic.view.Page;
 import logic.view.PageFactory;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javafx.event.*;
 import javafx.scene.control.TextField;
@@ -23,11 +24,11 @@ public class LoginGraphicController{
 	LoginController lg = new LoginController();
 	
 	@FXML
-	public void signIn(ActionEvent e) throws IOException {
-		/*if(lg.login(user.getText(),psw.getText())) {
+	public void signIn(ActionEvent e) throws IOException, SQLException {
+		if(lg.login(user.getText(),psw.getText())) {
 			goToHomepage();
-		}*/
-		goToHomepage();
+		}
+		//goToHomepage();
 	}
 	
 	public void goToHomepage() throws IOException {

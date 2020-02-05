@@ -11,21 +11,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import logic.MainClass;
 import logic.controller.ViewTimeToExitController;
+import logic.model.SingletonConnectionDB;
 import logic.view.Page;
 import logic.view.PageFactory;
 
 
-public class HomeMenuGraphicController implements Initializable{
+public class HomeMenuGraphicController{
 
 	private LoginGraphicController controLog = new LoginGraphicController();
-	private ViewTimeToExitController controlUC = new ViewTimeToExitController();
-	
-	@FXML private Label dataOfStudent;
-	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		//dataOfStudent.setText(""+SingletonConnectionDB.getStudent().getName()+" "+SingletonConnectionDB.getStudent().getSurname());
-	}
 	
 	@FXML
 	public void homeButton(ActionEvent e) throws IOException {
@@ -59,9 +52,7 @@ public class HomeMenuGraphicController implements Initializable{
 	public void logOutButton(ActionEvent e) throws Exception {
 		goToLoginPage();
 	}
-	public void getStarted(ActionEvent e) {
-		controlUC.estimateTimeToExit();
-	}
+
 	
 	public void goToLoginPage() throws IOException {
 		Page root = PageFactory.createPage("logPage");
