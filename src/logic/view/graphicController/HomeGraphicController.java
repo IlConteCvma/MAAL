@@ -7,14 +7,12 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import logic.MainClass;
 import logic.controller.ViewTimeToExitController;
-import logic.model.SingletonConnectionDB;
-import logic.view.LoginPage;
+import logic.view.Page;
+import logic.view.PageFactory;
 
 
 public class HomeGraphicController implements Initializable{
@@ -26,7 +24,7 @@ public class HomeGraphicController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		dataOfStudent.setText(""+SingletonConnectionDB.getStudent().getName()+" "+SingletonConnectionDB.getStudent().getSurname());
+		//dataOfStudent.setText(""+SingletonConnectionDB.getStudent().getName()+" "+SingletonConnectionDB.getStudent().getSurname());
 	}
 	
 	@FXML
@@ -58,7 +56,7 @@ public class HomeGraphicController implements Initializable{
 		System.out.println("NEXT Lesson");
 	}
 	
-	public void logOutButton(ActionEvent e) throws IOException {
+	public void logOutButton(ActionEvent e) throws Exception {
 		goToLoginPage();
 	}
 	public void getStarted(ActionEvent e) {
@@ -66,7 +64,7 @@ public class HomeGraphicController implements Initializable{
 	}
 	
 	public void goToLoginPage() throws IOException {
-		LoginPage root = new LoginPage();
+		Page root = PageFactory.createPage("logPage");
 		
 		Scene scene = new Scene(root);
 		MainClass.getStage().setScene(scene);

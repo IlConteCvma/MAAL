@@ -1,16 +1,17 @@
 package logic.view;
 
-import javafx.scene.Node;
-import javafx.scene.layout.VBox;
-import logic.view.graphicElements.GraphicElementInterface;
+import java.io.IOException;
 
 public class PageFactory {
-	/*public  createPage(String type) throws Exception{
+	
+	public static Page createPage(String type) throws IOException{
+	
 		switch(type) {
 			case "homePage": return new HomePage();
+			case "logPage": return new LoginPage();
 			
-			default: throw new Exception("Invalid type : " + type);
+			default: throw new IOException("Invalid type : " + type);
 			
-		}
-	}*/
+		}		
+	}
 }

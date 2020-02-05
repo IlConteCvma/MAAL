@@ -1,12 +1,12 @@
 package logic.view.graphicController;
 
 import javafx.fxml.*;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import logic.MainClass;
 import logic.controller.LoginController;
-import logic.view.HomePage;
+import logic.view.Page;
+import logic.view.PageFactory;
 
 import java.io.IOException;
 
@@ -24,17 +24,17 @@ public class LoginGraphicController{
 	
 	@FXML
 	public void signIn(ActionEvent e) throws Exception {
-		if(lg.login(user.getText(),psw.getText())) {
+		/*if(lg.login(user.getText(),psw.getText())) {
 			goToHomepage();
-		}
-		//goToHomepage();
+		}*/
+		goToHomepage();
 	}
 	
 	public void goToHomepage() throws IOException {
 		/*
 		Parent root = FXMLLoader.load(getClass().getResource("resources/HomeView.fxml"));
 		*/
-		HomePage root = new HomePage();
+		Page root = PageFactory.createPage("homePage");
 		Scene scene = new Scene(root);
 		MainClass.getStage().setScene(scene);
 	}

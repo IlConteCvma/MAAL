@@ -26,7 +26,7 @@ public class NavbarGraphicController {
 	public void profileButton(ActionEvent e) {
 		System.out.println("PROFILE");
 	}
-	public void logOutButton(ActionEvent e) throws IOException {
+	public void logOutButton(ActionEvent e) throws Exception {
 		controlHome.goToLoginPage();
 	}
 			
