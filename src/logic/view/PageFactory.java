@@ -4,6 +4,10 @@ import java.io.IOException;
 
 public class PageFactory {
 	
+	private PageFactory() {
+		
+	}
+	
 	public static Page createPage(String type) throws IOException{
 	
 		switch(type) {

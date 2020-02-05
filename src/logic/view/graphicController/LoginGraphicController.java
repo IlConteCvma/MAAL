@@ -23,7 +23,7 @@ public class LoginGraphicController{
 	LoginController lg = new LoginController();
 	
 	@FXML
-	public void signIn(ActionEvent e) throws Exception {
+	public void signIn(ActionEvent e) throws IOException {
 		/*if(lg.login(user.getText(),psw.getText())) {
 			goToHomepage();
 		}*/
