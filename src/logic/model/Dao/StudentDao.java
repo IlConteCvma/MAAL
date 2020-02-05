@@ -44,7 +44,7 @@ public class StudentDao {
             
         } finally {      
             try {
-                if (conn != null && studLog != null) {
+                if (conn != null && studLog == null) {
                 	conn.close();
                 }    
             } catch (SQLException se) {

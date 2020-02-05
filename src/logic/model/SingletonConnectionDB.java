@@ -23,7 +23,7 @@ public class SingletonConnectionDB {
 	public synchronized static SingletonConnectionDB getSingletonConnection() {
 		try {
 			if (SingletonConnectionDB.instance == null)
-				SingletonConnectionDB.instance = new SingletonConnectionDB();		
+				SingletonConnectionDB.instance = new SingletonConnectionDB();
 		}catch (SQLException se) {
             se.printStackTrace();
         }catch (ClassNotFoundException se2) {
@@ -32,9 +32,7 @@ public class SingletonConnectionDB {
 		return instance;
 	}
 	
-
 	public static Student getStudent() {
-		// TODO Auto-generated method stub
 		return studLog;
 	}
 	

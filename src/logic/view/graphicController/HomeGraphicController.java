@@ -26,7 +26,7 @@ public class HomeGraphicController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//dataOfStudent.setText(""+SingletonConnectionDB.getStudent().getName()+" "+SingletonConnectionDB.getStudent().getSurname());
+		dataOfStudent.setText(""+SingletonConnectionDB.getStudent().getName()+" "+SingletonConnectionDB.getStudent().getSurname());
 	}
 	
 	@FXML
