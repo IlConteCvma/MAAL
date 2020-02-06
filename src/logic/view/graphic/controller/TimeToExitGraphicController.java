@@ -2,7 +2,7 @@ package logic.view.graphic.controller;
 
 import logic.controller.ViewTimeToExitController;
 
-public class TimeToExitGraphicController {
+public class TimeToExitGraphicController extends GraphicController {
 
 	private ViewTimeToExitController ucController;
 	

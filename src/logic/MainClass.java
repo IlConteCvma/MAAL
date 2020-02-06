@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import logic.view.NamePage;
 import logic.view.Page;
 import logic.view.PageFactory;
 
@@ -17,7 +18,7 @@ public class MainClass extends Application{
 	public void start(Stage stage) throws Exception {
 		
 		stageRoot = stage;
-		root = PageFactory.createPage("logPage");
+		root = PageFactory.createPage(NamePage.LOGIN);
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.setTitle("MAAL Assistant");

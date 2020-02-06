@@ -4,9 +4,10 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import logic.view.NamePage;
 
 
-public class NavbarGraphicController {
+public class NavbarGraphicController extends GraphicController {
 	
 	private HomeMenuGraphicController controlHome = new HomeMenuGraphicController();
 	
@@ -19,15 +20,15 @@ public class NavbarGraphicController {
 		System.out.println("CALENDAR");
 	}
 	
-	public void forumButton(ActionEvent e) {
-		System.out.println("FORUM");
+	public void forumButton(ActionEvent e) throws IOException {
+		goToPage(NamePage.QUESTIONTYPE);
 	}
 	
 	public void profileButton(ActionEvent e) {
 		System.out.println("PROFILE");
 	}
 	public void logOutButton(ActionEvent e) throws IOException {
-		controlHome.goToLoginPage();
+		goToPage(NamePage.LOGIN);
 	}
 			
 }

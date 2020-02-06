@@ -1,24 +1,22 @@
 package logic.controller;
 
-import logic.bean.InsertQuestionBean;
+import logic.bean.QuestionBean;
 import logic.model.Question;
 import logic.model.QuestionFactory;
 import logic.model.Dao.QuestionDao;
 
-public class InsertQuestionController {
+public abstract class InsertQuestionController {
+	protected QuestionBean dataBean;
+	protected Question question;
+	protected QuestionDao qDao;
 	
-	private InsertQuestionBean dataBean;
-	private Question question;
-	private QuestionDao qDao;
-	//private QuestionFactory factory;
 	
-	public InsertQuestionController(QuestionFactory factory,InsertQuestionBean dataBean ) {
+	public InsertQuestionController(QuestionFactory factory,QuestionBean dataBean ) {
 		this.dataBean = dataBean;
 		this.question = factory.createQuestion();
 		this.qDao = factory.createDao();
 	}
 	
-	public void newQuestion() {
-		
-	}
+	public abstract void newQuestion(); 
+	
 }

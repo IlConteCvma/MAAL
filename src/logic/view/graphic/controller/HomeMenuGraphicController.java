@@ -4,19 +4,16 @@ package logic.view.graphic.controller;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
-import javafx.scene.Scene;
-import logic.MainClass;
-import logic.view.Page;
-import logic.view.PageFactory;
+import logic.view.NamePage;
 
 
-public class HomeMenuGraphicController{
 
-	private LoginGraphicController controLog = new LoginGraphicController();
+public class HomeMenuGraphicController extends GraphicController {
+
 	
 	@FXML
 	public void homeButton(ActionEvent e) throws IOException {
-		controLog.goToHomepage();
+		goToPage(NamePage.HOME);
 	}
 	
 	public void calendarButton(ActionEvent e) {
@@ -44,17 +41,9 @@ public class HomeMenuGraphicController{
 	}
 	
 	public void logOutButton(ActionEvent e) throws Exception {
-		goToLoginPage();
+		goToPage(NamePage.LOGIN);
 	}
 
-	
-	public void goToLoginPage() throws IOException {
-		Page root = PageFactory.createPage("logPage");
-		
-		Scene scene = new Scene(root);
-		MainClass.getStage().setScene(scene);
-	}
-	
 	
 	
 	

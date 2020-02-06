@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
 import logic.controller.ViewTimeToExitController;
 import logic.model.SingletonConnectionDB;
 
-public class HomeBoxGraphicController implements Initializable{
+public class HomeBoxGraphicController extends GraphicController implements Initializable{
 
 	private ViewTimeToExitController controlUC = new ViewTimeToExitController();
 	
@@ -22,7 +22,7 @@ public class HomeBoxGraphicController implements Initializable{
 		//dataOfStudent.setText(""+SingletonConnectionDB.getStudent().getName()+" "+SingletonConnectionDB.getStudent().getSurname());
 	}
 	
-	public void getStarted(ActionEvent e) throws IOException, SQLException {
+	public void getStarted(ActionEvent e) throws IOException, SQLException  {
 		controlUC.estimateTimeToExit();
 	}
 }
