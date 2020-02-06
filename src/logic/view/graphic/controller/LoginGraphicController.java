@@ -4,6 +4,7 @@ import javafx.fxml.*;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import logic.MainClass;
+import logic.bean.StudentBean;
 import logic.controller.LoginController;
 import logic.view.Page;
 import logic.view.PageFactory;
@@ -25,10 +26,16 @@ public class LoginGraphicController{
 	
 	@FXML
 	public void signIn(ActionEvent e) throws IOException, SQLException {
-		/*if(lg.login(user.getText(),psw.getText())) {
+		 /*
+		 StudentBean studLog = new StudentBean();
+		 studLog.setUsername(user.getText());
+		 studLog.setPassword(psw.getText());
+		 
+		 if(lg.login(studLog)) {
 			goToHomepage();
-		}*/
-		goToHomepage();
+		 }
+		 */
+		 goToHomepage();
 	}
 	
 	public void goToHomepage() throws IOException {
