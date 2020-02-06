@@ -1,18 +1,36 @@
 package logic.model;
 
+import java.util.Vector;
+
 public class Room {
 	
 	private String name;
-	private int capacity;
 	private int numRow;
 	private int numColumn;
-	private Seat[][] griglia;
+	private Vector<Seat> places;
 	
-	private Room(String name, int capacity, int numRow, int numColumn) {
+	private Room(String name, int capacity, int numRow, int numColumn, Vector<Seat>places) {
 		this.name = name;
-		this.capacity = capacity;
 		this.numRow = numRow;
 		this.numColumn = numColumn;
-		griglia = new Seat[numRow][numColumn];
+		this.places = places;
+	}
+	
+	public Vector<Seat> getPlaces(){
+		return this.places;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public int getNumberOfFreePlaces() {
+		int numberOfFreePlaces = 0;
+		for(int i=0;i<numRow*numColumn;i++) {
+			if(places.get(i).getState() == false) {
+				numberOfFreePlaces++;
+			}
+		}
+		return numberOfFreePlaces;
 	}
 }

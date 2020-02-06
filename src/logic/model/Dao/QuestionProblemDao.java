@@ -2,8 +2,6 @@ package logic.model.Dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import logic.model.QuestionExercise;
 import logic.model.QuestionProblem;
 import logic.model.QuestionQueries;
 import logic.model.SingletonConnectionDB;

@@ -46,6 +46,10 @@ public class ViewTimeToExitController {
 		nextLessonController.getNextLesson();
 	}
 	
+	public void getRoomOfNextLesson() {
+		
+	}
+	
 	public void estimateOccupationRoom() {
 		//in lavorazione..
 	}

@@ -2,12 +2,11 @@ package logic.model;
 
 public class Seat {
 	private boolean busy;
-	private int row;
-	private int column;
+	private int index;
 	
-	private Seat(int row, int column) {
-		this.row = row;
-		this.column = column;
+	private Seat(int index) {
+		this.index = index;
+		busy = false;
 	}
 	
 	public void occupateSeat() {
@@ -16,5 +15,9 @@ public class Seat {
 	
 	public void freeSeat() {
 		busy = false;
+	}
+	
+	public boolean getState() {
+		return busy;
 	}
 }

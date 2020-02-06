@@ -7,6 +7,7 @@ import java.sql.Statement;
 import logic.model.Lesson;
 import logic.model.LessonQueries;
 import logic.model.SingletonConnectionDB;
+import logic.model.Subject;
 
 public class LessonDao {
 	 public static Lesson findNextLesson(int seconds) throws SQLException {
@@ -26,8 +27,7 @@ public class LessonDao {
 	            	nextLesson = null;
 	            }else {
 	            	rs.first();
-		        
-	            	nextLesson = new Lesson(17,18,0);
+	            	nextLesson = new Lesson(17,18,0,null,null);
 	            }
 	            
 	            rs.close();

@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import logic.bean.StudentBean;
 import logic.model.SingletonConnectionDB;
 import logic.model.Student;
 import logic.model.StudentQueries;

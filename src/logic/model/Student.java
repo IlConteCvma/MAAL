@@ -23,4 +23,16 @@ public class Student {
 		return surname;
 	}
 	
+	public String getUsername() {
+		return username;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	
 }
