@@ -1,15 +1,16 @@
 package logic.model;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Vector;
 
-public class DateApi extends GregorianCalendar{
+public class DateApi{
 
 	public Vector<Integer> getActualHour() {
 		GregorianCalendar dataAttuale=new GregorianCalendar();
-		int ore = dataAttuale.get(GregorianCalendar.HOUR);
-		int minuti = dataAttuale.get(GregorianCalendar.MINUTE);
-		int secondi = dataAttuale.get(GregorianCalendar.SECOND);
+		int ore = dataAttuale.get(Calendar.HOUR);
+		int minuti = dataAttuale.get(Calendar.MINUTE);
+		int secondi = dataAttuale.get(Calendar.SECOND);
 		Vector<Integer> actualHour = new Vector<>();
 		actualHour.add(ore);
 		actualHour.add(minuti);

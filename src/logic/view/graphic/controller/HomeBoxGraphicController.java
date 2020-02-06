@@ -1,8 +1,9 @@
 package logic.view.graphic.controller;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,7 +22,7 @@ public class HomeBoxGraphicController implements Initializable{
 		//dataOfStudent.setText(""+SingletonConnectionDB.getStudent().getName()+" "+SingletonConnectionDB.getStudent().getSurname());
 	}
 	
-	public void getStarted(ActionEvent e) {
+	public void getStarted(ActionEvent e) throws IOException, SQLException {
 		controlUC.estimateTimeToExit();
 	}
 }
