@@ -21,9 +21,8 @@ public class StudentDao {
         	
         	conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
         	
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
-            
+        	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        	
             ResultSet rs = StudentQueries.selectStudent(stmt, potentialStud.getUsername(), potentialStud.getPassword());
 
             if (!rs.first()){
@@ -41,7 +40,7 @@ public class StudentDao {
             }
             
             rs.close();
-            
+            stmt.close();
         } finally {      
             try {
                 if (conn != null && studLog == null) {
