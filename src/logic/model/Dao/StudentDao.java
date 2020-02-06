@@ -40,8 +40,11 @@ public class StudentDao {
             }
             
             rs.close();
-        } finally {      
-        	stmt.close();
+        } finally {     
+        	if(stmt != null){
+        		stmt.close();
+        	}
+        	
             try {
                 if (conn != null && studLog == null) {
                 	conn.close();
