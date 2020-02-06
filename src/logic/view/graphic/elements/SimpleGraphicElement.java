@@ -15,8 +15,8 @@ public class SimpleGraphicElement implements GraphicElementInterface {
 	
 	@Override
 	public AnchorPane draw() throws IOException {
-		AnchorPane root = FXMLLoader.<AnchorPane>load(getClass().getResource(myElement));
-		return root;
+		
+		return FXMLLoader.<AnchorPane>load(getClass().getResource(myElement));
 	}
 
 }
