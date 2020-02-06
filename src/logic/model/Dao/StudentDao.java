@@ -11,10 +11,11 @@ import logic.model.StudentQueries;
 
 public class StudentDao {	
 
-    public static Student findStudentLog(StudentBean potentialStud) throws SQLException {
+    public static Student findStudentLog(String possibleUsername, String possiblePassword) throws SQLException {
         Statement stmt = null;
         Connection conn = null;
         Student studLog = null;
+        boolean firstTime = true;
         
         try {
         	
@@ -22,13 +23,13 @@ public class StudentDao {
         	
         	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
         	
-            ResultSet rs = StudentQueries.selectStudent(stmt, potentialStud.getUsername(), potentialStud.getPassword());
+            ResultSet rs = StudentQueries.selectStudent(stmt, possibleUsername, possiblePassword);
 
             if (!rs.first()){
             	studLog = null;
             }else {
             	rs.first();
-            
+            	firstTime = false;
             	String nome = rs.getString("Nome");
             	String cognome = rs.getString("Cognome");
             	String username = rs.getString("Username");
@@ -43,9 +44,8 @@ public class StudentDao {
         	if(stmt != null){
         		stmt.close();
         	}
-        	
             try {
-                if (conn != null && studLog == null) {
+                if (conn != null && studLog == null && firstTime == false) {
                 	conn.close();
                 }    
             } catch (SQLException se) {

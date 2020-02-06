@@ -19,7 +19,7 @@ public class HomeBoxGraphicController extends GraphicController implements Initi
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//dataOfStudent.setText(""+SingletonConnectionDB.getStudent().getName()+" "+SingletonConnectionDB.getStudent().getSurname());
+		dataOfStudent.setText(""+SingletonConnectionDB.getStudent().getName()+" "+SingletonConnectionDB.getStudent().getSurname());
 	}
 	
 	public void getStarted(ActionEvent e) throws IOException, SQLException  {

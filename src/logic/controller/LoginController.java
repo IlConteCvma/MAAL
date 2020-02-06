@@ -10,7 +10,9 @@ public class LoginController {
 		
 	public boolean login(StudentBean potentialStud) throws SQLException {
 		boolean found = false;
-		Student stud = StudentDao.findStudentLog(potentialStud);
+		String username = potentialStud.getUsername();
+		String password = potentialStud.getPassword();
+		Student stud = StudentDao.findStudentLog(username,password);
 		
 		if(stud != null) {
 			found = true;

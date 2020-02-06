@@ -1,14 +1,10 @@
 package logic.view.graphic.controller;
 
 import javafx.fxml.*;
-import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
-import logic.MainClass;
+import logic.bean.StudentBean;
 import logic.controller.LoginController;
 import logic.view.NamePage;
-import logic.view.Page;
-import logic.view.PageFactory;
-
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -26,10 +22,13 @@ public class LoginGraphicController extends GraphicController{
 	
 	@FXML
 	public void signIn(ActionEvent e) throws IOException, SQLException {
-		/*if(lg.login(user.getText(),psw.getText())) {
-			goToHomepage();
-		}*/
-		goToPage(NamePage.HOME);
+		StudentBean possibleStudent = new StudentBean();
+		possibleStudent.setUsername(user.getText());
+		possibleStudent.setPassword(psw.getText());
+		if(lg.login(possibleStudent)) {
+			goToPage(NamePage.HOME);
+		}
+		//goToPage(NamePage.HOME);
 	}
 	
 	
