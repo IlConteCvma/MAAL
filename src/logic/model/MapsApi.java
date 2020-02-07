@@ -25,7 +25,7 @@ public class MapsApi{
     	
     }
     
-    public static Double calculateDistance(Vector<Double> origin, Vector<Double> destination) {
+    public Double calculateDistance(Vector<Double> origin, Vector<Double> destination) {
     	
     	double R = 6371e3 / 1000; // km
     	double d1 = origin.get(0) * 3.14 / 180;

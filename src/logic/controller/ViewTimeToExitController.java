@@ -17,24 +17,40 @@ public class ViewTimeToExitController {
 	private Vector<Double> originAddress;
 	private Vector<Double> destinationAddress;
 	private Double distance;
+	private Double lateForWeather = 0.0;
+	private Double minutes;
 	
-	public void getInfoByMaps() throws IOException {
-		map = new MapsApi();
-		//Calculate latitudine and longituidine(?) 
-		this.originAddress= map.getPosition("La Rustica");
-		this.destinationAddress = map.getPosition("Centocelle");
-		//Calculate distance in km
-		this.distance = map.calculateDistance(originAddress,destinationAddress);
+	public void setDestinationAddress() {
+		//Set destination address with data of University Of Tor Vergata
+		destinationAddress = new Vector<Double>(2);
+		destinationAddress.add(41.85);
+		destinationAddress.add(12.63);
 	}
 	
-	public void getInfoByMeteo() {
-		//in lavorazione..
+	public void getInfoByMaps() throws IOException {
+		this.map = new MapsApi();
+		//Calculate latitude and longitude 
+		this.originAddress= this.map.getPosition("Via Achille Vertunni");
+		setDestinationAddress();
+		//Calculate distance in km
+		this.distance = this.map.calculateDistance(originAddress,destinationAddress);
+	}
+	
+	public void getInfoByMeteo() throws IOException {
+		this.weather = new WeatherApi();
+		String rainIntensity = weather.getRainIntensity();
+		if(rainIntensity == "Light") {
+			this.lateForWeather = 5.0;
+		}else if(rainIntensity == "Moderate"){
+			this.lateForWeather = 10.0;
+		}
 	}
 	
 	public void estimateTimeToExit() throws IOException, SQLException {
 		getInfoByMaps();
-		this.distance = this.distance + 0.14 * this.distance; //aggiungo il 14%
-		System.out.println(this.distance);
+		this.distance = this.distance + 0.14 * this.distance; //add 14% -> value take by test
+		this.minutes = (this.distance / (30*0.016)) + this.lateForWeather;
+		System.out.println(this.minutes);
 		time = new DateApi();
 		Vector<Integer> actualHour = new Vector<>();
 		actualHour = time.getActualHour();
@@ -44,10 +60,6 @@ public class ViewTimeToExitController {
 	
 	public void getNextLesson() throws SQLException {
 		nextLessonController.getNextLesson();
-	}
-	
-	public void getRoomOfNextLesson() {
-		
 	}
 	
 	public void estimateOccupationRoom() {
