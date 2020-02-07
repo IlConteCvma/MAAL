@@ -39,9 +39,9 @@ public class ViewTimeToExitController {
 	public void getInfoByMeteo() throws IOException {
 		this.weather = new WeatherApi();
 		String rainIntensity = weather.getRainIntensity();
-		if(rainIntensity == "Light") {
+		if(rainIntensity.equals("Light")) {
 			this.lateForWeather = 5.0;
-		}else if(rainIntensity == "Moderate"){
+		}else if(rainIntensity.equals("Moderate")){
 			this.lateForWeather = 10.0;
 		}
 	}
