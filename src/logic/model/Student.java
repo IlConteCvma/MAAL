@@ -8,11 +8,12 @@ public class Student {
 	private String password;
 	private String address;
 	
-	public Student(String name, String surname, String username, String password) {
+	public Student(String name, String surname, String username, String password, String address) {
 		this.name = name;
 		this.surname = surname;
 		this.username = username;
 		this.password = password;
+		this.address = address;
 	}
 	
 	public String getName() {

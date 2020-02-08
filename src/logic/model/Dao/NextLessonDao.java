@@ -74,6 +74,7 @@ public class NextLessonDao {
 		Room roomOfLesson = null;
 		try {
 			roomOfLesson = this.nextRoomDao.getRoom(getRoomNextLesson());
+			roomOfLesson.setPlaces(getSeatsOfRoom());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

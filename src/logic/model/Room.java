@@ -9,10 +9,20 @@ public class Room {
 	private int numColumn;
 	private Vector<Seat> places;
 	
+	public Room(String name, int numRow, int numColumn) {
+		this.name = name;
+		this.numRow = numRow;
+		this.numColumn = numColumn;
+	}
+	
 	public Room(String name, int numRow, int numColumn, Vector<Seat>places) {
 		this.name = name;
 		this.numRow = numRow;
 		this.numColumn = numColumn;
+		this.places = places;
+	}
+	
+	public void setPlaces(Vector<Seat> places){
 		this.places = places;
 	}
 	
@@ -22,6 +32,11 @@ public class Room {
 	
 	public String getName() {
 		return this.name;
+	}
+	
+	public int getNumberOfPlaces() {
+		int numberOfPlaces = numRow * numColumn;
+		return numberOfPlaces;
 	}
 	
 	public int getNumberOfFreePlaces() {

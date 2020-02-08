@@ -18,7 +18,7 @@
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="46.0" layoutX="554.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="313.0" />
                   <Hyperlink layoutX="300.0" opacity="0.0" />
-                  <Hyperlink layoutX="503.0" layoutY="21.0" onAction="#logOutButton" prefHeight="23.0" prefWidth="64.0" text="Log out" textOverrun="CLIP" underline="true">
+                  <Hyperlink layoutX="490.0" layoutY="20.0" onAction="#logOutButton" prefHeight="23.0" prefWidth="64.0" text="Log out" textOverrun="CLIP" underline="true">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -28,22 +28,22 @@
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="46.0" prefWidth="897.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <Button layoutX="235.0" layoutY="12.0" mnemonicParsing="false" onAction="#homeButton" prefHeight="35.0" prefWidth="125.0" text="Home">
+                  <Button layoutX="235.0" layoutY="12.0" mnemonicParsing="false" onAction="#homeButton" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: #E45652;" text="Home">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="405.0" layoutY="12.0" mnemonicParsing="false" onAction="#calendarButton" prefHeight="35.0" prefWidth="125.0" text="Calendar">
+                  <Button layoutX="405.0" layoutY="12.0" mnemonicParsing="false" onAction="#calendarButton" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: #E45652;" text="Calendar">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="571.0" layoutY="12.0" mnemonicParsing="false" onAction="#forumButton" prefHeight="35.0" prefWidth="125.0" text="Forum">
+                  <Button layoutX="571.0" layoutY="12.0" mnemonicParsing="false" onAction="#forumButton" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: #E45652;" text="Forum">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="731.0" layoutY="12.0" mnemonicParsing="false" onAction="#profileButton" prefHeight="35.0" prefWidth="125.0" text="Profile">
+                  <Button layoutX="731.0" layoutY="12.0" mnemonicParsing="false" onAction="#profileButton" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: #E45652;" text="Profile">
                      <font>
                         <Font size="18.0" />
                      </font>

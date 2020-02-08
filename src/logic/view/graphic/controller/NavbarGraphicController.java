@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import logic.AlertControl;
 import logic.view.NamePage;
 
 
@@ -17,7 +18,7 @@ public class NavbarGraphicController extends GraphicController {
 	}
 	
 	public void calendarButton(ActionEvent e) {
-		System.out.println("CALENDAR");
+		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
 	public void forumButton(ActionEvent e) throws IOException {
@@ -25,7 +26,7 @@ public class NavbarGraphicController extends GraphicController {
 	}
 	
 	public void profileButton(ActionEvent e) {
-		System.out.println("PROFILE");
+		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	public void logOutButton(ActionEvent e) throws IOException {
 		goToPage(NamePage.LOGIN);

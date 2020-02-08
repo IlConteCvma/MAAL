@@ -8,6 +8,7 @@ import logic.bean.StudentBean;
 import logic.model.Lesson;
 import logic.model.MapsApi;
 import logic.model.Seat;
+import logic.model.SingletonConnectionDB;
 import logic.model.WeatherApi;
 
 public class ViewTimeToExitController {
@@ -32,7 +33,7 @@ public class ViewTimeToExitController {
 	public void getInfoByMaps() throws IOException {
 		this.map = new MapsApi();
 		//Calculate latitude and longitude 
-		this.originAddress= this.map.getPosition("Via Achille Vertunni");
+		this.originAddress= this.map.getPosition(SingletonConnectionDB.getStudent().getAddress());
 		setDestinationAddress();
 		//Calculate distance in km
 		this.distance = this.map.calculateDistance(originAddress,destinationAddress);
@@ -59,8 +60,8 @@ public class ViewTimeToExitController {
 	public void getNextLesson() throws SQLException {
 		nextLesson = nextLessonController.getNextLesson();
 		if(nextLesson != null) {
-			System.out.println(nextLesson.getRoomLesson().getName());
 			System.out.println(nextLesson.getSubjectLesson().getName());
+			System.out.println("Free places: "+nextLesson.getRoomLesson().getNumberOfFreePlaces()+"/"+nextLesson.getRoomLesson().getNumberOfPlaces());
 		}
 		
 	}

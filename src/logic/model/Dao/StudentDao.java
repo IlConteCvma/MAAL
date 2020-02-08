@@ -28,12 +28,13 @@ public class StudentDao {
             }else {
             	rs.first();
             	SingletonConnectionDB.increaseCount();
-            	String nome = rs.getString("Nome");
-            	String cognome = rs.getString("Cognome");
+            	String name = rs.getString("Nome");
+            	String surname = rs.getString("Cognome");
             	String username = rs.getString("Username");
             	String password = rs.getString("Password");
+            	String address = rs.getString("Indirizzo");
 	        
-            	studLog = new Student(nome,cognome,username,password);
+            	studLog = new Student(name,surname,username,password,address);
             	SingletonConnectionDB.studLog = studLog;
             }
             

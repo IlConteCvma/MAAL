@@ -11,8 +11,6 @@ import logic.model.SingletonConnectionDB;
 
 public class RoomDao {
 	
-	//private NextLessonDao abc = new NextLessonDao();
-	
 	public String getInfoRoomByIdLesson(int idLesson) throws SQLException {
         
 	 	Statement stmt = null;
@@ -75,7 +73,7 @@ public class RoomDao {
             	int numRow = rs.getInt("NumRighe");
             	int numColumn = rs.getInt("NumColonne");
             	
-            	roomOfLesson = new Room(name, numRow, numColumn, null/*abc.getSeatsOfRoom()*/);
+            	roomOfLesson = new Room(name, numRow, numColumn);
             	
             }
             rs.close();
