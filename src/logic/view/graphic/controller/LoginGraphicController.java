@@ -2,6 +2,7 @@ package logic.view.graphic.controller;
 
 import javafx.fxml.*;
 import javafx.scene.control.PasswordField;
+import logic.AlertControl;
 import logic.bean.StudentBean;
 import logic.controller.LoginController;
 import logic.view.NamePage;
@@ -27,17 +28,19 @@ public class LoginGraphicController extends GraphicController{
 		possibleStudent.setPassword(psw.getText());
 		if(lg.login(possibleStudent)) {
 			goToPage(NamePage.HOME);
+		}else {
+			AlertControl.infoBox("Data are strong", "WARNING");
 		}
 		//goToPage(NamePage.HOME);
 	}
 	
 	
 	public void forgotPassword(ActionEvent e) {
-		System.err.println("Remember");
+		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
 	public void signUp(ActionEvent e) {
-		System.err.println("Sign Up");
+		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 
 }

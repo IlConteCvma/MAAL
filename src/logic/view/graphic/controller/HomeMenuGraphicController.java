@@ -4,6 +4,7 @@ package logic.view.graphic.controller;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
+import logic.AlertControl;
 import logic.view.NamePage;
 
 
@@ -17,27 +18,27 @@ public class HomeMenuGraphicController extends GraphicController {
 	}
 	
 	public void calendarButton(ActionEvent e) {
-		System.out.println("CALENDAR");
+		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
 	public void forumButton(ActionEvent e) {
-		System.out.println("FORUM");
+		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
 	public void profileButton(ActionEvent e) {
-		System.out.println("PROFILE");
+		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
 	public void todayLessonButton(ActionEvent e) {
-		System.out.println("LESSON");
+		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
 	public void communicationButton(ActionEvent e) {
-		System.out.println("COMMUNICATION");
+		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
 	public void nextLessonButton(ActionEvent e) {
-		System.out.println("NEXT Lesson");
+		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
 	public void logOutButton(ActionEvent e) throws Exception {

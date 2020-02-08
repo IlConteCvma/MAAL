@@ -47,7 +47,7 @@ public class StudentBean {
 		return address;
 	}
 	
-	public void Address(String address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 }

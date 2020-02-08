@@ -58,8 +58,11 @@ public class ViewTimeToExitController {
 	
 	public void getNextLesson() throws SQLException {
 		nextLesson = nextLessonController.getNextLesson();
-		System.out.println(nextLesson.getRoomLesson().getName());
-		System.out.println(nextLesson.getSubjectLesson().getName());
+		if(nextLesson != null) {
+			System.out.println(nextLesson.getRoomLesson().getName());
+			System.out.println(nextLesson.getSubjectLesson().getName());
+		}
+		
 	}
 	
 	public void estimateOccupationRoom() {

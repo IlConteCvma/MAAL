@@ -2,6 +2,8 @@ package logic.model.Dao;
 
 import java.sql.SQLException;
 import java.util.Vector;
+
+import logic.AlertControl;
 import logic.model.Lesson;
 import logic.model.Room;
 import logic.model.Seat;
@@ -24,9 +26,14 @@ public class NextLessonDao {
 	public Lesson getNextLesson() {
 		Lesson nextLesson = null;
 		try {
-			nextLesson = nextLessonDao.getLessonById(getIdNextLesson());
-			nextLesson.setRoomLesson(getRoom());
-			nextLesson.setSubjectLesson(getSubjectOfLesson());
+			int id = getIdNextLesson();
+			if(id!=0) {
+				nextLesson = nextLessonDao.getLessonById(id);
+				nextLesson.setRoomLesson(getRoom());
+				nextLesson.setSubjectLesson(getSubjectOfLesson());
+			}else {
+				AlertControl.infoBox("You have not lesson today", "NOT LESSON");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -40,7 +47,6 @@ public class NextLessonDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("La lezione ha questo ID: "+id);
 		return id;
 	}
 	
