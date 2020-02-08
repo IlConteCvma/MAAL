@@ -11,8 +11,8 @@ public class LessonQueries {
 	public static ResultSet selectNextLesson(Statement stmt) throws SQLException  {
 		
 		String sql = "SELECT lezione.ID, min(TIMEDIFF(lezione.OraInizio,TIME(NOW()))) " + 
-					 "FROM studente join segue on studente.Username = segue.Studente join lezione "
-					 + "on Lezione = lezione.ID WHERE lezione.Giorno = DAYOFWEEK(NOW()) AND studente ='"+ studentLogged.getUsername() 
+					 "FROM studente join segue on studente.Username = segue.Studente join lezione on lezione.Materia=segue.Materia "
+					 + "WHERE lezione.Giorno = DAYOFWEEK(NOW()) AND studente ='"+ studentLogged.getUsername() 
 					 +"'AND TIMEDIFF(lezione.OraInizio,TIME(NOW())) > 0;";
 
 		return stmt.executeQuery(sql);
