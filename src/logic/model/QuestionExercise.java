@@ -2,7 +2,7 @@ package logic.model;
 
 public class QuestionExercise extends Question {
 
-	protected String textualContent;
+	protected String text;
 	protected String image;
 	
 	public QuestionExercise() {
@@ -10,20 +10,20 @@ public class QuestionExercise extends Question {
 	}
 	
 	public QuestionExercise(String text) {
-		this.textualContent = text;
+		this.text = text;
 	}
 	
 	public QuestionExercise(String text, String image) {
-		this.textualContent = text;
+		this.text = text;
 		this.image = image;
 	}
 	
 	
 	public void setText(String newText) {
-		this.textualContent = newText;
+		this.text = newText;
 	}
 	public String getText() {
-		return this.textualContent;
+		return this.text;
 	}
 	
 	public void setImage(String newImage) {

@@ -15,7 +15,6 @@ public class TypeQuestionGraphicController extends GraphicController{
 	
 
 	public void typeExercise() throws IOException {
-		//this.factory = new QuestionExerciseFactory();
 		goToPage(NamePage.EXERCISE);
 		
 		
@@ -25,7 +24,6 @@ public class TypeQuestionGraphicController extends GraphicController{
 	}
 	
 	public void typeProblem() throws IOException {
-		//this.factory = new QuestionProblemFactory();
 		goToPage(NamePage.PROBLEM);
 		
 	}

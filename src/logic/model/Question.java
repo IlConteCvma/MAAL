@@ -25,8 +25,10 @@ public abstract class Question {
 	public String getTitle() {
 		return title;
 	}
+	
 	public void setTitle(String newTitle) {
 		this.title = newTitle;
 	}
+	
 }
 	

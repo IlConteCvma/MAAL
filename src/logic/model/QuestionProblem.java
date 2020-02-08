@@ -2,7 +2,7 @@ package logic.model;
 
 public class QuestionProblem extends Question {
 	
-	private String textualContent;
+	private String text;
 	
 	public QuestionProblem() {
 		
@@ -11,17 +11,12 @@ public class QuestionProblem extends Question {
 		this.setText(text);
 	}
 
-	@Override
-	public void setTitle(String newTitle) {
-		this.title = newTitle;
-		
-	}
 	
 	public void setText(String newText) {
-		this.textualContent = newText;
+		this.text = newText;
 	}
 	public String getText() {
-		return textualContent;
+		return text;
 	}
 
 }
