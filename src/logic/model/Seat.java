@@ -4,9 +4,13 @@ public class Seat {
 	private boolean busy;
 	private int index;
 	
-	private Seat(int index) {
+	public Seat(int index, boolean busy) {
 		this.index = index;
-		busy = false;
+		this.busy = busy;
+	}
+	
+	public int getIndex() {
+		return this.index;
 	}
 	
 	public void occupateSeat() {

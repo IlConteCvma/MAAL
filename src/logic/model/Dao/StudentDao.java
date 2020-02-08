@@ -14,7 +14,6 @@ public class StudentDao {
         Statement stmt = null;
         Connection conn = null;
         Student studLog = null;
-        boolean firstTime = true;
         
         try {
         	
@@ -28,7 +27,7 @@ public class StudentDao {
             	studLog = null;
             }else {
             	rs.first();
-            	firstTime = false;
+            	SingletonConnectionDB.increaseCount();
             	String nome = rs.getString("Nome");
             	String cognome = rs.getString("Cognome");
             	String username = rs.getString("Username");
@@ -43,13 +42,10 @@ public class StudentDao {
         	if(stmt != null){
         		stmt.close();
         	}
-            try {
-                if (conn != null && studLog == null && firstTime == false) {
-                	conn.close();
-                }    
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
+            if (conn != null) {
+				SingletonConnectionDB.close();
+				SingletonConnectionDB.increaseCount();
+			}
         }
 	
         return studLog;

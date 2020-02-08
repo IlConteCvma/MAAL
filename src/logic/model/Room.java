@@ -9,7 +9,7 @@ public class Room {
 	private int numColumn;
 	private Vector<Seat> places;
 	
-	private Room(String name, int capacity, int numRow, int numColumn, Vector<Seat>places) {
+	public Room(String name, int numRow, int numColumn, Vector<Seat>places) {
 		this.name = name;
 		this.numRow = numRow;
 		this.numColumn = numColumn;

@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import logic.bean.StudentBean;
 import logic.controller.ViewTimeToExitController;
 import logic.model.SingletonConnectionDB;
 
@@ -23,6 +24,8 @@ public class HomeBoxGraphicController extends GraphicController implements Initi
 	}
 	
 	public void getStarted(ActionEvent e) throws IOException, SQLException  {
-		controlUC.estimateTimeToExit();
+		StudentBean studLog = new StudentBean();
+		studLog.setUsername(SingletonConnectionDB.getStudent().getName());
+		controlUC.estimateTimeToExit(studLog);
 	}
 }

@@ -3,15 +3,17 @@ package logic.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Vector;
-import logic.model.DateApi;
+
+import logic.bean.StudentBean;
+import logic.model.Lesson;
 import logic.model.MapsApi;
 import logic.model.Seat;
 import logic.model.WeatherApi;
 
 public class ViewTimeToExitController {
 
+	private Lesson nextLesson;
 	private ViewNextLessonController nextLessonController = new ViewNextLessonController();
-	private DateApi time;
 	private MapsApi map;
 	private WeatherApi weather;
 	private Vector<Double> originAddress;
@@ -46,20 +48,18 @@ public class ViewTimeToExitController {
 		}
 	}
 	
-	public void estimateTimeToExit() throws IOException, SQLException {
+	public void estimateTimeToExit(StudentBean studLog) throws IOException, SQLException {
 		getInfoByMaps();
 		this.distance = this.distance + 0.14 * this.distance; //add 14% -> value take by test
 		this.minutes = (this.distance / (30*0.016)) + this.lateForWeather;
 		System.out.println(this.minutes);
-		time = new DateApi();
-		Vector<Integer> actualHour = new Vector<>();
-		actualHour = time.getActualHour();
 		getNextLesson();
-		System.out.println("L'ora esatta è " + actualHour.elementAt(0) + ":" + actualHour.elementAt(1) + ":" + actualHour.elementAt(2)); 
 	}
 	
 	public void getNextLesson() throws SQLException {
-		nextLessonController.getNextLesson();
+		nextLesson = nextLessonController.getNextLesson();
+		System.out.println(nextLesson.getRoomLesson().getName());
+		System.out.println(nextLesson.getSubjectLesson().getName());
 	}
 	
 	public void estimateOccupationRoom() {

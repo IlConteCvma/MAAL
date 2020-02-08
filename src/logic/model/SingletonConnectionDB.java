@@ -7,6 +7,7 @@ import java.sql.SQLException;
 public class SingletonConnectionDB {
 	
 	private static SingletonConnectionDB instance = null;
+	private static int count = 0;
 	private static Connection conn;
 	public static Student studLog;
 	
@@ -16,11 +17,20 @@ public class SingletonConnectionDB {
 		conn = DriverManager.getConnection("jdbc:mysql://localhost/maaldb", "root", "");
 	}
 	
+	public static void increaseCount() {
+		SingletonConnectionDB.count++;
+	}
+	
+	public static void decreaseCount() {
+		SingletonConnectionDB.count--;
+	}
+	
 	public Connection getConnection() {
 		return conn;
 	}
 	
 	public synchronized static SingletonConnectionDB getSingletonConnection() {
+		count++;
 		try {
 			if (SingletonConnectionDB.instance == null)
 				SingletonConnectionDB.instance = new SingletonConnectionDB();
@@ -30,6 +40,16 @@ public class SingletonConnectionDB {
         	se2.printStackTrace();
         }
 		return instance;
+	}
+	
+	public synchronized static void close() {
+		if(SingletonConnectionDB.count==0) {
+			try {
+				SingletonConnectionDB.conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public static Student getStudent() {
