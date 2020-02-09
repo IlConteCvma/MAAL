@@ -7,13 +7,15 @@ public class Student {
 	private String username;
 	private String password;
 	private String address;
+	private Vehicle vehicle;
 	
-	public Student(String name, String surname, String username, String password, String address) {
+	public Student(String name, String surname, String username, String password, String address, Vehicle vehicle) {
 		this.name = name;
 		this.surname = surname;
 		this.username = username;
 		this.password = password;
 		this.address = address;
+		this.vehicle = vehicle;
 	}
 	
 	public String getName() {
@@ -34,6 +36,10 @@ public class Student {
 	
 	public String getAddress() {
 		return address;
+	}
+	
+	public Vehicle getVehicle() {
+		return vehicle;
 	}
 	
 }

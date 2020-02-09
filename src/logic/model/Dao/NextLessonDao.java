@@ -31,8 +31,6 @@ public class NextLessonDao {
 				nextLesson = nextLessonDao.getLessonById(id);
 				nextLesson.setRoomLesson(getRoom());
 				nextLesson.setSubjectLesson(getSubjectOfLesson());
-			}else {
-				AlertControl.infoBox("You have not lesson today", "NOT LESSON");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

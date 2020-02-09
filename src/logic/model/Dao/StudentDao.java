@@ -7,6 +7,8 @@ import java.sql.Statement;
 import logic.model.SingletonConnectionDB;
 import logic.model.Student;
 import logic.model.StudentQueries;
+import logic.model.TypeVehicle;
+import logic.model.Vehicle;
 
 public class StudentDao {	
 
@@ -33,8 +35,11 @@ public class StudentDao {
             	String username = rs.getString("Username");
             	String password = rs.getString("Password");
             	String address = rs.getString("Indirizzo");
-	        
-            	studLog = new Student(name,surname,username,password,address);
+            	String typeVehicle = rs.getString("Veicolo");
+            	
+            	Vehicle vehicleStudent = new Vehicle(TypeVehicle.valueOf(typeVehicle));
+            	
+            	studLog = new Student(name,surname,username,password,address, vehicleStudent);
             	SingletonConnectionDB.studLog = studLog;
             }
             

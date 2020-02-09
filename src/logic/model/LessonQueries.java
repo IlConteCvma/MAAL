@@ -14,7 +14,7 @@ public class LessonQueries {
 					 "FROM studente join segue on studente.Username = segue.Studente join lezione on lezione.Materia=segue.Materia "
 					 + "WHERE lezione.Giorno = DAYOFWEEK(NOW()) AND studente ='"+ studentLogged.getUsername() 
 					 +"'AND TIMEDIFF(lezione.OraInizio,TIME(NOW())) > 0;";
-
+		
 		return stmt.executeQuery(sql);
 		
 	}

@@ -1,9 +1,8 @@
 package logic.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Vector;
-
+import logic.AlertControl;
 import logic.bean.StudentBean;
 import logic.model.Lesson;
 import logic.model.MapsApi;
@@ -30,18 +29,27 @@ public class ViewTimeToExitController {
 		destinationAddress.add(12.63);
 	}
 	
-	public void getInfoByMaps() throws IOException {
+	public void getInfoByMaps(){
 		this.map = new MapsApi();
 		//Calculate latitude and longitude 
-		this.originAddress= this.map.getPosition(SingletonConnectionDB.getStudent().getAddress());
+		try {
+			this.originAddress= this.map.getPosition(SingletonConnectionDB.getStudent().getAddress());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		setDestinationAddress();
 		//Calculate distance in km
 		this.distance = this.map.calculateDistance(originAddress,destinationAddress);
 	}
 	
-	public void getInfoByMeteo() throws IOException {
+	public void getInfoByMeteo(){
 		this.weather = new WeatherApi();
-		String rainIntensity = weather.getRainIntensity();
+		String rainIntensity = null;
+		try {
+			rainIntensity = weather.getRainIntensity();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		if(rainIntensity.equals("Light")) {
 			this.lateForWeather = 5.0;
 		}else if(rainIntensity.equals("Moderate")){
@@ -49,15 +57,20 @@ public class ViewTimeToExitController {
 		}
 	}
 	
-	public void estimateTimeToExit(StudentBean studLog) throws IOException, SQLException {
-		getInfoByMaps();
-		this.distance = this.distance + 0.14 * this.distance; //add 14% -> value take by test
-		this.minutes = (this.distance / (30*0.016)) + this.lateForWeather;
-		System.out.println(this.minutes);
+	public void estimateTimeToExit(StudentBean studLog){
 		getNextLesson();
+		if(nextLesson != null) {
+			double speedAverage = SingletonConnectionDB.getStudent().getVehicle().getSpeed();
+			getInfoByMaps();
+			this.distance = this.distance + 0.14 * this.distance; //add 14% -> value take by test
+			this.minutes = (this.distance / (speedAverage*0.016)) + this.lateForWeather;
+			System.out.println("Ci metterai orientativamente "+this.minutes);
+		}else {
+			AlertControl.infoBox("You have not lesson today", "NOT LESSON");
+		}
 	}
 	
-	public void getNextLesson() throws SQLException {
+	public void getNextLesson(){
 		nextLesson = nextLessonController.getNextLesson();
 		if(nextLesson != null) {
 			System.out.println(nextLesson.getSubjectLesson().getName());
@@ -66,8 +79,8 @@ public class ViewTimeToExitController {
 		
 	}
 	
-	public void estimateOccupationRoom() {
-		//in lavorazione..
+	public void calculateTimeBasedOccupationRoom() {
+		
 	}
 	
 	public void occupateSeat(Seat seatToOccupy) {

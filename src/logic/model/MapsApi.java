@@ -11,7 +11,6 @@ public class MapsApi{
     
     public Vector<Double> getPosition(String place) throws IOException{
     	String url_request = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="+place+"&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=" + apikey;
-    	//System.out.println(url_request);
     	String response = connection.sendRequest(url_request);
     	JSONObject positionObj = new JSONObject(response);
     	JSONArray arr = positionObj.getJSONArray("candidates");
