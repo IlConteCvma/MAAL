@@ -26,6 +26,6 @@ public class HomeBoxGraphicController extends GraphicController implements Initi
 	public void getStarted(ActionEvent e) throws IOException, SQLException  {
 		StudentBean studLog = new StudentBean();
 		studLog.setUsername(SingletonConnectionDB.getStudent().getName());
-		controlUC.estimateTimeToExit(studLog);
+		controlUC.getNextLesson();
 	}
 }

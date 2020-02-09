@@ -3,24 +3,29 @@ package logic.controller;
 import java.io.IOException;
 import java.util.Vector;
 import logic.AlertControl;
-import logic.bean.StudentBean;
 import logic.model.Lesson;
 import logic.model.MapsApi;
 import logic.model.Seat;
 import logic.model.SingletonConnectionDB;
+import logic.model.TimeApi;
 import logic.model.WeatherApi;
 
 public class ViewTimeToExitController {
-
+	
+	private final int weight = 50;
+	private final int minuteOfAdvance = 15;
+	
 	private Lesson nextLesson;
 	private ViewNextLessonController nextLessonController = new ViewNextLessonController();
+	private TimeApi time = new TimeApi();
 	private MapsApi map;
 	private WeatherApi weather;
 	private Vector<Double> originAddress;
 	private Vector<Double> destinationAddress;
 	private Double distance;
-	private Double lateForWeather = 0.0;
-	private Double minutes;
+	private int lateForWeather = 0;
+	private int minutes;
+	private int timeToExit;
 	
 	public void setDestinationAddress() {
 		//Set destination address with data of University Of Tor Vergata
@@ -48,39 +53,51 @@ public class ViewTimeToExitController {
 		try {
 			rainIntensity = weather.getRainIntensity();
 		} catch (IOException e) {
-			e.printStackTrace();
+				e.printStackTrace();
 		}
 		if(rainIntensity.equals("Light")) {
-			this.lateForWeather = 5.0;
+			this.lateForWeather = 5;
 		}else if(rainIntensity.equals("Moderate")){
-			this.lateForWeather = 10.0;
+			this.lateForWeather = 10;
 		}
 	}
 	
-	public void estimateTimeToExit(StudentBean studLog){
-		getNextLesson();
+	public void estimateTimeToExit(){
 		if(nextLesson != null) {
 			double speedAverage = SingletonConnectionDB.getStudent().getVehicle().getSpeed();
 			getInfoByMaps();
 			this.distance = this.distance + 0.14 * this.distance; //add 14% -> value take by test
-			this.minutes = (this.distance / (speedAverage*0.016)) + this.lateForWeather;
-			System.out.println("Ci metterai orientativamente "+this.minutes);
-		}else {
-			AlertControl.infoBox("You have not lesson today", "NOT LESSON");
+			this.minutes = (int) ((this.distance / (speedAverage*0.016))) + this.lateForWeather + minuteOfAdvance;
+			long timeExit = time.getTimeMinuteDiff(nextLesson.getStartHour().toString(), time.getStringHour(time.getCurrentDate()));
+			int i = 0;
+			do {
+				timeToExit = (int) (timeExit - (this.minutes + calculateTimeBasedOccupationRoom(i)));
+				i++;
+			}while(timeToExit<0 && i < 3);
+			if(timeToExit <0) {
+				AlertControl.infoBox("E' troppo tardi!", "WARNING");
+			}else {
+				System.out.println("Esci di casa fra "+ timeToExit +" minuti per la "+i+" fascia");
+			}
 		}
 	}
 	
 	public void getNextLesson(){
 		nextLesson = nextLessonController.getNextLesson();
 		if(nextLesson != null) {
-			System.out.println(nextLesson.getSubjectLesson().getName());
-			System.out.println("Free places: "+nextLesson.getRoomLesson().getNumberOfFreePlaces()+"/"+nextLesson.getRoomLesson().getNumberOfPlaces());
+			estimateTimeToExit();
+		}else {
+			AlertControl.infoBox("You have not lesson today", "NOT LESSON");
 		}
-		
-	}
+	 }
 	
-	public void calculateTimeBasedOccupationRoom() {
-		
+	public double calculateTimeBasedOccupationRoom(int priority) {
+		int freePlaces = nextLesson.getRoomLesson().getNumberOfFreePlacesForPriority(priority);
+		Vector<Integer> range = nextLesson.getRoomLesson().getSeatOfPriority(priority);
+		int allPlaces = range.get(1) - range.get(0);
+		int busyPlaces = allPlaces - freePlaces;
+		double minute = weight * nextLesson.getSubjectLesson().getIndexOfStudents() * (busyPlaces/allPlaces);
+		return minute;
 	}
 	
 	public void occupateSeat(Seat seatToOccupy) {

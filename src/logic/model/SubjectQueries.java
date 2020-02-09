@@ -8,10 +8,10 @@ public class SubjectQueries {
 
 	public static ResultSet findSubjectOfLesson(Statement stmt, int idLesson) throws SQLException  {
 		
-		String sql = "SELECT Materia " + 
-				"FROM lezione " + 
+		String sql = "SELECT * " + 
+				"FROM lezione join materia on lezione.Materia=materia.Nome " + 
 				"WHERE lezione.ID = "+ idLesson +";";
-
+		
 		return stmt.executeQuery(sql);
 		
 	}

@@ -31,8 +31,9 @@ public class SubjectDao {
             	//returned one value
             	rs.first();
             	String name = rs.getString("Materia");
+            	double index = rs.getDouble("Indice");
             	
-            	subjectOfLesson = new Subject(name);
+            	subjectOfLesson = new Subject(name, index);
             }
             rs.close();
             } finally {     
