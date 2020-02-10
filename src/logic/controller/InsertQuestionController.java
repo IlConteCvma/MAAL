@@ -92,12 +92,19 @@ public class InsertQuestionController {
 		
 		try {
 			ArrayList<Subject> subj = SubjectDao.getSubjectOfStudent(Session.getSession().getStudent().getUsername());
-			for(int i=0; i<subj.size();i++) {
-				SubjectBean appBean = new SubjectBean();
-				appBean.setName(subj.get(i).getName());
-				appBean.setIndexOfStudents(subj.get(i).getIndexOfStudents());
-				sBean.add(appBean);
+			if(subj == null) {
+				sBean = null;
 			}
+			else {
+				for(int i=0; i<subj.size();i++) {
+					SubjectBean appBean = new SubjectBean();
+					appBean.setName(subj.get(i).getAbbrevation());
+					appBean.setIndexOfStudents(subj.get(i).getIndexOfStudents());
+					appBean.setAbbrevation(subj.get(i).getAbbrevation());
+					sBean.add(appBean);
+				}
+			}
+			
 		}
 		catch(SQLException e) {
 			sBean=null;

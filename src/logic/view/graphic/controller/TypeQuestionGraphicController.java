@@ -53,16 +53,29 @@ public class TypeQuestionGraphicController extends GraphicController{
 	public void mySubject(ActionEvent e) {
 		InsertQuestionController controller = new InsertQuestionController();
 		ArrayList<SubjectBean> bean = controller.getSubjects();
+		
+		
 		if(bean != null) {
+			int row = 0;
+			int col = 0;
 			for(int i=0; i<bean.size();i++) {
-				showSubject(bean.get(i).getName());
+				
+				if(i%3 == 0 && i !=0) {
+					row++;
+				}
+				else if (col%3 == 0) {
+					col = 0;
+				}
+				showSubject(bean.get(i).getAbbrevation(),row,col);
+				col++;
 			}
 			clickMe.setDisable(true);
 		}
 		
 		else {
 			Label text = new Label();
-			text.setText("You don't follow any subject\nCheck your profile");
+			text.setMinSize(130, 50);
+			text.setText("You don't follow any \nsubject\nCheck your profile");
 			text.setTextAlignment(TextAlignment.CENTER);
 			clickMe.setDisable(true);
 			
@@ -72,9 +85,14 @@ public class TypeQuestionGraphicController extends GraphicController{
 	}
 	
 	
-	private void showSubject(String name) {
+	private void showSubject(String name,int row,int col) {
 		Button subj = new Button();
 		subj.setText(name);
+		subj.setMinSize(130, 50);
+		
+		
+		
+		
 		subj.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -89,7 +107,7 @@ public class TypeQuestionGraphicController extends GraphicController{
 
 		});
 		
-		gridPane.getChildren().add(subj);
+		gridPane.add(subj, col, row);
 		
 	}
 	

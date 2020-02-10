@@ -1,4 +1,4 @@
- package logic.model;
+package logic.model;
 
 public class Subject {
 	private String name;
