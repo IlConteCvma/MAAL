@@ -3,6 +3,13 @@ package logic.bean;
 public class SubjectBean {
 	private String name;
 	private double indexOfStudents;
+	
+	public SubjectBean() {
+		
+	}
+	public SubjectBean(String name) {
+		this.name=name;
+	}
 
 
 

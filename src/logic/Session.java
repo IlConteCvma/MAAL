@@ -6,6 +6,7 @@ import logic.model.Student;
 public class Session {
 	private static Session instance = null;
 	private Student studentLog;
+	private String subject;
 	
 	
 	protected Session(){
@@ -25,6 +26,14 @@ public class Session {
 
 	public void setStudent(Student student) {
 		this.studentLog = student;
+	}
+
+	public String getSubject() {
+		return this.subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 }

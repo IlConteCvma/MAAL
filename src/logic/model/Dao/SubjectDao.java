@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+import logic.Session;
 import logic.model.SingletonConnectionDB;
 import logic.model.Subject;
 import logic.model.queries.SubjectQueries;
@@ -49,10 +49,44 @@ public class SubjectDao {
     }
 	
 	public static ArrayList<Subject> getSubjectOfStudent(String username) throws SQLException{
+		Statement stmt = null;
+        Connection conn = null;
+        ArrayList<Subject> subject;
+        try {
+        	//create connection
+        	conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
+        	//create statement
+        	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        	//execute query
+            ResultSet rs = SubjectQueries.findSubjectOfStudent(stmt, Session.getSession().getStudent().getUsername());
+            
+            if (!rs.first()){
+            	subject = null;
+            }else {
+            	//returned one value
+            	rs.first();
+            	subject = new ArrayList<Subject>();
+            	do{
+            		String name = rs.getString("Nome");
+            		double index = rs.getDouble("Indice");
+                    Subject sub = new Subject(name,index);
+                   
+                    subject.add(sub);
+
+                }while(rs.next());
+            }
+            rs.close();
+            } finally {     
+            	if(stmt != null){
+            		stmt.close();
+            	}
+            	if (conn != null) {
+    				SingletonConnectionDB.close();
+    			}
+            	
+            }
 		
-		
-		
-		return null;
+		return subject;
 		
 	}
 }
