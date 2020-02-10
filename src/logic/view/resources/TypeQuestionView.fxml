@@ -17,8 +17,8 @@
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f6c640" height="95.0" layoutX="4.0" layoutY="286.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="265.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a22531" height="288.0" layoutX="4.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="265.0" />
-            <Button fx:id="buttonExe" disable="true" layoutX="74.0" layoutY="42.0" mnemonicParsing="false" onAction="#typeExercise" prefHeight="40.0" prefWidth="125.0" text="Exercise" textAlignment="CENTER" />
-            <Button fx:id="buttonPro" disable="true" layoutX="74.0" layoutY="122.0" mnemonicParsing="false" onAction="#typeProblem" prefHeight="40.0" prefWidth="125.0" text="Problem" textAlignment="CENTER" />
+            <Button layoutX="74.0" layoutY="42.0" mnemonicParsing="false" onAction="#typeExercise" prefHeight="40.0" prefWidth="125.0" text="Exercise" textAlignment="CENTER" />
+            <Button layoutX="74.0" layoutY="122.0" mnemonicParsing="false" onAction="#typeProblem" prefHeight="40.0" prefWidth="125.0" text="Problem" textAlignment="CENTER" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66171f" height="7.0" layoutX="4.0" layoutY="280.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="265.0" />
             <Polygon fill="#66171f" layoutX="240.0" layoutY="337.0" points="-235.99998474121094, -51.000030517578125, -103.49998474121094, -29.000030517578125, 29.20001220703125, -51.000030517578125" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <Polygon fill="#a22531" layoutX="248.0" layoutY="144.0" points="-243.99998474121094, 135.99996948242188, 21.0, 135.99996948242188, -111.39997863769531, 152.99996948242188" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
@@ -39,8 +39,8 @@
             </Label>
             <Polygon fill="#a22531" layoutX="299.0" layoutY="343.0" points="-299.0000305175781, 40.0, 268.0, 40.0, -13.4000244140625, -44.20001220703125" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <Button layoutX="220.0" layoutY="329.0" mnemonicParsing="false" onAction="#back" prefHeight="40.0" prefWidth="125.0" text="View All Question" textAlignment="CENTER" />
-            <Button fx:id="clickMe" layoutX="324.0" layoutY="42.0" mnemonicParsing="false" onAction="#mySubject" prefHeight="26.0" prefWidth="90.0" text="Click me" />
-            <GridPane fx:id="gridPane" layoutX="27.0" layoutY="118.0" prefHeight="181.0" prefWidth="522.0">
+            <Button layoutX="324.0" layoutY="42.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="90.0" text="Click me" />
+            <GridPane layoutX="27.0" layoutY="118.0" prefHeight="181.0" prefWidth="522.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

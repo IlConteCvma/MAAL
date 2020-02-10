@@ -17,6 +17,7 @@ public class PageFactory {
 			case QUESTIONTYPE: return new TypeQuestionPage();
 			case EXERCISE: return new QuestionExercisePage();
 			case PROBLEM : return new QuestionProblemPage();
+			case TIMETOEXIT: return new HomeTimePage();
 			
 			default: throw new IOException("Invalid type : " + type);
 			

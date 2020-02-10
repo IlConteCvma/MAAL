@@ -7,15 +7,14 @@ import logic.Session;
 import logic.model.Lesson;
 import logic.model.MapsApi;
 import logic.model.Seat;
-import logic.model.SingletonConnectionDB;
 import logic.model.TimeApi;
 import logic.model.WeatherApi;
 import logic.view.AlertControl;
 
 public class ViewTimeToExitController {
 	
-	private final int weight = 50;
-	private final int minuteOfAdvance = 15;
+	private final static int weight = 50;
+	private final static int minuteOfAdvance = 15;
 	
 	private Lesson nextLesson;
 	private ViewNextLessonController nextLessonController = new ViewNextLessonController();
@@ -26,8 +25,6 @@ public class ViewTimeToExitController {
 	private Vector<Double> destinationAddress;
 	private Double distance;
 	private int lateForWeather = 0;
-	private int minutes;
-	private int timeToExit;
 	
 	public void setDestinationAddress() {
 		//Set destination address with data of University Of Tor Vergata
@@ -69,18 +66,20 @@ public class ViewTimeToExitController {
 			double speedAverage = Session.getSession().getStudent().getVehicle().getSpeed();
 			getInfoByMaps();
 			this.distance = this.distance + 0.14 * this.distance; //add 14% -> value take by test
-			this.minutes = (int) ((this.distance / (speedAverage*0.016))) + this.lateForWeather + minuteOfAdvance;
+			double minutes = (int) ((this.distance / (speedAverage*0.016))) + this.lateForWeather + minuteOfAdvance;
 			long timeExit = time.getTimeMinuteDiff(nextLesson.getStartHour().toString(), time.getStringHour(time.getCurrentDate()));
 			int i = 0;
+			double timeToExit = 0;
 			do {
-				timeToExit = (int) (timeExit - (this.minutes + calculateTimeBasedOccupationRoom(i)));
+				timeToExit = (int) (timeExit - (minutes + calculateTimeBasedOccupationRoom(i)));
 				i++;
 			}while(timeToExit<0 && i < 3);
 			if(timeToExit <0) {
 				AlertControl.infoBox("E' troppo tardi!", "WARNING");
-			}else {
-				System.out.println("Esci di casa fra "+ timeToExit +" minuti per la "+i+" fascia");
+				timeToExit = 0;
 			}
+			Session.getSession().setMinutes(timeExit);
+			Session.getSession().setPriority(i);
 		}
 	}
 	
@@ -88,11 +87,13 @@ public class ViewTimeToExitController {
 		nextLesson = null;
 		nextLesson = nextLessonController.getNextLesson();
 		if(nextLesson != null) {
+			Session.getSession().setNextLesson(nextLesson);
 			estimateTimeToExit();
 		}else {
 			AlertControl.infoBox("You have not lesson today", "NOT LESSON");
 		}
 	 }
+	
 	
 	public double calculateTimeBasedOccupationRoom(int priority) {
 		int freePlaces = nextLesson.getRoomLesson().getNumberOfFreePlacesForPriority(priority);

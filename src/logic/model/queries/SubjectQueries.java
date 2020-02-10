@@ -17,8 +17,8 @@ public class SubjectQueries {
 	}
 	
 	public static ResultSet findSubjectOfStudent(Statement stmt,String username) throws SQLException {
-		String sql = "SELECT Materia " + 
-				"FROM segue " + 
+		String sql = "SELECT * " + 
+				"FROM segue join materia on segue.Materia = materia.Nome " + 
 				"WHERE Studente = '"+ username +"';";
 		
 		return stmt.executeQuery(sql);
