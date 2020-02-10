@@ -4,7 +4,7 @@ package logic.view.graphic.controller;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
-import logic.AlertControl;
+import logic.view.AlertControl;
 import logic.view.NamePage;
 
 

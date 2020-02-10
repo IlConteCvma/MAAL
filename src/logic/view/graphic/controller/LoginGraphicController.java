@@ -2,9 +2,9 @@ package logic.view.graphic.controller;
 
 import javafx.fxml.*;
 import javafx.scene.control.PasswordField;
-import logic.AlertControl;
 import logic.bean.StudentBean;
 import logic.controller.LoginController;
+import logic.view.AlertControl;
 import logic.view.NamePage;
 import java.io.IOException;
 import java.sql.SQLException;

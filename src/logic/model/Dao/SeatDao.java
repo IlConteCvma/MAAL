@@ -6,8 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 import logic.model.Seat;
-import logic.model.SeatQueries;
 import logic.model.SingletonConnectionDB;
+import logic.model.queries.SeatQueries;
 
 public class SeatDao {
 	

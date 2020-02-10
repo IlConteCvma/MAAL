@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import logic.model.SingletonConnectionDB;
 import logic.model.Subject;
-import logic.model.SubjectQueries;
+import logic.model.queries.SubjectQueries;
 
 public class SubjectDao {
 	

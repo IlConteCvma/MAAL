@@ -8,9 +8,9 @@ import java.sql.Statement;
 import execption.QuestionException;
 import logic.model.Question;
 import logic.model.QuestionExercise;
-import logic.model.QuestionQueries;
 import logic.model.QuestionType;
 import logic.model.SingletonConnectionDB;
+import logic.model.queries.QuestionQueries;
 
 public class QuestionDao {
 	protected Statement stmt;

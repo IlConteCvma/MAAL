@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import logic.model.SingletonConnectionDB;
 import logic.model.Student;
-import logic.model.StudentQueries;
 import logic.model.TypeVehicle;
 import logic.model.Vehicle;
+import logic.model.queries.StudentQueries;
 
 public class StudentDao {	
 

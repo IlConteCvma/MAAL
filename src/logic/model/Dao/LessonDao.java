@@ -6,8 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import logic.model.Lesson;
-import logic.model.LessonQueries;
 import logic.model.SingletonConnectionDB;
+import logic.model.queries.LessonQueries;
 
 public class LessonDao {
 	

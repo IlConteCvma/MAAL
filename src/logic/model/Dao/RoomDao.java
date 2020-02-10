@@ -6,8 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import logic.model.Room;
-import logic.model.RoomQueries;
 import logic.model.SingletonConnectionDB;
+import logic.model.queries.RoomQueries;
 
 public class RoomDao {
 	

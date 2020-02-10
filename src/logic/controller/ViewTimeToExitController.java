@@ -2,13 +2,14 @@ package logic.controller;
 
 import java.io.IOException;
 import java.util.Vector;
-import logic.AlertControl;
+
 import logic.model.Lesson;
 import logic.model.MapsApi;
 import logic.model.Seat;
 import logic.model.SingletonConnectionDB;
 import logic.model.TimeApi;
 import logic.model.WeatherApi;
+import logic.view.AlertControl;
 
 public class ViewTimeToExitController {
 	
@@ -83,6 +84,7 @@ public class ViewTimeToExitController {
 	}
 	
 	public void getNextLesson(){
+		nextLesson = null;
 		nextLesson = nextLessonController.getNextLesson();
 		if(nextLesson != null) {
 			estimateTimeToExit();

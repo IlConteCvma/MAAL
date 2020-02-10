@@ -3,11 +3,11 @@ package logic.model.Dao;
 import java.sql.SQLException;
 import java.util.Vector;
 
-import logic.AlertControl;
 import logic.model.Lesson;
 import logic.model.Room;
 import logic.model.Seat;
 import logic.model.Subject;
+import logic.view.AlertControl;
 
 public class NextLessonDao {
 	
