@@ -23,6 +23,7 @@ public class LoginGraphicController extends GraphicController{
 	
 	@FXML
 	public void signIn(ActionEvent e) throws IOException, SQLException {
+		/*
 		StudentBean possibleStudent = new StudentBean();
 		possibleStudent.setUsername(user.getText());
 		possibleStudent.setPassword(psw.getText());
@@ -31,7 +32,8 @@ public class LoginGraphicController extends GraphicController{
 		}else {
 			AlertControl.infoBox("Data are strong", "WARNING");
 		}
-		//goToPage(NamePage.HOME);
+		*/
+		goToPage(NamePage.HOME);
 	}
 	
 	

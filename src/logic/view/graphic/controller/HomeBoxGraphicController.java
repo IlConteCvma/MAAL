@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import logic.Session;
 import logic.bean.StudentBean;
 import logic.controller.ViewTimeToExitController;
 import logic.model.SingletonConnectionDB;
@@ -20,12 +21,12 @@ public class HomeBoxGraphicController extends GraphicController implements Initi
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		dataOfStudent.setText(""+SingletonConnectionDB.getStudent().getName()+" "+SingletonConnectionDB.getStudent().getSurname());
+		//dataOfStudent.setText(""+SingletonConnectionDB.getStudent().getName()+" "+SingletonConnectionDB.getStudent().getSurname());
 	}
 	
 	public void getStarted(ActionEvent e) throws IOException, SQLException  {
 		StudentBean studLog = new StudentBean();
-		studLog.setUsername(SingletonConnectionDB.getStudent().getName());
+		studLog.setUsername(Session.getSession().getStudent().getName());
 		controlUC.getNextLesson();
 	}
 }

@@ -4,12 +4,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import logic.Session;
 import logic.model.SingletonConnectionDB;
 import logic.model.Student;
 
 public class LessonQueries {
 	
-	private static Student studentLogged = SingletonConnectionDB.getStudent();
+	private static Student studentLogged = Session.getSession().getStudent();
 	
 	public static ResultSet selectNextLesson(Statement stmt) throws SQLException  {
 		

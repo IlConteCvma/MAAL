@@ -3,6 +3,7 @@ package logic.controller;
 import java.io.IOException;
 import java.util.Vector;
 
+import logic.Session;
 import logic.model.Lesson;
 import logic.model.MapsApi;
 import logic.model.Seat;
@@ -39,7 +40,7 @@ public class ViewTimeToExitController {
 		this.map = new MapsApi();
 		//Calculate latitude and longitude 
 		try {
-			this.originAddress= this.map.getPosition(SingletonConnectionDB.getStudent().getAddress());
+			this.originAddress= this.map.getPosition(Session.getSession().getStudent().getAddress());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -65,7 +66,7 @@ public class ViewTimeToExitController {
 	
 	public void estimateTimeToExit(){
 		if(nextLesson != null) {
-			double speedAverage = SingletonConnectionDB.getStudent().getVehicle().getSpeed();
+			double speedAverage = Session.getSession().getStudent().getVehicle().getSpeed();
 			getInfoByMaps();
 			this.distance = this.distance + 0.14 * this.distance; //add 14% -> value take by test
 			this.minutes = (int) ((this.distance / (speedAverage*0.016))) + this.lateForWeather + minuteOfAdvance;

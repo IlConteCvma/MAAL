@@ -1,13 +1,18 @@
 package logic.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import execption.QuestionException;
 import logic.bean.QuestionBean;
+import logic.bean.SubjectBean;
 import logic.model.Question;
 import logic.model.QuestionFactory;
 import logic.model.QuestionType;
+import logic.model.SingletonConnectionDB;
+import logic.model.Subject;
 import logic.model.Dao.QuestionDao;
+import logic.model.Dao.SubjectDao;
 
 public class InsertQuestionController {
 	protected QuestionBean dataBean;
@@ -15,6 +20,9 @@ public class InsertQuestionController {
 	protected QuestionDao qDao;
 	
 	
+	public InsertQuestionController(){
+		
+	}
 	
 	public InsertQuestionController(QuestionFactory factory,QuestionBean dataBean ) {
 		this.dataBean = dataBean;
@@ -79,6 +87,15 @@ public class InsertQuestionController {
 		}
 	
 	
+	public ArrayList<SubjectBean> getSubject() {
+		ArrayList<SubjectBean> sBean = new ArrayList<SubjectBean>() ;
+		
+		ArrayList<Subject> subj = SubjectDao.getSubjectOfStudent(SingletonConnectionDB.getStudent());
+		
+		return sBean;
+	}
+	
+	
 	private void saveText() throws ReflectiveOperationException {
 		
 		Object returned = this.dataBean.getClass().getMethod("getText").invoke(this.dataBean);
@@ -94,6 +111,7 @@ public class InsertQuestionController {
 	
 	private void saveQuestion() throws ReflectiveOperationException{
 		this.qDao.saveOnDBFake(this.question, this.dataBean.getType());
+		//this.qDao.saveOnDB(this.question, this.dataBean.getType());
 		//this.qDao.getClass().getMethod("saveOnDB", Question.class,QuestionType.class).invoke(this.qDao, this.question,this.dataBean.getType());
 	}
 	

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import logic.Session;
 import logic.model.SingletonConnectionDB;
 import logic.model.Student;
 import logic.model.TypeVehicle;
@@ -40,7 +42,7 @@ public class StudentDao {
             	Vehicle vehicleStudent = new Vehicle(TypeVehicle.valueOf(typeVehicle));
             	
             	studLog = new Student(name,surname,username,password,address, vehicleStudent);
-            	SingletonConnectionDB.studLog = studLog;
+            	Session.getSession().setStudent(studLog);
             }
             
             rs.close();

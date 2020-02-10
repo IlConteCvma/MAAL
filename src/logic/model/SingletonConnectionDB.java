@@ -9,7 +9,7 @@ public class SingletonConnectionDB {
 	private static SingletonConnectionDB instance = null;
 	private static int count = 0;
 	private static Connection conn;
-	public static Student studLog;
+	
 	
 	
 	protected SingletonConnectionDB() throws SQLException, ClassNotFoundException {
@@ -50,10 +50,6 @@ public class SingletonConnectionDB {
 				e.printStackTrace();
 			}
 		}
-	}
-	
-	public static Student getStudent() {
-		return studLog;
 	}
 	
 	

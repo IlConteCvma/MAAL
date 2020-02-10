@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import logic.model.SingletonConnectionDB;
 import logic.model.Subject;
@@ -46,4 +47,12 @@ public class SubjectDao {
             }
         	return subjectOfLesson;
     }
+	
+	public static ArrayList<Subject> getSubjectOfStudent(String username) throws SQLException{
+		
+		
+		
+		return null;
+		
+	}
 }
