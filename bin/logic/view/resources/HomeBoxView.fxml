@@ -14,17 +14,17 @@
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f6c640" height="383.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" style="-fx-background-color: f6c640;" width="567.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66171f" height="119.0" layoutX="397.0" layoutY="251.0" rotate="13.6" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="116.0" />
-            <Label layoutX="-1.0" layoutY="83.0" prefHeight="54.0" prefWidth="567.0" style="-fx-alignment: CENTER;" text="Welcome ">
+            <Label layoutX="219.0" layoutY="83.0" text="Welcome ">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label fx:id="dataOfStudent" layoutY="128.0" prefHeight="35.0" prefWidth="567.0" style="-fx-alignment: CENTER;" text=" ">
+            <Label fx:id="dataOfStudent" layoutX="220.0" layoutY="128.0" text=" ">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="-1.0" layoutY="164.0" prefHeight="18.0" prefWidth="567.0" style="-fx-alignment: CENTER;" text="Would you use the assistant of you journey to University?" />
+            <Label layoutX="100.0" layoutY="164.0" text="Would you use the assistant of you journey to University?" />
             <Polygon fill="#66171f" layoutX="497.0" layoutY="321.0" points="69.4000244140625, -44.79998779296875, 19.0, -55.20001220703125, -11.4000244140625, 61.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <Polygon fill="#66171f" layoutX="444.0" layoutY="349.0" points="-51.199951171875, -119.20001220703125, 122.4000244140625, 33.0, 122.4000244140625, -72.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66171f" height="22.0" layoutX="-2.0" layoutY="257.0" rotate="-14.3" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="205.0" AnchorPane.topAnchor="257.0" />

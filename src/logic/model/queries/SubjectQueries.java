@@ -20,6 +20,7 @@ public class SubjectQueries {
 		String sql = "SELECT * " + 
 				"FROM segue join materia on segue.Materia = materia.Nome " + 
 				"WHERE Studente = '"+ username +"';";
+	
 		
 		return stmt.executeQuery(sql);
 	}

@@ -4,12 +4,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import execption.QuestionException;
+import logic.Session;
 import logic.bean.QuestionBean;
 import logic.bean.SubjectBean;
 import logic.model.Question;
 import logic.model.QuestionFactory;
-import logic.model.QuestionType;
-import logic.model.SingletonConnectionDB;
 import logic.model.Subject;
 import logic.model.Dao.QuestionDao;
 import logic.model.Dao.SubjectDao;
@@ -87,8 +86,22 @@ public class InsertQuestionController {
 		}
 	
 	
-	public ArrayList<SubjectBean> getSubject() {
+	public ArrayList<SubjectBean> getSubjects() {
 		ArrayList<SubjectBean> sBean = new ArrayList<SubjectBean>() ;
+		//sBean.add(new SubjectBean("Pippo"));
+		
+		try {
+			ArrayList<Subject> subj = SubjectDao.getSubjectOfStudent(Session.getSession().getStudent().getUsername());
+			for(int i=0; i<subj.size();i++) {
+				SubjectBean appBean = new SubjectBean();
+				appBean.setName(subj.get(i).getName());
+				appBean.setIndexOfStudents(subj.get(i).getIndexOfStudents());
+				sBean.add(appBean);
+			}
+		}
+		catch(SQLException e) {
+			sBean=null;
+		}
 		
 		
 		return sBean;
@@ -113,6 +126,7 @@ public class InsertQuestionController {
 		//this.qDao.saveOnDB(this.question, this.dataBean.getType());
 		//this.qDao.getClass().getMethod("saveOnDB", Question.class,QuestionType.class).invoke(this.qDao, this.question,this.dataBean.getType());
 	}
+
 	
 	
 }

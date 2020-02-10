@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import logic.Session;
 import logic.bean.StudentBean;
 import logic.controller.ViewTimeToExitController;
+import logic.model.SingletonConnectionDB;
 import logic.view.NamePage;
 
 public class HomeBoxGraphicController extends GraphicController implements Initializable{

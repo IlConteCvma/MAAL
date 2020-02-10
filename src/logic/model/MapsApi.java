@@ -42,4 +42,12 @@ public class MapsApi{
     	
 		return d;
     }
+    /*
+    public static double calculateTime() {
+    	double speed = 30*0.016; //0.016 = 1/60
+    	double distance = MapsApi.calculateDistance(41.85, 41.90, 12.63, 12.60);
+    	double time = (distance / speed);
+    	return time;
+    }
+	*/
 }
