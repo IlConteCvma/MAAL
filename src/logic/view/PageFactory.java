@@ -15,7 +15,6 @@ public class PageFactory {
 			case HOME: return new HomePage();
 			case LOGIN: return new LoginPage();
 			case QUESTIONTYPE: return new TypeQuestionPage();
-			case TIMETOEXIT: return new HomeTimePage();
 			
 			default: throw new IOException("Invalid type : " + type);
 			

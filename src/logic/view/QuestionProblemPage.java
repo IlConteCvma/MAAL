@@ -8,8 +8,6 @@ import logic.view.graphic.controller.QuestionExerciseGraphicController;
 import logic.view.graphic.elements.GraphicElementInterface;
 import logic.view.graphic.elements.NavbarElement;
 import logic.view.graphic.elements.NoControllerGrapichElement;
-import logic.view.graphic.elements.SimpleGraphicElement;
-
 public class QuestionProblemPage extends Page {
 
 	public QuestionProblemPage(String param) throws IOException{

@@ -46,10 +46,8 @@ public class TypeQuestionGraphicController extends GraphicController{
 		Page root = new QuestionExercisePage(this.subSelect);
 		Scene scene = new Scene(root);
 		MainClass.getStage().setScene(scene);
-		
-		
-		
 	}
+	
 	public void back(ActionEvent e) {
 		System.out.println("Tutte le question Caso d'uso");
 	}

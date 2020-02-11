@@ -3,51 +3,51 @@ package logic.controller;
 import java.io.IOException;
 import java.util.Vector;
 
+import javafx.scene.Scene;
+import logic.MainClass;
 import logic.Session;
+import logic.bean.TimeToExitBean;
+import logic.model.Journey;
 import logic.model.Lesson;
 import logic.model.MapsApi;
 import logic.model.Seat;
 import logic.model.TimeApi;
 import logic.model.WeatherApi;
 import logic.view.AlertControl;
+import logic.view.HomeTimePage;
+import logic.view.Page;
+import logic.view.graphic.controller.TimeToExitGraphicController;
 
 public class ViewTimeToExitController {
 	
+	//const value
 	private final static int weight = 50;
 	private final static int minuteOfAdvance = 15;
+	private final static double percentDistanceAdd = 0.14;
 	
-	private Lesson nextLesson;
+	//association attribute
 	private ViewNextLessonController nextLessonController = new ViewNextLessonController();
-	private TimeApi time = new TimeApi();
+	private TimeToExitGraphicController timeToExitController;
+	private TimeApi time;
 	private MapsApi map;
 	private WeatherApi weather;
-	private Vector<Double> originAddress;
-	private Vector<Double> destinationAddress;
-	private Double distance;
-	private int lateForWeather = 0;
-	
-	public void setDestinationAddress() {
-		//Set destination address with data of University Of Tor Vergata
-		destinationAddress = new Vector<Double>(2);
-		destinationAddress.add(41.85);
-		destinationAddress.add(12.63);
-	}
+	private Journey nextJourney;
+	private TimeToExitBean timeToExitBean;
 	
 	public void getInfoByMaps(){
 		this.map = new MapsApi();
 		//Calculate latitude and longitude 
 		try {
-			this.originAddress= this.map.getPosition(Session.getSession().getStudent().getAddress());
+			nextJourney = new Journey(this.map.getPosition(Session.getSession().getStudent().getAddress()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		setDestinationAddress();
 		//Calculate distance in km
-		this.distance = this.map.calculateDistance(originAddress,destinationAddress);
+		nextJourney.setDistance(this.map.calculateDistance(nextJourney.getOriginAddress(),nextJourney.getDestinationAddress()));
 	}
 	
-	public void getInfoByMeteo(){
-		this.weather = new WeatherApi();
+	public void getInfoByWeather(){
+		/*this.weather = new WeatherApi();
 		String rainIntensity = null;
 		try {
 			rainIntensity = weather.getRainIntensity();
@@ -55,18 +55,23 @@ public class ViewTimeToExitController {
 				e.printStackTrace();
 		}
 		if(rainIntensity.equals("Light")) {
-			this.lateForWeather = 5;
+			nextJourney.setLateForWeather(5);
 		}else if(rainIntensity.equals("Moderate")){
-			this.lateForWeather = 10;
-		}
+			nextJourney.setLateForWeather(10);
+		}*/
 	}
 	
-	public void estimateTimeToExit(){
+	public void estimateTimeToExit() throws IOException{
+		Lesson nextLesson = nextLessonController.getNextLesson();
 		if(nextLesson != null) {
+			time = new TimeApi();
+			timeToExitBean = new TimeToExitBean();
+			timeToExitBean.setNextLesson(nextLesson);
 			double speedAverage = Session.getSession().getStudent().getVehicle().getSpeed();
 			getInfoByMaps();
-			this.distance = this.distance + 0.14 * this.distance; //add 14% -> value take by test
-			double minutes = (int) ((this.distance / (speedAverage*0.016))) + this.lateForWeather + minuteOfAdvance;
+			getInfoByWeather();
+			nextJourney.setDistance(nextJourney.getDistance() + percentDistanceAdd * nextJourney.getDistance()); //add 14% -> value take by test
+			double minutes = (int) ((nextJourney.getDistance() / (speedAverage*0.016))) + nextJourney.getDistance() + minuteOfAdvance;
 			long timeExit = time.getTimeMinuteDiff(nextLesson.getStartHour().toString(), time.getStringHour(time.getCurrentDate()));
 			int i = 0;
 			double timeToExit = 0;
@@ -74,33 +79,30 @@ public class ViewTimeToExitController {
 				timeToExit = (int) (timeExit - (minutes + calculateTimeBasedOccupationRoom(i)));
 				i++;
 			}while(timeToExit<0 && i < 3);
-			if(timeToExit <0) {
+			if(timeToExit < 0) {
 				AlertControl.infoBox("E' troppo tardi!", "WARNING");
 				timeToExit = 0;
+			}else {
+				timeToExitBean.setMinuteToExit(timeToExit);
+				timeToExitBean.setPriority(i);
+				timeToExitBean.setNextJourney(nextJourney);
+				timeToExitBean.setNextLesson(nextLesson);
+				timeToExitController = new TimeToExitGraphicController(timeToExitBean);
+				Page root = new HomeTimePage(timeToExitBean);
+				Scene scene = new Scene(root);
+				MainClass.getStage().setScene(scene);
 			}
-			Session.getSession().setMinutes(timeExit);
-			Session.getSession().setPriority(i);
-		}
-	}
-	
-	public void getNextLesson(){
-		nextLesson = null;
-		nextLesson = nextLessonController.getNextLesson();
-		if(nextLesson != null) {
-			Session.getSession().setNextLesson(nextLesson);
-			estimateTimeToExit();
 		}else {
 			AlertControl.infoBox("You have not lesson today", "NOT LESSON");
 		}
-	 }
-	
+	}
 	
 	public double calculateTimeBasedOccupationRoom(int priority) {
-		int freePlaces = nextLesson.getRoomLesson().getNumberOfFreePlacesForPriority(priority);
-		Vector<Integer> range = nextLesson.getRoomLesson().getSeatOfPriority(priority);
+		int freePlaces = timeToExitBean.getNextLesson().getRoomLesson().getNumberOfFreePlacesForPriority(priority);
+		Vector<Integer> range = timeToExitBean.getNextLesson().getRoomLesson().getSeatOfPriority(priority);
 		int allPlaces = range.get(1) - range.get(0);
 		int busyPlaces = allPlaces - freePlaces;
-		double minute = weight * nextLesson.getSubjectLesson().getIndexOfStudents() * (busyPlaces/allPlaces);
+		double minute = weight * timeToExitBean.getNextLesson().getSubjectLesson().getIndexOfStudents() * (busyPlaces/allPlaces);
 		return minute;
 	}
 	

@@ -22,6 +22,14 @@ public class Room {
 		this.places = places;
 	}
 	
+	public int getNumRow() {
+		return numRow;
+	}
+	
+	public int getNumColumn() {
+		return numColumn;
+	}
+	
 	public void setPlaces(Vector<Seat> places){
 		this.places = places;
 	}
