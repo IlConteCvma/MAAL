@@ -25,4 +25,14 @@ public class SubjectQueries {
 		return stmt.executeQuery(sql);
 	}
 	
+	public static ResultSet findSubjectByName(Statement stmt,String name) throws SQLException{
+		String sql = "SELECT * " + 
+				"FROM materia " + 
+				"WHERE Nome = '"+ name +"';";
+	
+		
+		return stmt.executeQuery(sql);
+		
+	}
+	
 }

@@ -5,6 +5,5 @@ public enum NamePage {
 	LOGIN,
 	TIMETOEXIT,
 	QUESTIONTYPE,
-	EXERCISE,
-	PROBLEM
+	
 }

@@ -7,17 +7,17 @@ import java.sql.Statement;
 
 import execption.QuestionException;
 import logic.model.Question;
-import logic.model.QuestionExercise;
+
 import logic.model.QuestionType;
 import logic.model.SingletonConnectionDB;
 import logic.model.queries.QuestionQueries;
 
 public class QuestionDao {
-	protected Statement stmt;
-    protected Connection conn;
+	protected static Statement stmt;
+    protected static Connection conn;
    
     
-	public int getNewId() throws SQLException {
+	public static int getNewId() throws SQLException {
 		/*
 		try {
 			conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
@@ -34,10 +34,10 @@ public class QuestionDao {
 			
 		}
 		*/
-		return 12;
+		return 13;
 	}
 	
-	public void saveOnDB(Question question,QuestionType type) throws SQLException, QuestionException {
+	public static void saveOnDB(Question question,QuestionType type) throws QuestionException  {
 		
 		
 
@@ -48,13 +48,12 @@ public class QuestionDao {
 		try {
 			conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
         	
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_UPDATABLE);
+            stmt = conn.createStatement();
+    
            
-            //QuestionQueries.saveQuestionExercise(stmt, this.question.id, this.question.getTitle(),this.question.getText(),this.question.getImage(), false);
 		}
 		catch(SQLException e) {
-			e.printStackTrace();
+			throw new QuestionException("Error on connection DB");
 		}
 			
 		
@@ -63,25 +62,41 @@ public class QuestionDao {
 			
 		}
 		catch(ReflectiveOperationException e) {
-			throw new QuestionException("Error on save DB");
+			throw new QuestionException("Error on invoke for text");
 		}
 		
 		switch(type) {
 			
-			case EXERCISE:
-				QuestionQueries.saveQuestion(stmt,question.id, question.getTitle(), text, null, question.solved);
-				
 			case PROBLEM:
+				
+				try {
+				QuestionQueries.saveQuestion(stmt,question.getId(), question.getTitle(), text, null, question.isSolved(),type.toString(),question.getStudent().getUsername(),question.getQuestionSub().getName());
+				}
+				catch(SQLException e) {
+					throw new QuestionException("Error on save DB");
+					//e.printStackTrace();
+				}
+				break;
+				
+			case EXERCISE:
+				
 				String image;
 				try {
 					image = (String) question.getClass().getMethod("getImage").invoke(question);
 					
 				}
 				catch(ReflectiveOperationException e) {
+					throw new QuestionException("Error on invoke for image");
+				}
+				try {
+				QuestionQueries.saveQuestion(stmt,question.getId(), question.getTitle(), text, image, question.isSolved(),type.toString(),question.getStudent().getUsername(),question.getQuestionSub().getName());
+				}
+				catch(SQLException e) {
 					throw new QuestionException("Error on save DB");
 				}
+				break;
 				
-				QuestionQueries.saveQuestion(stmt,question.id, question.getTitle(), text, image, question.solved);
+				
 		}
 		
 		
@@ -89,9 +104,5 @@ public class QuestionDao {
 		
 	}
 	
-	
-	public void saveOnDBFake(Question question,QuestionType type) {
-		
-	}
 
 }

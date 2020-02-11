@@ -1,26 +1,26 @@
 package logic.model;
 
-import execption.QuestionException;
+
 
 public abstract class Question {
-	public int id;
-	public boolean solved; 
+	protected int id;
+	protected boolean solved; 
 	protected String title;
+	protected Subject questionSub;
+	protected Student student;
 	
-	
+	public Question() {
+		this.questionSub = new Subject();
+		this.student = new Student();
+	}
 	
 	public void setId(int newId) {
 		this.id = newId;
 	}
-	
-	public void setSolved() throws QuestionException {
-		if(!solved) {
-			solved = true;
-		}
-		else {
-			throw new QuestionException("Question already solved");
-		}
+	public int getId() {
+		return this.id;
 	}
+	
 
 	public String getTitle() {
 		return title;
@@ -28,6 +28,34 @@ public abstract class Question {
 	
 	public void setTitle(String newTitle) {
 		this.title = newTitle;
+	}
+
+	
+	public Subject getQuestionSub() {
+		return this.questionSub;
+	}
+
+	public void setQuestionSub(Subject questionSub) {
+		this.questionSub = questionSub;
+	}
+
+	
+	public Student getStudent() {
+		return this.student;
+	}
+
+	
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	
+	public void setSolved(boolean solved) {
+		this.solved = solved;
+	}
+	
+	public boolean isSolved() {
+		return this.solved;
 	}
 	
 }

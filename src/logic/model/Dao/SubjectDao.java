@@ -6,12 +6,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import execption.QuestionException;
 import logic.Session;
 import logic.model.SingletonConnectionDB;
 import logic.model.Subject;
 import logic.model.queries.SubjectQueries;
 
 public class SubjectDao {
+	
 	
 	public Subject getSubjectLesson(int idLesson)  throws SQLException {
         
@@ -91,6 +93,43 @@ public class SubjectDao {
             }
 		
 		return subject;
+		
+	}
+	
+	public static Subject getSubjectByName(String name) throws SQLException {
+		Statement stmt = null;
+        Connection conn = null;
+        Subject subject = null;
+		
+        try {
+        	//create connection
+        	conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
+        	//create statement
+        	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        	//execute query
+            ResultSet rs = SubjectQueries.findSubjectByName(stmt, name);
+            //check if a returned zero value
+            if (!rs.first()){
+            	subject = null;
+            }else {
+            	//returned one value
+            	rs.first();
+            	String nm = rs.getString("Nome");
+            	String abbreviation = rs.getString("Sigla");
+            	double index = rs.getDouble("Indice");
+            	
+            	subject = new Subject(nm, abbreviation, index);
+            }
+            rs.close();
+            } finally {     
+            	if(stmt != null){
+            		stmt.close();
+            	}
+            	if (conn != null) {
+    				SingletonConnectionDB.close();
+    			}
+            }
+        	return subject;
 		
 	}
 }

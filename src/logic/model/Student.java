@@ -18,6 +18,10 @@ public class Student {
 		this.vehicle = vehicle;
 	}
 	
+	public Student() {
+		
+	}
+
 	public String getName() {
 		return name;
 	}

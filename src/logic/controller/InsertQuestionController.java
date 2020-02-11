@@ -13,10 +13,12 @@ import logic.model.Subject;
 import logic.model.Dao.QuestionDao;
 import logic.model.Dao.SubjectDao;
 
+
 public class InsertQuestionController {
 	protected QuestionBean dataBean;
 	protected Question question;
-	protected QuestionDao qDao;
+	
+	 
 	
 	
 	public InsertQuestionController(){
@@ -26,21 +28,35 @@ public class InsertQuestionController {
 	public InsertQuestionController(QuestionFactory factory,QuestionBean dataBean ) {
 		this.dataBean = dataBean;
 		this.question = factory.createQuestion();
-		this.qDao= new QuestionDao();
+		
 		
 	}
 	
-	public  void startSave() throws QuestionException {
+	public  void startSave(String subject) throws QuestionException{
 		
-		this.question.solved = false;
+		
+		
+		this.question.setSolved(false);
+		//this.question.setId(QuestionDao.getNewId());
+		//this.question.setQuestionSub(SubjectDao.getSubjectByName(ArgumentToPage.getSession().getSubjChoose()));
 		
 		try {
-			this.question.id = this.qDao.getNewId() ;
-		} catch (SQLException e) {
+			this.question.setId(QuestionDao.getNewId());
+
+		}
+		
+		catch (SQLException e) {
+			throw new QuestionException("SQL problem");
+		}
+		
+		try {
+			this.question.setQuestionSub(SubjectDao.getSubjectByName(subject));
+		} catch (SQLException e1) {
 			throw new QuestionException("SQL problem");
 		}
 		
 		this.question.setTitle(this.dataBean.getTitle());
+		this.question.setStudent(Session.getSession().getStudent());
 		
 		switch(this.dataBean.getType()) {
 		
@@ -63,9 +79,8 @@ public class InsertQuestionController {
 				try {
 					saveQuestion();
 				}
-				catch(ReflectiveOperationException e) {
-					e.printStackTrace();
-					throw new QuestionException("Error in reflection for save");
+				catch(QuestionException e ) {
+					throw new QuestionException(e.getCause());
 				}
 				
 				
@@ -77,6 +92,13 @@ public class InsertQuestionController {
 					
 					throw new QuestionException("Error in reflection for text");
 				}
+				try {
+					saveQuestion();
+				}
+				catch(QuestionException e ) {
+					throw new QuestionException(e.getCause());
+				}
+				
 			
 		}
 		
@@ -98,7 +120,7 @@ public class InsertQuestionController {
 			else {
 				for(int i=0; i<subj.size();i++) {
 					SubjectBean appBean = new SubjectBean();
-					appBean.setName(subj.get(i).getAbbrevation());
+					appBean.setName(subj.get(i).getName());
 					appBean.setIndexOfStudents(subj.get(i).getIndexOfStudents());
 					appBean.setAbbrevation(subj.get(i).getAbbrevation());
 					sBean.add(appBean);
@@ -128,10 +150,10 @@ public class InsertQuestionController {
 		this.question.getClass().getMethod("setText", String.class).invoke(this.question, (String)returned);
 	}
 	
-	private void saveQuestion() throws ReflectiveOperationException{
-		this.qDao.saveOnDBFake(this.question, this.dataBean.getType());
-		//this.qDao.saveOnDB(this.question, this.dataBean.getType());
-		//this.qDao.getClass().getMethod("saveOnDB", Question.class,QuestionType.class).invoke(this.qDao, this.question,this.dataBean.getType());
+	private void saveQuestion() throws QuestionException{
+		
+		QuestionDao.saveOnDB(this.question, this.dataBean.getType());		
+		
 	}
 
 	

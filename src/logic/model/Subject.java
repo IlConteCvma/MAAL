@@ -11,6 +11,10 @@ public class Subject {
 		this.indexOfStudents = index;
 	}
 	
+	public Subject() {
+		
+	}
+
 	public double getIndexOfStudents() {
 		return this.indexOfStudents;
 	}

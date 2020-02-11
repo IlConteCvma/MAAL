@@ -1,6 +1,7 @@
 package logic.view.graphic.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import execption.QuestionException;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import logic.controller.InsertQuestionController;
 import logic.model.QuestionExerciseFactory;
 import logic.model.QuestionFactory;
 import logic.model.QuestionType;
+import logic.view.AlertControl;
 import logic.view.NamePage;
 
 public class QuestionExerciseGraphicController extends GraphicController implements QuestionGraphicInterface {
@@ -21,10 +23,16 @@ public class QuestionExerciseGraphicController extends GraphicController impleme
 	@FXML private TextArea title;
 	@FXML private TextArea body;
 	@FXML private TextArea foto;
+	private String subject;
 	
 	public QuestionExerciseGraphicController() {
 		//this.message = ottieni la materia dalla sessione
+		//this.factory = new QuestionExerciseFactory();
+	}
+	
+	public QuestionExerciseGraphicController(String param) {
 		this.factory = new QuestionExerciseFactory();
+		this.subject = param;
 	}
 
 	@Override
@@ -55,31 +63,17 @@ public class QuestionExerciseGraphicController extends GraphicController impleme
 			
 			try {
 				InsertQuestionController controller = new InsertQuestionController(this.factory,this.qBean);
-				controller.startSave();
+				controller.startSave(this.subject);
+				
 			}
 			catch(QuestionException e){
-				e.printStackTrace();
+				AlertControl.infoBox("error on save DB", "ERROR");
+				
 				this.message.setText("Error on save");
 			}
-			finally {
-				//o azioni di pulizia o torno indietro
-			}
+			this.message.setText("finito");
 		}
 		
-		
-		
-		
-		/*
-		Method methodToBeCalled = this.qBean.getClass().getMethod("setText",String.class);
-		methodToBeCalled.invoke(this.qBean, "IO SONO PIPPO");
-		
-		Class c = this.qBean.getClass();
-		System.out.println(c.getName());
-		
-		Method methodToBeCalled1 = this.qBean.getClass().getMethod("getText");
-		Object returnedObject = methodToBeCalled1.invoke(this.qBean);
-		System.out.println((String)returnedObject);
-		*/
 	}
 	
 	@Override

@@ -1,6 +1,7 @@
 package logic.view.graphic.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import execption.QuestionException;
 import javafx.fxml.FXML;
@@ -8,9 +9,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import logic.bean.QuestionBean;
 import logic.controller.InsertQuestionController;
+import logic.model.QuestionExerciseFactory;
 import logic.model.QuestionFactory;
 import logic.model.QuestionProblemFactory;
 import logic.model.QuestionType;
+import logic.view.AlertControl;
 import logic.view.NamePage;
 
 public class QuestionProblemGraphicController extends GraphicController implements QuestionGraphicInterface{
@@ -20,11 +23,17 @@ public class QuestionProblemGraphicController extends GraphicController implemen
 	@FXML private Label message;
 	@FXML private TextArea title;
 	@FXML private TextArea body;
+	private String subject;
 	
 	
 	public QuestionProblemGraphicController() {
 		//this.message = ottieni la materia dalla sessione
-		this.factory = new QuestionProblemFactory();
+		//this.factory = new QuestionProblemFactory();
+	}
+	
+	public QuestionProblemGraphicController(String param) {
+		this.factory = new QuestionExerciseFactory();
+		this.subject = param;
 	}
 	
 	
@@ -58,16 +67,16 @@ public class QuestionProblemGraphicController extends GraphicController implemen
 			
 			try {
 				InsertQuestionController controller = new InsertQuestionController(this.factory,this.qBean);
-				controller.startSave();
+				controller.startSave(this.subject);
+			
 			}
 			catch(QuestionException e){
-				e.printStackTrace();
+				
+				AlertControl.infoBox(e.getMessage(), "ERROR");
+				System.out.println(e.getMessage());
 				this.message.setText("Error on save");
 			}
-			finally {
-				this.message.setText("finito");
-				//o azioni di pulizia o torno indietro
-			}
+			this.message.setText("finito");
 		}
 	}
 	
