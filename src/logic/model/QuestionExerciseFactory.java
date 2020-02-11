@@ -4,7 +4,7 @@ import logic.bean.QuestionBean;
 import logic.bean.QuestionExerciseBean;
 
 
-public class QuestionExerciseFactory extends QuestionFactory {
+public class QuestionExerciseFactory implements QuestionFactory {
 
 
 

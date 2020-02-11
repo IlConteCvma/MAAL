@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import logic.model.QuestionType;
+
 import logic.view.NamePage;
 import logic.view.Page;
 import logic.view.PageFactory;

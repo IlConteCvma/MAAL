@@ -9,21 +9,17 @@ import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.TextAlignment;
-import logic.MainClass;
-import logic.Session;
+
 import logic.bean.SubjectBean;
 import logic.controller.InsertQuestionController;
 
 import logic.view.NamePage;
-import logic.view.Page;
-import logic.view.PageFactory;
-import logic.view.QuestionExercisePage;
-import logic.view.QuestionProblemPage;
+
 
 
 public class TypeQuestionGraphicController extends GraphicController{
@@ -43,21 +39,34 @@ public class TypeQuestionGraphicController extends GraphicController{
 
 	public void typeExercise(ActionEvent e) throws IOException {
 		//goToPage(NamePage.EXERCISE);
+		/*
 		Page root = new QuestionExercisePage(this.subSelect);
 		Scene scene = new Scene(root);
 		MainClass.getStage().setScene(scene);
+		*/
+		
+		String[] args = new String[1];
+		args[0]=this.subSelect;
+		
+		goToPage(NamePage.EXERCISE, args);
+		
+		
 	}
-	
 	public void back(ActionEvent e) {
 		System.out.println("Tutte le question Caso d'uso");
 	}
 	
 	public void typeProblem(ActionEvent e) throws IOException {
 		//goToPage(NamePage.PROBLEM);
+		/*
 		Page root = new QuestionProblemPage(this.subSelect);
 		Scene scene = new Scene(root);
 		MainClass.getStage().setScene(scene);
+		*/
+		String[] args = new String[1];
+		args[0]=this.subSelect;
 		
+		goToPage(NamePage.PROBLEM, args);
 	}
 	
 

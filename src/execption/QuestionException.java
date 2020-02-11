@@ -11,6 +11,11 @@ public class QuestionException extends Exception{
 		super("Problem in question operation:" + message);
 		printStackTrace();
 	}
+	
+	public QuestionException(String message,StackTraceElement[] elements) {
+		super("Problem in question operation:" + message);
+		this.setStackTrace(elements);
+	}
 	public QuestionException(Throwable message) {
 	
 		this.initCause(message);

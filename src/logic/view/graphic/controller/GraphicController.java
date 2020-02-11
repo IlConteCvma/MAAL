@@ -15,4 +15,10 @@ public abstract class GraphicController {
 		Scene scene = new Scene(root);
 		MainClass.getStage().setScene(scene);
 	}
+	
+	protected void goToPage(NamePage page,String args[]) throws IOException {
+		Page root = PageFactory.createPage(page, args);
+		Scene scene = new Scene(root);
+		MainClass.getStage().setScene(scene);
+	}
 }

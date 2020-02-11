@@ -1,7 +1,7 @@
 package logic.view.graphic.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
+
 
 import execption.QuestionException;
 import javafx.fxml.FXML;
@@ -11,7 +11,7 @@ import logic.bean.QuestionBean;
 import logic.controller.InsertQuestionController;
 import logic.model.QuestionExerciseFactory;
 import logic.model.QuestionFactory;
-import logic.model.QuestionProblemFactory;
+
 import logic.model.QuestionType;
 import logic.view.AlertControl;
 import logic.view.NamePage;
@@ -26,10 +26,6 @@ public class QuestionProblemGraphicController extends GraphicController implemen
 	private String subject;
 	
 	
-	public QuestionProblemGraphicController() {
-		//this.message = ottieni la materia dalla sessione
-		//this.factory = new QuestionProblemFactory();
-	}
 	
 	public QuestionProblemGraphicController(String param) {
 		this.factory = new QuestionExerciseFactory();
@@ -72,8 +68,8 @@ public class QuestionProblemGraphicController extends GraphicController implemen
 			}
 			catch(QuestionException e){
 				
-				AlertControl.infoBox(e.getMessage(), "ERROR");
-				System.out.println(e.getMessage());
+				AlertControl.infoBox("error on save DB", "ERROR");
+				
 				this.message.setText("Error on save");
 			}
 			this.message.setText("finito");

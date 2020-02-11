@@ -18,23 +18,36 @@ public class QuestionDao {
    
     
 	public static int getNewId() throws SQLException {
-		/*
+		int count;
 		try {
 			conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
         	
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
+            
 		ResultSet rs = QuestionQueries.getId(stmt);
 		
+		  if (!rs.first()){
+			  count = 0;
+          }else {
+          	//returned one value
+          	rs.first();
+          	count = rs.getInt("count");
+          }
+          rs.close();
+          
+          
+          } finally {     
+          	if(stmt != null){
+          		stmt.close();
+          	}
+          	if (conn != null) {
+  				SingletonConnectionDB.close();
+  			}
+          }
+      	return count+1;
 		
-		return rs.getInt("count")+1;
-		
-		}
-		finally {
-			
-		}
-		*/
-		return 13;
+
 	}
 	
 	public static void saveOnDB(Question question,QuestionType type) throws QuestionException  {
@@ -53,7 +66,7 @@ public class QuestionDao {
            
 		}
 		catch(SQLException e) {
-			throw new QuestionException("Error on connection DB");
+			throw new QuestionException(e.getMessage());
 		}
 			
 		
@@ -73,8 +86,8 @@ public class QuestionDao {
 				QuestionQueries.saveQuestion(stmt,question.getId(), question.getTitle(), text, null, question.isSolved(),type.toString(),question.getStudent().getUsername(),question.getQuestionSub().getName());
 				}
 				catch(SQLException e) {
-					throw new QuestionException("Error on save DB");
-					//e.printStackTrace();
+					throw new QuestionException(e.getMessage());
+					
 				}
 				break;
 				
@@ -92,7 +105,7 @@ public class QuestionDao {
 				QuestionQueries.saveQuestion(stmt,question.getId(), question.getTitle(), text, image, question.isSolved(),type.toString(),question.getStudent().getUsername(),question.getQuestionSub().getName());
 				}
 				catch(SQLException e) {
-					throw new QuestionException("Error on save DB");
+					throw new QuestionException(e.getMessage());
 				}
 				break;
 				

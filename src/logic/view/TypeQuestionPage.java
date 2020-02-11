@@ -13,7 +13,7 @@ public class TypeQuestionPage extends Page {
 	}
 
 	@Override
-	public void createPage() throws IOException {
+	protected void createPage() throws IOException {
 		GraphicElementInterface nav = new NavbarElement();
 		GraphicElementInterface typepage = new SimpleGraphicElement("../../resources/TypeQuestionView.fxml");
 		

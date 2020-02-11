@@ -14,12 +14,11 @@ public class HomePage extends Page{
 	}
 
 	@Override
-	public void createPage() throws IOException {
+	protected void createPage() throws IOException {
 		GraphicElementInterface nav = new NavbarElement();
 		GraphicElementInterface hm = new SimpleGraphicElement("../../resources/HomeMenuView.fxml");
 		GraphicElementInterface hb = new SimpleGraphicElement("../../resources/HomeBoxView.fxml");
-		//SplitPane hbox = new SplitPane(hm.draw(),hb.draw());
-		//hbox.setOrientation(HORIZONTAL);
+
 		HBox hbox = new HBox(hm.draw(),hb.draw());
 		hbox.setSpacing(0);
 		

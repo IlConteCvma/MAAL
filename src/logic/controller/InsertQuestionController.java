@@ -46,11 +46,13 @@ public class InsertQuestionController {
 		}
 		
 		catch (SQLException e) {
-			throw new QuestionException("SQL problem");
+			throw new QuestionException("SQL problem",e.getStackTrace());
 		}
 		
 		try {
+			
 			this.question.setQuestionSub(SubjectDao.getSubjectByName(subject));
+			
 		} catch (SQLException e1) {
 			throw new QuestionException("SQL problem");
 		}
@@ -82,7 +84,7 @@ public class InsertQuestionController {
 				catch(QuestionException e ) {
 					throw new QuestionException(e.getCause());
 				}
-				
+				break;
 				
 			case PROBLEM:
 				try {
@@ -98,6 +100,7 @@ public class InsertQuestionController {
 				catch(QuestionException e ) {
 					throw new QuestionException(e.getCause());
 				}
+				break;
 				
 			
 		}

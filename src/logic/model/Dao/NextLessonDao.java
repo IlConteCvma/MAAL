@@ -7,7 +7,7 @@ import logic.model.Lesson;
 import logic.model.Room;
 import logic.model.Seat;
 import logic.model.Subject;
-import logic.view.AlertControl;
+
 
 public class NextLessonDao {
 	

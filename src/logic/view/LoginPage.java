@@ -11,7 +11,7 @@ public class LoginPage extends Page {
 	}
 
 	@Override
-	public void createPage() throws IOException {
+	protected void createPage() throws IOException {
 		GraphicElementInterface lpe = new SimpleGraphicElement("../../resources/LoginView.fxml");
 		this.getChildren().add(lpe.draw());
 	}

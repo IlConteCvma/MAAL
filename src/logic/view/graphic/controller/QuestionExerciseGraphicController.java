@@ -1,7 +1,7 @@
 package logic.view.graphic.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
+
 
 import execption.QuestionException;
 import javafx.fxml.FXML;
@@ -25,10 +25,7 @@ public class QuestionExerciseGraphicController extends GraphicController impleme
 	@FXML private TextArea foto;
 	private String subject;
 	
-	public QuestionExerciseGraphicController() {
-		//this.message = ottieni la materia dalla sessione
-		//this.factory = new QuestionExerciseFactory();
-	}
+
 	
 	public QuestionExerciseGraphicController(String param) {
 		this.factory = new QuestionExerciseFactory();

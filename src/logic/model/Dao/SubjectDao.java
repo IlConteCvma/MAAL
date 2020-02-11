@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import execption.QuestionException;
+
 import logic.Session;
 import logic.model.SingletonConnectionDB;
 import logic.model.Subject;
