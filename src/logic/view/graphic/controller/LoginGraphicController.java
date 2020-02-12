@@ -33,15 +33,14 @@ public class LoginGraphicController extends GraphicController{
 			AlertControl.infoBox("Data are strong", "WARNING");
 		}
 		
-		//goToPage(NamePage.HOME);
 	}
 	
 	
-	public void forgotPassword(ActionEvent e) {
+	public void forgotPassword() {
 		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
-	public void signUp(ActionEvent e) {
+	public void signUp() {
 		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 

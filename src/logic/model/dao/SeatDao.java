@@ -4,18 +4,20 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
+
 import logic.model.Seat;
 import logic.model.SingletonConnectionDB;
 import logic.model.queries.SeatQueries;
 
 public class SeatDao {
 	
-	public Vector<Seat> getSeatsOfRoom(String nameRoom) throws SQLException {
+	public List<Seat> getSeatsOfRoom(String nameRoom) throws SQLException {
         
 	 	Statement stmt = null;
         Connection conn = null;
-        Vector<Seat> seatsOfRoom;
+        List<Seat> seatsOfRoom;
         
         try {
         	//create connection
@@ -30,7 +32,7 @@ public class SeatDao {
             }else {
             	//returned one value
             	rs.first();
-            	seatsOfRoom = new Vector<Seat>();
+            	seatsOfRoom = new ArrayList<>();
             	do{
             		int idSeat = rs.getInt("ID");
             		boolean busy = rs.getBoolean("Busy");

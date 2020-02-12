@@ -1,32 +1,33 @@
 package logic.model;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Journey {
 
-	private Vector<Double> originAddress;
-	private Vector<Double> destinationAddress;
+	private List<Double> originAddress;
+	private List<Double> destinationAddress;
 	private Double distance;
 	private int lateForWeather;
 	
-	public Journey(Vector<Double> originAddress) {
+	public Journey(List<Double> originAddress) {
 		this.setOriginAddress(originAddress);
 		//Set destination address with data of University Of Tor Vergata
-		this.destinationAddress = new Vector<Double>(2);
+		this.destinationAddress = new ArrayList<>(2);
 		this.destinationAddress.add(41.8546187);
 		this.destinationAddress.add(12.6208633);
 		lateForWeather = 0;
 	}
 
-	public Vector<Double> getOriginAddress() {
+	public List<Double> getOriginAddress() {
 		return originAddress;
 	}
 
-	public void setOriginAddress(Vector<Double> originAddress) {
-		this.originAddress = originAddress;
+	public void setOriginAddress(List<Double> originAddress2) {
+		this.originAddress = originAddress2;
 	}
 	
-	public Vector<Double> getDestinationAddress() {
+	public List<Double> getDestinationAddress() {
 		return destinationAddress;
 	}
 

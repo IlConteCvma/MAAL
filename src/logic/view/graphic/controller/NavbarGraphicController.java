@@ -15,20 +15,20 @@ public class NavbarGraphicController extends GraphicController {
 	@FXML
 	public void homeButton(ActionEvent e) throws IOException {
 		controlHome.homeButton(e);
-	}
+	}	
 	
-	public void calendarButton(ActionEvent e) {
+	public void calendarButton() {
 		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
-	public void forumButton(ActionEvent e) throws IOException {
+	public void forumButton() throws IOException {
 		goToPage(NamePage.QUESTIONTYPE);
 	}
 	
-	public void profileButton(ActionEvent e) {
+	public void profileButton() {
 		AlertControl.infoBox("Operation not available", "WARNING");
 	}
-	public void logOutButton(ActionEvent e) throws IOException {
+	public void logOutButton() throws IOException {
 		goToPage(NamePage.LOGIN);
 	}
 			

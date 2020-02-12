@@ -10,14 +10,14 @@ public class WeatherApi {
 	private static String apikey = "ZAAAfY4M6OPp0uA0GelvMwZPTZRAANm3";
 	
 	public String getRainIntensity() throws IOException{
-		String url_request = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/120?apikey="+apikey;
-    	String response = connection.sendRequest(url_request);
+		String urlRequest = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/120?apikey="+apikey;
+    	String response = connection.sendRequest(urlRequest);
     	JSONObject positionObj = new JSONObject(response);
     	JSONArray arr = positionObj.getJSONArray("DailyForecasts");
     	JSONObject obj = arr.getJSONObject(0).getJSONObject("Day");
     	Boolean piove = obj.getBoolean("HasPrecipitation");
     	String intensity = "null";
-    	if(piove) {
+    	if(Boolean.TRUE.equals(piove)) {
     		intensity = obj.getString("PrecipitationIntensity");
     	}
     	return intensity;

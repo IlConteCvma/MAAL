@@ -17,31 +17,31 @@ public class HomeMenuGraphicController extends GraphicController {
 		goToPage(NamePage.HOME);
 	}
 	
-	public void calendarButton(ActionEvent e) {
+	public void calendarButton() {
 		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
-	public void forumButton(ActionEvent e) {
+	public void forumButton() {
 		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
-	public void profileButton(ActionEvent e) {
+	public void profileButton() {
 		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
-	public void todayLessonButton(ActionEvent e) {
+	public void todayLessonButton() {
 		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
-	public void communicationButton(ActionEvent e) {
+	public void communicationButton() {
 		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
-	public void nextLessonButton(ActionEvent e) {
+	public void nextLessonButton() {
 		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
-	public void logOutButton(ActionEvent e) throws Exception {
+	public void logOutButton() throws Exception {
 		goToPage(NamePage.LOGIN);
 	}
 

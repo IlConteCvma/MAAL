@@ -1,7 +1,8 @@
 package logic.model;
 
 import java.io.IOException;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 import org.json.*;
 
 public class MapsApi{
@@ -9,7 +10,7 @@ public class MapsApi{
 	private static RequestHttpApi connection = new RequestHttpApi();
 	private static String apikey = "AIzaSyBxqvZv-6yD5NY-JGuO8kuSqdxHNYj3Fs0";
     
-    public Vector<Double> getPosition(String place) throws IOException{
+    public List<Double> getPosition(String place) throws IOException{
     	String url_request = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="+place+"&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=" + apikey;
     	String response = connection.sendRequest(url_request);
     	JSONObject positionObj = new JSONObject(response);
@@ -17,16 +18,16 @@ public class MapsApi{
     	JSONObject post_id = arr.getJSONObject(0).getJSONObject("geometry").getJSONObject("viewport").getJSONObject("southwest");
     	Double lat = (Double)post_id.get("lat");
     	Double lng = (Double)post_id.get("lng");
-    	Vector<Double> position = new Vector<Double>();
+    	List<Double> position = new ArrayList<>();
     	position.add(lat);
     	position.add(lng);
 		return position;
     	
     }
     
-    public Double calculateDistance(Vector<Double> origin, Vector<Double> destination) {
+    public Double calculateDistance(List<Double> origin, List<Double> destination) {
     	
-    	double R = 6371e3 / 1000; // km
+    	double r = 6371e3 / 1000; // km
     	double d1 = origin.get(0) * 3.14 / 180;
     	double d2 = destination.get(0) * 3.14 / 180;
     	double d3 = (destination.get(0)-origin.get(0)) * 3.14 / 180;
@@ -38,16 +39,7 @@ public class MapsApi{
     	
     	double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-    	double d = R * c;
+    	return r * c;
     	
-		return d;
     }
-    /*
-    public static double calculateTime() {
-    	double speed = 30*0.016; //0.016 = 1/60
-    	double distance = MapsApi.calculateDistance(41.85, 41.90, 12.63, 12.60);
-    	double time = (distance / speed);
-    	return time;
-    }
-	*/
 }

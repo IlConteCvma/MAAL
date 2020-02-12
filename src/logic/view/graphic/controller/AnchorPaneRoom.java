@@ -18,7 +18,6 @@ public class AnchorPaneRoom extends Decorator{
 
 	private Room roomLesson;
 	private ViewTimeToExitController controlUC;
-	//final String HOVERED_BUTTON_STYLE = "-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;";
 	
 	public AnchorPaneRoom(ViewComponent anchorPaneComponent, Lesson lesson) {
 		super(anchorPaneComponent);

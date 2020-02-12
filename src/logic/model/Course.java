@@ -1,14 +1,14 @@
 package logic.model;
 
-import java.util.Vector;
+import java.util.List;
 
 public class Course {
 	
 	private String nameOfCourse;
-	private Vector<Subject> subjectOfCourse;
-	private Vector<Student> studentOfCourse;
+	private List<Subject> subjectOfCourse;
+	private List<Student> studentOfCourse;
 	
-	public Course(String nameOfCourse, Vector<Subject> subjectOfCourse, Vector<Student> studentOfCourse) {
+	public Course(String nameOfCourse, List<Subject> subjectOfCourse, List<Student> studentOfCourse) {
 		this.nameOfCourse = nameOfCourse;
 		this.subjectOfCourse = subjectOfCourse;
 		this.studentOfCourse = studentOfCourse;
@@ -18,11 +18,11 @@ public class Course {
 		return this.nameOfCourse;
 	}
 	
-	public Vector<Subject> getSubjectOfCourse(){
+	public List<Subject> getSubjectOfCourse(){
 		return this.subjectOfCourse;
 	}
 	
-	public Vector<Student> getStudentOfCourse(){
+	public List<Student> getStudentOfCourse(){
 		return this.studentOfCourse;
 	}
 }

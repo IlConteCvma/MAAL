@@ -22,6 +22,8 @@ public class Vehicle {
 							break;
 			case SCOOTER:	this.speed = 35.0;
 							break;
+			default:		break;
+			
 		}
 	}
 	

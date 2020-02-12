@@ -23,7 +23,7 @@ public class HomeBoxGraphicController extends GraphicController implements Initi
 		dataOfStudent.setText(""+Session.getSession().getStudent().getName()+" "+Session.getSession().getStudent().getSurname());
 	}
 	
-	public void getStarted(ActionEvent e) throws IOException, SQLException  {
+	public void getStarted() throws IOException, SQLException  {
 		StudentBean studLog = new StudentBean();
 		studLog.setUsername(Session.getSession().getStudent().getUsername());
 		controlUC.estimateTimeToExit();

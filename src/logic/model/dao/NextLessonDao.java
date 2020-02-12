@@ -1,6 +1,7 @@
 package logic.model.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Vector;
 
 import logic.model.Lesson;
@@ -58,8 +59,8 @@ public class NextLessonDao {
 		return name;
 	}
 	
-	public Vector<Seat> getSeatsOfRoom() {
-		Vector<Seat> places = null;
+	public List<Seat> getSeatsOfRoom() {
+		List<Seat> places = null;
 		try {
 			places = this.nextSeatDao.getSeatsOfRoom(getRoomNextLesson());
 		} catch (SQLException e) {

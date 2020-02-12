@@ -7,10 +7,6 @@ public class StudentBean {
 	private String password;
 	private String address;
 	
-	public StudentBean() {
-		
-	}
-	
 	public String getName() {
 		return name;
 	}
