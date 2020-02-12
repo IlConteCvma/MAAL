@@ -37,11 +37,13 @@ public class StudentDao {
             	String username = rs.getString("Username");
             	String password = rs.getString("Password");
             	String address = rs.getString("Indirizzo");
+            	String streetNumber = rs.getString("Civico");
+            	String city = rs.getString("Citta");
             	String typeVehicle = rs.getString("Veicolo");
             	
             	Vehicle vehicleStudent = new Vehicle(TypeVehicle.valueOf(typeVehicle));
             	
-            	studLog = new Student(name,surname,username,password,address, vehicleStudent);
+            	studLog = new Student(name,surname,username,password,address,streetNumber, city,vehicleStudent);
             	Session.getSession().setStudent(studLog);
             }
             

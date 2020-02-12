@@ -7,7 +7,7 @@ public class TimeToExitBean {
 	
 	private Lesson nextLesson;
 	private Journey nextJourney;
-	private double minuteToExit;
+	private String hourToExit;
 	private int priority;
 	
 	public Lesson getNextLesson() {
@@ -34,12 +34,13 @@ public class TimeToExitBean {
 		this.priority = priority;
 	}
 
-	public double getMinuteToExit() {
-		return minuteToExit;
+	public String getHourToExit() {
+		return hourToExit;
 	}
 
-	public void setMinuteToExit(double minuteToExit) {
-		this.minuteToExit = minuteToExit;
+	public void setHourToExit(String hourToExit) {
+		this.hourToExit = hourToExit;
 	}
+
 	
 }

@@ -74,5 +74,28 @@ public class SeatDao {
     			}
             	
             }
-    }
+      }
+	
+	public void freeSeat(String nameRoom, int idSeat) throws SQLException {
+        
+	 	Statement stmt = null;
+        Connection conn = null;
+        
+        try {
+        	//create connection
+        	conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
+        	//create statement
+        	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        	//execute query
+            SeatQueries.freeSeat(stmt, nameRoom, idSeat);
+            } finally {     
+            	if(stmt != null){
+            		stmt.close();
+            	}
+            	if (conn != null) {
+    				SingletonConnectionDB.close();
+    			}
+            	
+            }
+      }
 }

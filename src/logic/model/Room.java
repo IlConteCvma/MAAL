@@ -61,7 +61,7 @@ public class Room {
 		Vector<Integer> range = getSeatOfPriority(priority);
 		int numberOfFreePlaces = 0;
 		for(int i=range.get(0);i<range.get(1);i++) {
-			if(places.get(i).getState() == false) {
+			if(getPlaces().get(i).getState() == false) {
 				numberOfFreePlaces++;
 			}
 		}

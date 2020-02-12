@@ -13,8 +13,8 @@ public class Journey {
 		this.setOriginAddress(originAddress);
 		//Set destination address with data of University Of Tor Vergata
 		this.destinationAddress = new Vector<Double>(2);
-		this.destinationAddress.add(41.85);
-		this.destinationAddress.add(12.63);
+		this.destinationAddress.add(41.8546187);
+		this.destinationAddress.add(12.6208633);
 		lateForWeather = 0;
 	}
 

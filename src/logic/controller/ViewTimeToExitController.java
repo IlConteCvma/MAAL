@@ -23,9 +23,9 @@ import logic.view.graphic.controller.TimeToExitGraphicController;
 public class ViewTimeToExitController {
 	
 	//const value
-	private final static int weight = 50;
-	private final static int minuteOfAdvance = 15;
-	private final static double percentDistanceAdd = 0.14;
+	private final static int WEIGHT = 50;
+	private final static int MINUTEOFADVANCE = 15;
+	private final static double PERCENTDISTANCEADD = 0.14;
 	
 	//association attribute
 	private ViewNextLessonController nextLessonController = new ViewNextLessonController();
@@ -72,8 +72,8 @@ public class ViewTimeToExitController {
 			double speedAverage = Session.getSession().getStudent().getVehicle().getSpeed();
 			getInfoByMaps();
 			getInfoByWeather();
-			nextJourney.setDistance(nextJourney.getDistance() + percentDistanceAdd * nextJourney.getDistance()); //add 14% -> value take by test
-			double minutes = (int) ((nextJourney.getDistance() / (speedAverage*0.016))) + nextJourney.getDistance() + minuteOfAdvance;
+			nextJourney.setDistance(nextJourney.getDistance() + PERCENTDISTANCEADD * nextJourney.getDistance()); //add 14% -> value take by test
+			double minutes = (int) ((nextJourney.getDistance() / (speedAverage*0.016))) + nextJourney.getDistance() + MINUTEOFADVANCE;
 			long timeExit = time.getTimeMinuteDiff(nextLesson.getStartHour().toString(), time.getStringHour(time.getCurrentDate()));
 			int i = 0;
 			double timeToExit = 0;
@@ -81,12 +81,12 @@ public class ViewTimeToExitController {
 				timeToExit = (int) (timeExit - (minutes + calculateTimeBasedOccupationRoom(i)));
 				i++;
 			}while(timeToExit<0 && i < 3);
+			timeToExitBean.setPriority(i);
 			if(timeToExit < 0) {
-				AlertControl.infoBox("E' troppo tardi!", "WARNING");
+				AlertControl.infoBox("E' troppo tardi!", "ALERT");
 				timeToExit = 0;
 			}else {
-				timeToExitBean.setMinuteToExit(timeToExit);
-				timeToExitBean.setPriority(i);
+				timeToExitBean.setHourToExit(time.timeAdd(minutes));
 				timeToExitBean.setNextJourney(nextJourney);
 				timeToExitBean.setNextLesson(nextLesson);
 				timeToExitController = new TimeToExitGraphicController(timeToExitBean);
@@ -101,17 +101,31 @@ public class ViewTimeToExitController {
 	
 	public double calculateTimeBasedOccupationRoom(int priority) {
 		int freePlaces = timeToExitBean.getNextLesson().getRoomLesson().getNumberOfFreePlacesForPriority(priority);
-		Vector<Integer> range = timeToExitBean.getNextLesson().getRoomLesson().getSeatOfPriority(priority);
-		int allPlaces = range.get(1) - range.get(0);
-		int busyPlaces = allPlaces - freePlaces;
-		double minute = weight * timeToExitBean.getNextLesson().getSubjectLesson().getIndexOfStudents() * (busyPlaces/allPlaces);
+		double minute = 0;
+		if(freePlaces != 0) {
+			Vector<Integer> range = timeToExitBean.getNextLesson().getRoomLesson().getSeatOfPriority(priority);
+			int allPlaces = range.get(1) - range.get(0);
+			int busyPlaces = allPlaces - freePlaces;		
+			minute = WEIGHT * timeToExitBean.getNextLesson().getSubjectLesson().getIndexOfStudents() * (busyPlaces/allPlaces);
+		}else {
+			minute = Double.MAX_VALUE;
+		}
 		return minute;
 	}
 	
 	public void occupateSeat(SeatBean seat) {
 		SeatDao seatDao = new SeatDao();
 		try {
-			seatDao.occupySeat(seat.getRoom().getName(), seat.getIndex()+1);
+			seatDao.occupySeat(seat.getRoom().getName(), seat.getIndex());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void freeSeat(SeatBean seat) {
+		SeatDao seatDao = new SeatDao();
+		try {
+			seatDao.freeSeat(seat.getRoom().getName(), seat.getIndex());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

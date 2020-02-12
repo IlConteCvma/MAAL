@@ -31,22 +31,8 @@ public class TimeToExitGraphicController extends GraphicController implements In
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		nextLessonLabel.setText(timeToExitBean.getNextLesson().getSubjectLesson().getAbbrevation());
 		nextRoomLabel.setText("ROOM "+timeToExitBean.getNextLesson().getRoomLesson().getName());
-		minuteToExitLabel.setText(""+ timeToExitBean.getMinuteToExit());
+		minuteToExitLabel.setText(""+ timeToExitBean.getHourToExit());
 		prioritySeatLabel.setText("FOR SEATS IN THE BAND " + timeToExitBean.getPriority());
-	}
-	
-	@FXML
-	public void goToOccupateSeat() {
-		occupateSeat.setDisable(true);
-		occupateSeat1.setDisable(false);
-		if(anchorPane == null) {
-			anchorPane = new AnchorPaneComponent(10,122);
-		}else {
-			//anchorPane.draw().getChildren().remove(0);
-			anchorPaneContainer.getChildren().remove(2);
-		}
-		AnchorPaneRoom anchorPaneRoom = new AnchorPaneRoom(anchorPane, timeToExitBean.getNextLesson());
-		anchorPaneContainer.getChildren().add(anchorPaneRoom.draw());
 	}
 	
 	@FXML
@@ -61,6 +47,20 @@ public class TimeToExitGraphicController extends GraphicController implements In
 		}
 		AnchorPaneMap anchorPaneMap = new AnchorPaneMap(anchorPane);
 		anchorPaneContainer.getChildren().add(anchorPaneMap.draw());
+	}
+	
+	@FXML
+	public void goToOccupateSeat() {
+		occupateSeat.setDisable(true);
+		occupateSeat1.setDisable(false);
+		if(anchorPane == null) {
+			anchorPane = new AnchorPaneComponent(10,122);
+		}else {
+			anchorPane.draw().getChildren().remove(0);
+			anchorPaneContainer.getChildren().remove(2);
+		}
+		AnchorPaneRoom anchorPaneRoom = new AnchorPaneRoom(anchorPane, timeToExitBean.getNextLesson());
+		anchorPaneContainer.getChildren().add(anchorPaneRoom.draw());
 	}
 
 }

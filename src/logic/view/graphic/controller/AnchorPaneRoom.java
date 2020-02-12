@@ -11,20 +11,19 @@ import logic.bean.SeatBean;
 import logic.controller.ViewTimeToExitController;
 import logic.model.Lesson;
 import logic.model.Room;
+import logic.view.AlertControl;
 import logic.view.ViewComponent;
 
 public class AnchorPaneRoom extends Decorator{
 
 	private Room roomLesson;
 	private ViewTimeToExitController controlUC;
-	final String HOVERED_BUTTON_STYLE = "-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;";
+	//final String HOVERED_BUTTON_STYLE = "-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;";
 	
 	public AnchorPaneRoom(ViewComponent anchorPaneComponent, Lesson lesson) {
 		super(anchorPaneComponent);
 		this.roomLesson = lesson.getRoomLesson();
 	}
-	
-	
 	
 	public AnchorPane createRoom(AnchorPane anchorPane) {
 		GridPane room = new GridPane();
@@ -47,29 +46,34 @@ public class AnchorPaneRoom extends Decorator{
 				int index = (roomLesson.getNumColumn()*i+j) + 1;
 				Button b = new Button(""+index);
 				b.setMaxWidth(Double.MAX_VALUE);
-				b.setStyle("-fx-border-color: #FFFFFF");
-				b.setOnMouseEntered(e -> b.setStyle(HOVERED_BUTTON_STYLE));
-				b.setOnMouseExited(e -> colorButton(b));
 				
 				colorButton(b);
 				
 				b.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent event) {
-						int indexClicled = Integer.parseInt(b.getText()) - 1;
+						int indexClicled = Integer.parseInt(b.getText());
 						
 						//popule bean seat
 						SeatBean sBean = new SeatBean();
 						sBean.setIndex(indexClicled);
 						sBean.setRoom(roomLesson);
-						
 						controlUC = new ViewTimeToExitController();
-						controlUC.occupateSeat(sBean);
 						
-						roomLesson.getPlaces().get((indexClicled)).occupateSeat();
+						if(b.getAccessibleText() == "free") {
+							controlUC.occupateSeat(sBean);
+							roomLesson.getPlaces().get((indexClicled-1)).occupateSeat();
+							b.setStyle("-fx-background-color: red");
+							b.setAccessibleText("busy");
+							AlertControl.infoBox("Seat booked", "BOOK");
+						}else {
+							controlUC.freeSeat(sBean);
+							roomLesson.getPlaces().get((indexClicled-1)).freeSeat();
+							b.setStyle("-fx-background-color: green");
+							b.setAccessibleText("free");
+							AlertControl.infoBox("Seat unbooked", "UNBOOK");
+						}
 						
-						b.setStyle("-fx-background-color: red");
-						b.setDisable(true);
 					}
 				});
 				
@@ -82,12 +86,14 @@ public class AnchorPaneRoom extends Decorator{
 	}
 
 	public void colorButton(Button b) {
-		int indexClicled = Integer.parseInt(b.getText()) - 1;
-		if(roomLesson.getPlaces().get((indexClicled)).getState()) {
+		int indexClicled = Integer.parseInt(b.getText());
+		if(roomLesson.getPlaces().get((indexClicled - 1)).getState()) {
 			b.setStyle("-fx-background-color: red");
+			b.setAccessibleText("busy");
 			b.setDisable(true);
 		}else {
 			b.setStyle("-fx-background-color: green");
+			b.setAccessibleText("free");
 		}
 	}
 	
