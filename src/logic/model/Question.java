@@ -6,11 +6,11 @@ public abstract class Question {
 	protected int id;
 	protected boolean solved; 
 	protected String title;
-	protected Subject questionSub;
+	protected Subject questionSubuject;
 	protected Student student;
 	
 	public Question() {
-		this.questionSub = new Subject();
+		this.questionSubuject = new Subject();
 		this.student = new Student();
 	}
 	
@@ -32,11 +32,11 @@ public abstract class Question {
 
 	
 	public Subject getQuestionSub() {
-		return this.questionSub;
+		return this.questionSubuject;
 	}
 
 	public void setQuestionSub(Subject questionSub) {
-		this.questionSub = questionSub;
+		this.questionSubuject = questionSub;
 	}
 
 	

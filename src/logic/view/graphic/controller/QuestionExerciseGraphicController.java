@@ -1,4 +1,4 @@
-package logic.view.graphic.controller;
+	package logic.view.graphic.controller;
 
 import java.io.IOException;
 

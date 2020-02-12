@@ -117,7 +117,7 @@ public class SubjectDao {
             	rs.first();
             	String nm = rsGetString(rs,"Nome");
             	String abbreviation = rsGetString(rs,"Sigla");
-            	double index = rsGetDouble(rs,"Sigla");
+            	double index = rsGetDouble(rs,"Indice");
             	
             	subject = new Subject(nm, abbreviation, index);
             }

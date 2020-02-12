@@ -18,6 +18,7 @@ import logic.model.dao.SubjectDao;
 public class InsertQuestionController {
 	protected QuestionBean dataBean;
 	protected Question question;
+	protected QuestionFactory factory;
 	
 	 
 	
@@ -28,13 +29,14 @@ public class InsertQuestionController {
 	
 	public InsertQuestionController(QuestionFactory factory,QuestionBean dataBean ) {
 		this.dataBean = dataBean;
-		this.question = factory.createQuestion();
+		this.factory = factory;
 		
 		
 	}
 	
 	public  void startSave(String subject) throws QuestionException{
 		
+		this.question = this.factory.createQuestion();
 		
 		
 		this.question.setSolved(false);

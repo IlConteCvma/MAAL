@@ -14,7 +14,7 @@ import logic.model.queries.QuestionQueries;
 
 public class QuestionDao {
 	protected static Statement stmt;
-    protected static Connection conn;
+    protected static Connection connection;
     
     private QuestionDao() {
         throw new IllegalStateException("Utility class");
@@ -24,9 +24,9 @@ public class QuestionDao {
 	public static int getNewId() throws SQLException {
 		int count;
 		try {
-			conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
+			connection = (SingletonConnectionDB.getSingletonConnection()).getConnection();
         	
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+            stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             
 		ResultSet rs = QuestionQueries.getId(stmt);
@@ -45,7 +45,7 @@ public class QuestionDao {
           	if(stmt != null){
           		stmt.close();
           	}
-          	if (conn != null) {
+          	if (connection != null) {
   				SingletonConnectionDB.close();
   			}
           }
@@ -63,9 +63,9 @@ public class QuestionDao {
 		
 		
 		try {
-			conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
+			connection = (SingletonConnectionDB.getSingletonConnection()).getConnection();
         	
-            stmt = conn.createStatement();
+            stmt = connection.createStatement();
     
            
 		}

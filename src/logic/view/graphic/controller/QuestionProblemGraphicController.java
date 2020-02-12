@@ -9,9 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import logic.bean.QuestionBean;
 import logic.controller.InsertQuestionController;
-import logic.model.QuestionExerciseFactory;
 import logic.model.QuestionFactory;
-
+import logic.model.QuestionProblemFactory;
 import logic.model.QuestionType;
 import logic.view.AlertControl;
 import logic.view.NamePage;
@@ -28,7 +27,7 @@ public class QuestionProblemGraphicController extends GraphicController implemen
 	
 	
 	public QuestionProblemGraphicController(String param) {
-		this.factory = new QuestionExerciseFactory();
+		this.factory = new QuestionProblemFactory();
 		this.subject = param;
 	}
 	

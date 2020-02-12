@@ -2,8 +2,6 @@ package logic.view.graphic.controller;
 
 
 import java.io.IOException;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import javafx.event.ActionEvent;
@@ -14,11 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.TextAlignment;
-
 import logic.bean.SubjectBean;
 import logic.controller.InsertQuestionController;
-
 import logic.view.NamePage;
+
+
+
 
 
 
@@ -30,20 +29,22 @@ public class TypeQuestionGraphicController extends GraphicController{
 	@FXML GridPane gridPane;
 	private String subSelect;
 	
+	private InsertQuestionController controller;
+	
+	public TypeQuestionGraphicController() {
+		this.controller = new InsertQuestionController();
+	}
+	
+	
+	
+	
 	
 	public void homeButton(ActionEvent e) throws IOException {
 		goToPage(NamePage.HOME);
 	}
 	
-	
 
 	public void typeExercise(ActionEvent e) throws IOException {
-		//goToPage(NamePage.EXERCISE);
-		/*
-		Page root = new QuestionExercisePage(this.subSelect);
-		Scene scene = new Scene(root);
-		MainClass.getStage().setScene(scene);
-		*/
 		
 		String[] args = new String[1];
 		args[0]=this.subSelect;
@@ -57,12 +58,7 @@ public class TypeQuestionGraphicController extends GraphicController{
 	}
 	
 	public void typeProblem(ActionEvent e) throws IOException {
-		//goToPage(NamePage.PROBLEM);
-		/*
-		Page root = new QuestionProblemPage(this.subSelect);
-		Scene scene = new Scene(root);
-		MainClass.getStage().setScene(scene);
-		*/
+
 		String[] args = new String[1];
 		args[0]=this.subSelect;
 		
@@ -71,8 +67,8 @@ public class TypeQuestionGraphicController extends GraphicController{
 	
 
 	public void mySubject(ActionEvent e) {
-		InsertQuestionController controller = new InsertQuestionController();
-		List<SubjectBean> bean = controller.getSubjects();
+		 
+		List<SubjectBean> bean = this.controller.getSubjects();
 		gridPane.setVgap(25);
 		gridPane.setHgap(1);
 		
