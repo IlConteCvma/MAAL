@@ -11,7 +11,7 @@ import logic.model.queries.SeatQueries;
 
 public class SeatDao {
 	
-public Vector<Seat> getSeatsOfRoom(String nameRoom) throws SQLException {
+	public Vector<Seat> getSeatsOfRoom(String nameRoom) throws SQLException {
         
 	 	Statement stmt = null;
         Connection conn = null;
@@ -51,5 +51,28 @@ public Vector<Seat> getSeatsOfRoom(String nameRoom) throws SQLException {
             	
             }
         	return seatsOfRoom;
+    }
+	
+	public void occupySeat(String nameRoom, int idSeat) throws SQLException {
+        
+	 	Statement stmt = null;
+        Connection conn = null;
+        
+        try {
+        	//create connection
+        	conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
+        	//create statement
+        	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        	//execute query
+            SeatQueries.occupySeat(stmt, nameRoom, idSeat);
+            } finally {     
+            	if(stmt != null){
+            		stmt.close();
+            	}
+            	if (conn != null) {
+    				SingletonConnectionDB.close();
+    			}
+            	
+            }
     }
 }

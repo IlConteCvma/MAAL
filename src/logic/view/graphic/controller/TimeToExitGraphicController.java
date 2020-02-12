@@ -4,10 +4,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import logic.bean.TimeToExitBean;
-import logic.view.ViewComponent;
 import logic.view.graphic.elements.AnchorPaneComponent;
 
 public class TimeToExitGraphicController extends GraphicController implements Initializable{
@@ -15,6 +15,8 @@ public class TimeToExitGraphicController extends GraphicController implements In
 	private TimeToExitBean timeToExitBean;
 	private AnchorPaneComponent anchorPane;
 	
+	@FXML private Button occupateSeat;
+	@FXML private Button occupateSeat1;
 	@FXML private AnchorPane anchorPaneContainer;
 	@FXML private Label nextLessonLabel;
 	@FXML private Label nextRoomLabel;
@@ -35,14 +37,30 @@ public class TimeToExitGraphicController extends GraphicController implements In
 	
 	@FXML
 	public void goToOccupateSeat() {
-		anchorPane = new AnchorPaneComponent(10,122);
+		occupateSeat.setDisable(true);
+		occupateSeat1.setDisable(false);
+		if(anchorPane == null) {
+			anchorPane = new AnchorPaneComponent(10,122);
+		}else {
+			//anchorPane.draw().getChildren().remove(0);
+			anchorPaneContainer.getChildren().remove(2);
+		}
 		AnchorPaneRoom anchorPaneRoom = new AnchorPaneRoom(anchorPane, timeToExitBean.getNextLesson());
 		anchorPaneContainer.getChildren().add(anchorPaneRoom.draw());
 	}
 	
 	@FXML
 	public void goToMap() {
-		System.out.println("MAPPA");
+		occupateSeat1.setDisable(true);
+		occupateSeat.setDisable(false);
+		if(anchorPane == null) {
+			anchorPane = new AnchorPaneComponent(10,122);
+		}else {
+			anchorPane.draw().getChildren().remove(0);
+			anchorPaneContainer.getChildren().remove(2);
+		}
+		AnchorPaneMap anchorPaneMap = new AnchorPaneMap(anchorPane);
+		anchorPaneContainer.getChildren().add(anchorPaneMap.draw());
 	}
 
 }

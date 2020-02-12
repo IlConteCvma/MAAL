@@ -11,5 +11,9 @@ public class SeatQueries {
 		
 		return stmt.executeQuery(sql);
 	}
-		
+
+	public static int occupySeat(Statement stmt, String nameRoom, int idSeat) throws SQLException {
+		String sql = "UPDATE `posto` SET `Busy` = '1' WHERE `posto`.`ID` = " + idSeat +" AND `posto`.`Aula` = '"+ nameRoom +"';";
+		return stmt.executeUpdate(sql);
+	}
 }

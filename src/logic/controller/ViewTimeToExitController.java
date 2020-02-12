@@ -1,18 +1,20 @@
 package logic.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Vector;
 
 import javafx.scene.Scene;
 import logic.MainClass;
 import logic.Session;
+import logic.bean.SeatBean;
 import logic.bean.TimeToExitBean;
 import logic.model.Journey;
 import logic.model.Lesson;
 import logic.model.MapsApi;
-import logic.model.Seat;
 import logic.model.TimeApi;
 import logic.model.WeatherApi;
+import logic.model.dao.SeatDao;
 import logic.view.AlertControl;
 import logic.view.HomeTimePage;
 import logic.view.Page;
@@ -47,7 +49,7 @@ public class ViewTimeToExitController {
 	}
 	
 	public void getInfoByWeather(){
-		/*this.weather = new WeatherApi();
+		this.weather = new WeatherApi();
 		String rainIntensity = null;
 		try {
 			rainIntensity = weather.getRainIntensity();
@@ -58,7 +60,7 @@ public class ViewTimeToExitController {
 			nextJourney.setLateForWeather(5);
 		}else if(rainIntensity.equals("Moderate")){
 			nextJourney.setLateForWeather(10);
-		}*/
+		}
 	}
 	
 	public void estimateTimeToExit() throws IOException{
@@ -106,7 +108,12 @@ public class ViewTimeToExitController {
 		return minute;
 	}
 	
-	public void occupateSeat(Seat seatToOccupy) {
-		seatToOccupy.occupateSeat();
+	public void occupateSeat(SeatBean seat) {
+		SeatDao seatDao = new SeatDao();
+		try {
+			seatDao.occupySeat(seat.getRoom().getName(), seat.getIndex()+1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
