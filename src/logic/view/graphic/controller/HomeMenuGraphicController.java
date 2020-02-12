@@ -10,35 +10,36 @@ import logic.view.NamePage;
 
 
 public class HomeMenuGraphicController extends GraphicController {
-
 	
+	private static final String WARNING = "WARNING";
+	private static final String NOTAVAILABLE = "Operation not available";
 	@FXML
 	public void homeButton(ActionEvent e) throws IOException {
 		goToPage(NamePage.HOME);
 	}
 	
 	public void calendarButton() {
-		AlertControl.infoBox("Operation not available", "WARNING");
+		AlertControl.infoBox(NOTAVAILABLE, WARNING);
 	}
 	
 	public void forumButton() {
-		AlertControl.infoBox("Operation not available", "WARNING");
+		AlertControl.infoBox(NOTAVAILABLE, WARNING);
 	}
 	
 	public void profileButton() {
-		AlertControl.infoBox("Operation not available", "WARNING");
+		AlertControl.infoBox(NOTAVAILABLE, WARNING);
 	}
 	
 	public void todayLessonButton() {
-		AlertControl.infoBox("Operation not available", "WARNING");
+		AlertControl.infoBox(NOTAVAILABLE, WARNING);
 	}
 	
 	public void communicationButton() {
-		AlertControl.infoBox("Operation not available", "WARNING");
+		AlertControl.infoBox(NOTAVAILABLE, WARNING);
 	}
 	
 	public void nextLessonButton() {
-		AlertControl.infoBox("Operation not available", "WARNING");
+		AlertControl.infoBox(NOTAVAILABLE, WARNING);
 	}
 	
 	public void logOutButton() throws Exception {

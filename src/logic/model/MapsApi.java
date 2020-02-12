@@ -11,13 +11,13 @@ public class MapsApi{
 	private static String apikey = "AIzaSyBxqvZv-6yD5NY-JGuO8kuSqdxHNYj3Fs0";
     
     public List<Double> getPosition(String place) throws IOException{
-    	String url_request = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="+place+"&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=" + apikey;
-    	String response = connection.sendRequest(url_request);
+    	String urlRequest = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="+place+"&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=" + apikey;
+    	String response = connection.sendRequest(urlRequest);
     	JSONObject positionObj = new JSONObject(response);
     	JSONArray arr = positionObj.getJSONArray("candidates");
-    	JSONObject post_id = arr.getJSONObject(0).getJSONObject("geometry").getJSONObject("viewport").getJSONObject("southwest");
-    	Double lat = (Double)post_id.get("lat");
-    	Double lng = (Double)post_id.get("lng");
+    	JSONObject postId = arr.getJSONObject(0).getJSONObject("geometry").getJSONObject("viewport").getJSONObject("southwest");
+    	Double lat = (Double)postId.get("lat");
+    	Double lng = (Double)postId.get("lng");
     	List<Double> position = new ArrayList<>();
     	position.add(lat);
     	position.add(lng);

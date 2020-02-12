@@ -15,7 +15,7 @@ public class Vehicle {
 	}
 	
 	public void setSpeed(TypeVehicle type) {
-		switch(this.type) {
+		switch(type) {
 			case CAR:		this.speed = 30.0;
 							break;
 			case BUS:		this.speed = 25.0;

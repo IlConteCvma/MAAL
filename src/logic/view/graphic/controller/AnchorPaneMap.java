@@ -2,7 +2,6 @@ package logic.view.graphic.controller;
 
 import java.awt.Desktop;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import javafx.event.ActionEvent;
@@ -30,12 +29,6 @@ public class AnchorPaneMap extends Decorator{
         
         final URL urlGoogleMaps = getClass().getResource("../../resources/maps.html");
         webEngine.load(urlGoogleMaps.toExternalForm());
-        webEngine.setOnAlert(new EventHandler<WebEvent<String>>() {
-        	@Override
-            public void handle(WebEvent<String> e) {
-        		System.out.println(e.toString());
-               }
-            });
         
 		Button b = new Button("OPEN IN MAPS");
 		b.setMinWidth(anchorPane.getWidth());
@@ -43,16 +36,12 @@ public class AnchorPaneMap extends Decorator{
 		b.setAlignment(Pos.CENTER);
 		b.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent e) {
-            	try {
-					Desktop.getDesktop().browse(new URL(parser.parseStringMaps()).toURI()) ;
-				} catch (MalformedURLException e1) {
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				} catch (URISyntaxException e1) {
-					e1.printStackTrace();
-				}
+            public void handle(ActionEvent e) { 	
+					try {
+						Desktop.getDesktop().browse(new URL(parser.parseStringMaps()).toURI()) ;
+					} catch (IOException | URISyntaxException e1) {
+						e1.printStackTrace();
+					}
             }
         });
         

@@ -7,8 +7,7 @@ import java.util.Date;
 public class TimeApi {
 	
 	public Date getCurrentDate() {
-		Date date = new Date(System.currentTimeMillis());
-		return date;
+		return new Date(System.currentTimeMillis());
 	}
 	
 	public String timeAdd(double minutes) {
@@ -20,9 +19,7 @@ public class TimeApi {
 		int minutesAdd = (int)minutes;
 		if(minutes>=60) {
 			hourAdd = (int) (minutes/60);
-			System.out.println(hourAdd);
 			minutesAdd = (int) (minutes - hourAdd * 60);
-			System.out.println(minutesAdd);
 		}
 		
 		int hourToExit = actualHourTime  + hourAdd;

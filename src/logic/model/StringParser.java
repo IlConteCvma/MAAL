@@ -6,20 +6,21 @@ public class StringParser {
 
 	public String parseStringMaps() {
 		Student studLog = Session.getSession().getStudent();
-		String urlParsed = "https://google.com/maps/dir/";
 		String address = studLog.getAddress();
-		
+		StringBuilder bld = new StringBuilder();
+		bld.append("https://google.com/maps/dir/");
 		for(int i=0;i<address.length();i++) {
 			if(address.charAt(i) == ' ') {
-				urlParsed = urlParsed + '+';
+				bld.append('+');
 			}else {
-				urlParsed = urlParsed + address.charAt(i);
+				bld.append(address.charAt(i));
 			}
 		}
 		
-		urlParsed = urlParsed + ",+" + studLog.getStreetNumber() + ",+" + studLog.getCity() + "/Via+del+Politecnico,+1,+00100+Roma+RM";
+		bld.append(",+" + studLog.getStreetNumber() + ",+" + studLog.getCity() + "/Via+del+Politecnico,+1,+00100+Roma+RM");
 		
-		return urlParsed;
+		
+		return bld.toString();
 	}
 	
 }

@@ -19,6 +19,7 @@ public class LoginGraphicController extends GraphicController{
 	@FXML private TextField user;
 	@FXML private AnchorPane rootPane;
 	
+	private static final String WARNING = "WARNING";
 	LoginController lg = new LoginController();
 	
 	@FXML
@@ -30,18 +31,18 @@ public class LoginGraphicController extends GraphicController{
 		if(lg.login(possibleStudent)) {
 			goToPage(NamePage.HOME);
 		}else {
-			AlertControl.infoBox("Data are strong", "WARNING");
+			AlertControl.infoBox("Data are strong", WARNING);
 		}
 		
 	}
 	
 	
 	public void forgotPassword() {
-		AlertControl.infoBox("Operation not available", "WARNING");
+		AlertControl.infoBox("Operation not available", WARNING);
 	}
 	
 	public void signUp() {
-		AlertControl.infoBox("Operation not available", "WARNING");
+		AlertControl.infoBox("Operation not available", WARNING);
 	}
 
 }

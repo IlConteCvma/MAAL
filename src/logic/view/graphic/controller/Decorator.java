@@ -13,8 +13,7 @@ public abstract class Decorator extends ViewComponent {
 	
 	@Override
 	public AnchorPane draw() {
-		AnchorPane resultsFromRedirection = this.anchorPaneComponent.draw(); 
-		return resultsFromRedirection;
+		return this.anchorPaneComponent.draw();
 	}
 
 }

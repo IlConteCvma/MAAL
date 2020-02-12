@@ -7,8 +7,7 @@ public class ViewNextLessonController {
 	
 	public Lesson getNextLesson() {
 		NextLessonDao nextLessonDao = new NextLessonDao();
-		Lesson nextLesson = nextLessonDao.getNextLesson();
-		return nextLesson;
+		return nextLessonDao.getNextLesson();	
 	}
 
 }

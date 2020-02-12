@@ -16,7 +16,6 @@ public class RoomDao {
 	 	Statement stmt = null;
         Connection conn = null;
         String nameRoomOfLesson;
-        boolean firstTime = true;
         
         try {
         	//create connection
@@ -40,7 +39,7 @@ public class RoomDao {
             		stmt.close();
             	}
             	try {
-            		if (conn != null && firstTime == false) {
+            		if (conn != null) {
             			conn.close();
             		}    
             	} catch (SQLException se) {

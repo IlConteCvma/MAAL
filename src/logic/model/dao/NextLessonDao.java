@@ -2,8 +2,6 @@ package logic.model.dao;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Vector;
-
 import logic.model.Lesson;
 import logic.model.Room;
 import logic.model.Seat;
@@ -12,13 +10,13 @@ import logic.model.Subject;
 
 public class NextLessonDao {
 	
-	private LessonDao nextLessonDao;
+	private LessonDao nextLessDao;
 	private RoomDao nextRoomDao;
 	private SubjectDao nextSubjectDao;
 	private SeatDao nextSeatDao;
 
 	public NextLessonDao() {
-		nextLessonDao = new LessonDao();
+		nextLessDao = new LessonDao();
 		nextRoomDao = new RoomDao();
 		nextSubjectDao = new SubjectDao();
 		nextSeatDao = new SeatDao();
@@ -29,7 +27,7 @@ public class NextLessonDao {
 		try {
 			int id = getIdNextLesson();
 			if(id!=0) {
-				nextLesson = nextLessonDao.getLessonById(id);
+				nextLesson = nextLessDao.getLessonById(id);
 				nextLesson.setRoomLesson(getRoom());
 				nextLesson.setSubjectLesson(getSubjectOfLesson());
 			}
@@ -42,7 +40,7 @@ public class NextLessonDao {
 	public int getIdNextLesson(){
 		int id = 0;
 		try {
-			id = nextLessonDao.findIdNextLesson();
+			id = nextLessDao.findIdNextLesson();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
