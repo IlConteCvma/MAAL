@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import logic.bean.StudentBean;
 import logic.model.Student;
-import logic.model.Dao.StudentDao;
+import logic.model.dao.StudentDao;
 
 public class LoginController {
 		

@@ -4,19 +4,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import logic.Session;
-import logic.model.SingletonConnectionDB;
-import logic.model.Student;
 
 public class LessonQueries {
 	
-	private static Student studentLogged = Session.getSession().getStudent();
 	
-	public static ResultSet selectNextLesson(Statement stmt) throws SQLException  {
+	public static ResultSet selectNextLesson(Statement stmt,String username) throws SQLException  {
 		
 		String sql = "SELECT lezione.ID, min(TIMEDIFF(lezione.OraInizio,TIME(NOW()))) " + 
 					 "FROM studente join segue on studente.Username = segue.Studente join lezione on lezione.Materia=segue.Materia "
-					 + "WHERE lezione.Giorno = DAYOFWEEK(NOW()) AND studente ='"+ studentLogged.getUsername() 
+					 + "WHERE lezione.Giorno = DAYOFWEEK(NOW()) AND studente ='"+ username
 					 +"'AND TIMEDIFF(lezione.OraInizio,TIME(NOW())) > 0;";
 		
 		return stmt.executeQuery(sql);

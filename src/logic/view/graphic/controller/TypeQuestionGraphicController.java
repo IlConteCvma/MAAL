@@ -4,7 +4,7 @@ package logic.view.graphic.controller;
 import java.io.IOException;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -72,7 +72,7 @@ public class TypeQuestionGraphicController extends GraphicController{
 
 	public void mySubject(ActionEvent e) {
 		InsertQuestionController controller = new InsertQuestionController();
-		ArrayList<SubjectBean> bean = controller.getSubjects();
+		List<SubjectBean> bean = controller.getSubjects();
 		gridPane.setVgap(25);
 		gridPane.setHgap(1);
 		

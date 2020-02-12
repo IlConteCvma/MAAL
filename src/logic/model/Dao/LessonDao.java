@@ -1,10 +1,12 @@
-package logic.model.Dao;
+package logic.model.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+
+import logic.Session;
 import logic.model.Lesson;
 import logic.model.SingletonConnectionDB;
 import logic.model.queries.LessonQueries;
@@ -23,7 +25,7 @@ public class LessonDao {
 	        	//create statement
 	        	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 	        	//execute query
-	            ResultSet rs = LessonQueries.selectNextLesson(stmt);
+	            ResultSet rs = LessonQueries.selectNextLesson(stmt,Session.getSession().getStudent().getUsername() );
 	            //check if a returned zero value
 	            if (!rs.first()){
 	            	id = 0; //lesson not found

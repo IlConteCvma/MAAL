@@ -1,4 +1,4 @@
-package logic.model.Dao;
+package logic.model.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

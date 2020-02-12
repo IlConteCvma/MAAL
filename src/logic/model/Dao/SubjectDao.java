@@ -1,13 +1,11 @@
-package logic.model.Dao;
+package logic.model.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
-
-import logic.Session;
+import java.util.List;
 import logic.model.SingletonConnectionDB;
 import logic.model.Subject;
 import logic.model.queries.SubjectQueries;
@@ -19,7 +17,7 @@ public class SubjectDao {
         
 	 	Statement stmt = null;
         Connection conn = null;
-        Subject subjectOfLesson = null;
+        Subject subjectOfLesson;
         
         try {
         	//create connection
@@ -34,9 +32,10 @@ public class SubjectDao {
             }else {
             	//returned one value
             	rs.first();
-            	String name = rs.getString("Materia");
-            	String abbreviation = rs.getString("Sigla");
-            	double index = rs.getDouble("Indice");
+            	
+            	String name = rsGetString(rs,"Materia");
+            	String abbreviation = rsGetString(rs,"Sigla");
+            	double index = rsGetDouble(rs,"Indice");
             	
             	subjectOfLesson = new Subject(name, abbreviation, index);
             }
@@ -52,29 +51,31 @@ public class SubjectDao {
         	return subjectOfLesson;
     }
 	
-	public static ArrayList<Subject> getSubjectOfStudent(String username) throws SQLException{
+	public static List<Subject> getSubjectOfStudent(String username) throws SQLException{
 		
 		Statement stmt = null;
         Connection conn = null;
-        ArrayList<Subject> subject;
+        List<Subject> subject;
         try {
         	//create connection
         	conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
         	//create statement
         	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
         	//execute query
-            ResultSet rs = SubjectQueries.findSubjectOfStudent(stmt, Session.getSession().getStudent().getUsername());
+            ResultSet rs = SubjectQueries.findSubjectOfStudent(stmt, username);
             
             if (!rs.first()){
             	subject = null;
             }else {
             	//returned one value
             	rs.first();
-            	subject = new ArrayList<Subject>();
+            	subject = new ArrayList<>();
             	do{
-            		String name = rs.getString("Materia");
-                	String abbreviation = rs.getString("Sigla");
-                	double index = rs.getDouble("Indice");
+            		
+            		String name = rsGetString(rs,"Materia");
+                	String abbreviation = rsGetString(rs,"Sigla");
+                	double index = rsGetDouble(rs,"Indice");
+                	
                     Subject sub = new Subject(name,abbreviation,index);
                    
                     subject.add(sub);
@@ -99,7 +100,7 @@ public class SubjectDao {
 	public static Subject getSubjectByName(String name) throws SQLException {
 		Statement stmt = null;
         Connection conn = null;
-        Subject subject = null;
+        Subject subject;
 		
         try {
         	//create connection
@@ -114,9 +115,9 @@ public class SubjectDao {
             }else {
             	//returned one value
             	rs.first();
-            	String nm = rs.getString("Nome");
-            	String abbreviation = rs.getString("Sigla");
-            	double index = rs.getDouble("Indice");
+            	String nm = rsGetString(rs,"Nome");
+            	String abbreviation = rsGetString(rs,"Sigla");
+            	double index = rsGetDouble(rs,"Sigla");
             	
             	subject = new Subject(nm, abbreviation, index);
             }
@@ -131,5 +132,12 @@ public class SubjectDao {
             }
         	return subject;
 		
+	}
+	
+	private static String rsGetString(ResultSet rs,String columnLabel) throws SQLException {
+		return rs.getString(columnLabel);
+	}
+	private static double rsGetDouble(ResultSet rs,String columnLabel) throws SQLException {
+		return rs.getDouble(columnLabel);
 	}
 }

@@ -2,6 +2,7 @@ package logic.controller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import execption.QuestionException;
 import logic.Session;
@@ -10,8 +11,8 @@ import logic.bean.SubjectBean;
 import logic.model.Question;
 import logic.model.QuestionFactory;
 import logic.model.Subject;
-import logic.model.Dao.QuestionDao;
-import logic.model.Dao.SubjectDao;
+import logic.model.dao.QuestionDao;
+import logic.model.dao.SubjectDao;
 
 
 public class InsertQuestionController {
@@ -37,8 +38,6 @@ public class InsertQuestionController {
 		
 		
 		this.question.setSolved(false);
-		//this.question.setId(QuestionDao.getNewId());
-		//this.question.setQuestionSub(SubjectDao.getSubjectByName(ArgumentToPage.getSession().getSubjChoose()));
 		
 		try {
 			this.question.setId(QuestionDao.getNewId());
@@ -102,6 +101,9 @@ public class InsertQuestionController {
 				}
 				break;
 				
+			default:
+				throw new QuestionException("Error in question type");
+				
 			
 		}
 		
@@ -111,12 +113,12 @@ public class InsertQuestionController {
 		}
 	
 	
-	public ArrayList<SubjectBean> getSubjects() {
-		ArrayList<SubjectBean> sBean = new ArrayList<SubjectBean>() ;
-		//sBean.add(new SubjectBean("Pippo"));
+	public List<SubjectBean> getSubjects() {
+		List<SubjectBean> sBean = new ArrayList<>() ;
+		
 		
 		try {
-			ArrayList<Subject> subj = SubjectDao.getSubjectOfStudent(Session.getSession().getStudent().getUsername());
+			List<Subject> subj = SubjectDao.getSubjectOfStudent(Session.getSession().getStudent().getUsername());
 			if(subj == null) {
 				sBean = null;
 			}

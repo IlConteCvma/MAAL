@@ -1,4 +1,4 @@
-package logic.model.Dao;
+package logic.model.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,6 +15,10 @@ import logic.model.queries.QuestionQueries;
 public class QuestionDao {
 	protected static Statement stmt;
     protected static Connection conn;
+    
+    private QuestionDao() {
+        throw new IllegalStateException("Utility class");
+      }
    
     
 	public static int getNewId() throws SQLException {
@@ -108,6 +112,9 @@ public class QuestionDao {
 					throw new QuestionException(e.getMessage());
 				}
 				break;
+				
+				default:
+					throw new QuestionException("Error in question type");
 				
 				
 		}

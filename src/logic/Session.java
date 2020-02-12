@@ -13,7 +13,7 @@ public class Session {
 		
 	}
 	
-	public synchronized static Session getSession() {
+	public static synchronized Session getSession() {
 		if (Session.instance == null) {
 			Session.instance = new Session();
 			}

@@ -13,7 +13,6 @@ public class SingletonConnectionDB {
 	
 	
 	protected SingletonConnectionDB() throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection("jdbc:mysql://localhost/maaldb", "root", "");
 	}
 	
@@ -29,7 +28,7 @@ public class SingletonConnectionDB {
 		return conn;
 	}
 	
-	public synchronized static SingletonConnectionDB getSingletonConnection() {
+	public static synchronized SingletonConnectionDB getSingletonConnection() {
 		count++;
 		try {
 			if (SingletonConnectionDB.instance == null)
@@ -42,7 +41,7 @@ public class SingletonConnectionDB {
 		return instance;
 	}
 	
-	public synchronized static void close() {
+	public static synchronized void close() {
 		if(SingletonConnectionDB.count==0) {
 			try {
 				SingletonConnectionDB.conn.close();
