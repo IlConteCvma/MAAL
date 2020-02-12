@@ -21,7 +21,10 @@ public class NavbarGraphicController extends GraphicController {
 		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	
-	public void forumButton() throws IOException {
+	public void allQuestion() throws IOException {
+		goToPage(NamePage.ALLQUESTION);
+	}
+	public void newQuestion() throws IOException {
 		goToPage(NamePage.QUESTIONTYPE);
 	}
 	

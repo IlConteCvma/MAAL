@@ -53,8 +53,8 @@ public class TypeQuestionGraphicController extends GraphicController{
 		
 		
 	}
-	public void back(ActionEvent e) {
-		System.out.println("Tutte le question Caso d'uso");
+	public void back(ActionEvent e) throws IOException {
+		goToPage(NamePage.ALLQUESTION);
 	}
 	
 	public void typeProblem(ActionEvent e) throws IOException {

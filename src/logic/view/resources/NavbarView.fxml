@@ -3,6 +3,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -38,16 +40,20 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="571.0" layoutY="12.0" mnemonicParsing="false" onAction="#forumButton" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: #E45652;" text="Forum">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
                   <Button layoutX="731.0" layoutY="12.0" mnemonicParsing="false" onAction="#profileButton" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: #E45652;" text="Profile">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
+                  <MenuButton alignment="CENTER" layoutX="569.0" layoutY="13.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: #E45652;" text="Forum">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#allQuestion" text="View Question" />
+                      <MenuItem mnemonicParsing="false" onAction="#newQuestion" text="Insert new Question" />
+                    </items>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </MenuButton>
                </children>
             </AnchorPane>
          </items>

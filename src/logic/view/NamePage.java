@@ -6,6 +6,7 @@ public enum NamePage {
 	TIMETOEXIT,
 	QUESTIONTYPE,
 	EXERCISE,
-	PROBLEM
+	PROBLEM,
+	ALLQUESTION
 	
 }
