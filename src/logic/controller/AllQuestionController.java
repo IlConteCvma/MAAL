@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import logic.Session;
 import logic.bean.QuestionBean;
 import logic.bean.QuestionExerciseBean;
 import logic.bean.QuestionProblemBean;
@@ -25,7 +25,7 @@ public class AllQuestionController {
 		List<QuestionBean> bean = new ArrayList<>() ;
 		
 		try {
-			List<Question> quest = QuestionDao.getQuestions();
+			List<Question> quest = QuestionDao.getQuestionsOfStudent(Session.getSession().getStudent().getUsername());
 			if(quest == null) {
 				bean = null;
 			}

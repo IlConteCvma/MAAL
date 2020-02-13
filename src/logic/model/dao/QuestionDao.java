@@ -133,7 +133,7 @@ public class QuestionDao {
 		
 	}
 	
-	public static List<Question> getQuestions() throws SQLException, ReflectiveOperationException{
+	public static List<Question> getQuestionsOfStudent(String student) throws SQLException, ReflectiveOperationException{
 		
 		Statement stmt = null;
         Connection conn = null;
@@ -148,7 +148,7 @@ public class QuestionDao {
         	//create statement
         	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
         	//execute query
-            ResultSet rs = QuestionQueries.getQuestions(stmt);
+            ResultSet rs = QuestionQueries.getQuestions(stmt,student);
             
             if (!rs.first()){
             	quest = null;
