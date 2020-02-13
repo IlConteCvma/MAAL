@@ -4,7 +4,6 @@ package logic.view.graphic.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -120,13 +119,12 @@ public class TypeQuestionGraphicController extends GraphicController{
 
 			@Override
 			public void handle(ActionEvent event) {
-				
-				//gridPane.setDisable(false);
+
 				 List<Node> list = gridPane.getChildren();
 				 for(int i = 0; i<list.size();i++) {
 					 
 					 list.get(i).setDisable(false);
-					 list.get(i).setStyle(null);;
+					 list.get(i).setStyle(null);
 				 }
 				 
 				
@@ -137,8 +135,6 @@ public class TypeQuestionGraphicController extends GraphicController{
 				
 				buttonPro.setDisable(false);
 				buttonExe.setDisable(false);
-				
-				//gridPane.setDisable(true);
 				
 			}
 		

@@ -156,7 +156,7 @@ public class QuestionDao {
             	//returned one value
             	rs.first();
             	quest = new ArrayList<>();
-            	int i = 0;
+            	
             	do{
             		//Make question 
             		Question q;
@@ -182,9 +182,9 @@ public class QuestionDao {
             		q.setQuestionSub(SubjectDao.getSubjectByName(rs.getString("Materia")));
 
                     quest.add(q);
-                    //i++;
                     
-                }while(/*i<11 &&*/ rs.next());
+                    
+                }while(/*Volendo ci metti una variabili i &&*/ rs.next());
             }
             rs.close();
             } finally {     
