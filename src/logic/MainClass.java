@@ -18,14 +18,22 @@ public class MainClass extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		stageRoot = stage;
-		root = PageFactory.createPage(NamePage.LOGIN);
+		setStage(stage);
+		setRoot(PageFactory.createPage(NamePage.LOGIN));
+		
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.setTitle("MAAL Assistant");
 		stage.setResizable(false);
 		stage.show();
 		
+	}
+	
+	private static void setStage(Stage stage) {
+		stageRoot = stage;
+	}
+	private static void setRoot(Page page) {
+		root = page;
 	}
 	
 	public static Stage getStage() {

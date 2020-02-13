@@ -6,26 +6,25 @@ public class Student {
 	private String surname;
 	private String username;
 	private String password;
-	private String address;
-	private String streetNumber;
-	private String city;
+	private Address myAddress;
 	private Vehicle vehicle;
 	
 	
-	public Student(String name, String surname, String username, String password, String address, String streetNumber, String city, Vehicle vehicle) {
+	public Student(String name, String surname, String username, String password,Address myAddress,Vehicle vehicle) {
 		this.name = name;
 		this.surname = surname;
 		this.username = username;
 		this.password = password;
-		this.address = address;
+		this.myAddress = myAddress;
 		this.vehicle = vehicle;
-		this.streetNumber = streetNumber;
-		this.city = city;
+
+	
 	}
 	
-	public Student() {
-		// TODO Auto-generated constructor stub
+	public Address getAddress() {
+		return myAddress;
 	}
+	
 
 	public String getName() {
 		return name;
@@ -42,20 +41,9 @@ public class Student {
 	public String getPassword() {
 		return password;
 	}
-	
-	public String getAddress() {
-		return address;
-	}
-	
 	public Vehicle getVehicle() {
 		return vehicle;
 	}
-
-	public String getStreetNumber() {
-		return streetNumber;
-	}
-	public String getCity() {
-		return city;
-	}
 	
+
 }

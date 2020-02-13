@@ -6,12 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
 public class NavbarElement implements GraphicElementInterface {
-
-
-	
-	public NavbarElement() {
-
-	}
 	
 	@Override
 	public AnchorPane draw() throws IOException {

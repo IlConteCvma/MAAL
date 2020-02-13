@@ -1,83 +1,32 @@
 package logic.view.graphic.controller;
 
-import java.io.IOException;
+
 
 
 import execption.QuestionException;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import logic.bean.QuestionBean;
-import logic.controller.InsertQuestionController;
-import logic.model.QuestionFactory;
 import logic.model.QuestionProblemFactory;
 import logic.model.QuestionType;
-import logic.view.AlertControl;
-import logic.view.NamePage;
 
-public class QuestionProblemGraphicController extends GraphicController implements QuestionGraphicInterface{
-	
-	private QuestionFactory factory;
-	private QuestionBean qBean;
-	@FXML private Label message;
-	@FXML private TextArea title;
-	@FXML private TextArea body;
-	private String subject;
-	
-	
-	
+
+public class QuestionProblemGraphicController extends QuestionGraphic{
+
 	public QuestionProblemGraphicController(String param) {
-		this.factory = new QuestionProblemFactory();
-		this.subject = param;
+		super(param);
+		super.factory = new QuestionProblemFactory();
+		super.qBean = this.factory.createBean();
 	}
-	
-	
-
-	@Override
 	public void commit() throws QuestionException   {
-		
-	
-		this.qBean = this.factory.createBean();
-		this.qBean.setType(QuestionType.PROBLEM);
-		
-		if(title.getText().isEmpty() ) {
-			this.message.setText("Please enter a title");
-			
-		}
-		else if(body.getText().isEmpty()) {
-			this.message.setText("Please the body");
-		}
-		else {
-			this.message.setText("Starting save");
-			
-			try {
-				this.qBean.setTitle(title.getText());
-				this.qBean.getClass().getMethod("setText", String.class).invoke(this.qBean,this.body.getText());
-				
-			}
-			catch(ReflectiveOperationException e){
-				this.message.setText("Sorry some error");
-				throw new QuestionException(e.getMessage());
-			}
-			
-			try {
-				InsertQuestionController controller = new InsertQuestionController(this.factory,this.qBean);
-				controller.startSave(this.subject);
-			
-			}
-			catch(QuestionException e){
-				
-				AlertControl.infoBox("error on save DB", "ERROR");
-				
-				this.message.setText("Error on save");
-			}
-			this.message.setText("finito");
-		}
+
+		commData();
+		myData();
+		sendData();
+
 	}
 	
-	@Override
-	public void back() throws IOException {
-		goToPage(NamePage.QUESTIONTYPE);
+	
+	private void myData() {
+		super.qBean.setType(QuestionType.PROBLEM);
 	}
+
 
 }

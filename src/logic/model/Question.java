@@ -10,8 +10,7 @@ public abstract class Question {
 	protected Student student;
 	
 	public Question() {
-		this.questionSubuject = new Subject();
-		this.student = new Student();
+
 	}
 	
 	public void setId(int newId) {

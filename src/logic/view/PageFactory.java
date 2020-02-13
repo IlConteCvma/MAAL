@@ -1,7 +1,7 @@
 package logic.view;
 
 import java.io.IOException;
-import logic.view.NamePage;
+
 
 public class PageFactory {
 	
@@ -16,7 +16,7 @@ public class PageFactory {
 			case LOGIN: return new LoginPage();
 			case QUESTIONTYPE: return new TypeQuestionPage();
 			case ALLQUESTION: return new AllQuestionPage();
-			//case TIMETOEXIT: return new HomeTimePage();
+			
 			
 			default: throw new IOException("Invalid type : " + type);
 			
@@ -24,12 +24,12 @@ public class PageFactory {
 
 	}
 	
-	public static Page createPage(NamePage type,String args[]) throws IOException {
+	public static Page createPage(NamePage type,String[] args) throws IOException {
 		
 		switch(type) {
 		
-			case EXERCISE: return new QuestionExercisePage(args[0]);
-			case PROBLEM: return new QuestionProblemPage(args[0]);
+			case EXERCISE: return new QuestionPage(args[0],args[1]);
+			case PROBLEM: return new QuestionPage(args[0],args[1]);
 			
 		default: throw new IOException("Invalid type or args");
 		}

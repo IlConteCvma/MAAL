@@ -8,6 +8,10 @@ public class SubjectQueries {
 
 	private static final String SELECTALL = "SELECT *";
 	
+	private SubjectQueries() {
+		 throw new IllegalStateException("Utility class");
+	 }
+	
 	public static ResultSet findSubjectOfLesson(Statement stmt, int idLesson) throws SQLException  {
 		
 		String sql = SELECTALL + 

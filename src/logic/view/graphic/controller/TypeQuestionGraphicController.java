@@ -39,34 +39,36 @@ public class TypeQuestionGraphicController extends GraphicController{
 	
 	
 	
-	public void homeButton(ActionEvent e) throws IOException {
+	public void homeButton() throws IOException {
 		goToPage(NamePage.HOME);
 	}
 	
 
-	public void typeExercise(ActionEvent e) throws IOException {
+	public void typeExercise() throws IOException {
 		
-		String[] args = new String[1];
-		args[0]=this.subSelect;
+		String[] args = new String[2];
+		args[0]= this.subSelect;
+		args[1]= "../../resources/QuestionExerciseView.fxml";
 		
 		goToPage(NamePage.EXERCISE, args);
 		
 		
 	}
-	public void back(ActionEvent e) throws IOException {
+	public void back() throws IOException {
 		goToPage(NamePage.ALLQUESTION);
 	}
 	
-	public void typeProblem(ActionEvent e) throws IOException {
+	public void typeProblem() throws IOException {
 
-		String[] args = new String[1];
+		String[] args = new String[2];
 		args[0]=this.subSelect;
+		args[1]="../../resources/QuestionProblemView.fxml";
 		
 		goToPage(NamePage.PROBLEM, args);
 	}
 	
 
-	public void mySubject(ActionEvent e) {
+	public void mySubject() {
 		 
 		List<SubjectBean> bean = this.controller.getSubjects();
 		gridPane.setVgap(25);
@@ -119,7 +121,6 @@ public class TypeQuestionGraphicController extends GraphicController{
 			public void handle(ActionEvent event) {
 				subj.setStyle("-fx-background-color: #0bbd3d;");
 				
-				//ArgumentToPage.getSession().setSubjChoose(subj.getAccessibleText());
 				subSelect = subj.getAccessibleText();
 				
 				buttonPro.setDisable(false);

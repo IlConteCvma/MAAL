@@ -51,7 +51,7 @@ public class InsertQuestionController {
 		}
 		
 		try {
-			
+						
 			this.question.setQuestionSub(SubjectDao.getSubjectByName(subject));
 			
 		} catch (SQLException e1) {

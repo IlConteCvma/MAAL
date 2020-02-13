@@ -4,11 +4,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import logic.model.Question;
+
 public class QuestionQueries {
 	
-	public static void saveQuestion(Statement stmt,int id,String title,String text,String image,boolean validate,String type, String namestud,String namesub) throws SQLException  {
+	public static void saveQuestion(Statement stmt,Question question,String text,String image,String type) throws SQLException  {
 		
-		String sql =" INSERT INTO domandaproposta (ID,Titolo,Testo,Immagine,Risolto,Tipo,Studente,Materia) VALUES ("+id+",'"+title+"','"+text+"','"+image+"',"+validate+", '"+type+"','"+namestud+"','"+namesub+"');";
+		String sql =" INSERT INTO domandaproposta (ID,Titolo,Testo,Immagine,Risolto,Tipo,Studente,Materia) "
+				+ "VALUES ("+question.getId()+",'"+question.getTitle()+"','"+text+"','"+image+"',"+question.isSolved()+", "
+						+ "'"+type+"','"+question.getStudent().getUsername()+"','"+question.getQuestionSub().getName()+"');";
+		
 		stmt.executeUpdate(sql);
 	}
 

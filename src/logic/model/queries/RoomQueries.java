@@ -6,6 +6,10 @@ import java.sql.Statement;
 
 public class RoomQueries {
 	
+	private RoomQueries() {
+		 throw new IllegalStateException("Utility class");
+	 }
+	
 	public static ResultSet findNameRoomByIdLesson(Statement stmt, int idLesson) throws SQLException  {
 		
 		

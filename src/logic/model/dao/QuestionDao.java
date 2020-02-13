@@ -87,7 +87,7 @@ public class QuestionDao {
 			case PROBLEM:
 				
 				try {
-				QuestionQueries.saveQuestion(stmt,question.getId(), question.getTitle(), text, null, question.isSolved(),type.toString(),question.getStudent().getUsername(),question.getQuestionSub().getName());
+				QuestionQueries.saveQuestion(stmt,question ,text, null,type.toString());
 				}
 				catch(SQLException e) {
 					throw new QuestionException(e.getMessage());
@@ -106,7 +106,7 @@ public class QuestionDao {
 					throw new QuestionException("Error on invoke for image");
 				}
 				try {
-				QuestionQueries.saveQuestion(stmt,question.getId(), question.getTitle(), text, image, question.isSolved(),type.toString(),question.getStudent().getUsername(),question.getQuestionSub().getName());
+				QuestionQueries.saveQuestion(stmt,question, text, image,type.toString());
 				}
 				catch(SQLException e) {
 					throw new QuestionException(e.getMessage());

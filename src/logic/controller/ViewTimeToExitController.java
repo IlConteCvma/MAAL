@@ -29,7 +29,7 @@ public class ViewTimeToExitController {
 	
 	//association attribute
 	private ViewNextLessonController nextLessonController = new ViewNextLessonController();
-	private TimeToExitGraphicController timeToExitController;
+	
 	private Journey nextJourney;
 	private TimeToExitBean timeToExitBean;
 	
@@ -37,7 +37,7 @@ public class ViewTimeToExitController {
 		MapsApi map = new MapsApi();
 		//Calculate latitude and longitude 
 		try {
-			nextJourney = new Journey(map.getPosition(Session.getSession().getStudent().getAddress()));
+			nextJourney = new Journey(map.getPosition(Session.getSession().getStudent().getAddress().getFullAddress()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -46,7 +46,9 @@ public class ViewTimeToExitController {
 	}
 	
 	public void getInfoByWeather(){
-		/*WeatherApi weather = new WeatherApi();
+		/*
+		 
+		 WeatherApi weather = new WeatherApi();
 		String rainIntensity = null;
 		try {
 			rainIntensity = weather.getRainIntensity();
@@ -57,7 +59,9 @@ public class ViewTimeToExitController {
 			nextJourney.setLateForWeather(5);
 		}else if(rainIntensity.equals("Moderate")){
 			nextJourney.setLateForWeather(10);
-		}*/
+		}
+		
+		*/
 	}
 	
 	public void estimateTimeToExit() throws IOException{
@@ -85,7 +89,8 @@ public class ViewTimeToExitController {
 				timeToExitBean.setHourToExit(time.timeAdd(timeToExit));
 				timeToExitBean.setNextJourney(nextJourney);
 				timeToExitBean.setNextLesson(nextLesson);
-				timeToExitController = new TimeToExitGraphicController(timeToExitBean);
+				new TimeToExitGraphicController(timeToExitBean);
+				
 				Page root = new HomeTimePage(timeToExitBean);
 				Scene scene = new Scene(root);
 				MainClass.getStage().setScene(scene);

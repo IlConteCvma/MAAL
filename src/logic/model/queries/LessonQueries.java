@@ -7,6 +7,9 @@ import java.sql.Statement;
 
 public class LessonQueries {
 	
+	private LessonQueries() {
+		 throw new IllegalStateException("Utility class");
+	 }
 	
 	public static ResultSet selectNextLesson(Statement stmt,String username) throws SQLException  {
 		

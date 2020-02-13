@@ -5,6 +5,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class SeatQueries {
+	
+	private SeatQueries() {
+		 throw new IllegalStateException("Utility class");
+	 }
 
 	public static ResultSet findSeatsOfRoom(Statement stmt, String nameRoom) throws SQLException  {
 		String sql = "SELECT * FROM posto WHERE Aula = '" + nameRoom +"';";
