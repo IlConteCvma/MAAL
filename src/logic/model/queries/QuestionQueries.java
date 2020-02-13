@@ -27,4 +27,10 @@ public class QuestionQueries {
 		
 	}
 	
+	public static ResultSet getQuestions(Statement stmt) throws SQLException{
+		String sql ="SELECT * FROM domandaproposta ;";
+		return stmt.executeQuery(sql);
+		
+	}
+	
 }

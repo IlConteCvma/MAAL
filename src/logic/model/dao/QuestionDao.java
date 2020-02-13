@@ -1,16 +1,22 @@
 package logic.model.dao;
 
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import execption.QuestionException;
 import logic.model.Question;
+import logic.model.QuestionExercise;
 
+import logic.model.QuestionProblem;
 import logic.model.QuestionType;
 import logic.model.SingletonConnectionDB;
 import logic.model.queries.QuestionQueries;
+
 
 public class QuestionDao {
 	protected static Statement stmt;    
@@ -127,5 +133,72 @@ public class QuestionDao {
 		
 	}
 	
+	public static List<Question> getQuestions() throws SQLException, ReflectiveOperationException{
+		
+		Statement stmt = null;
+        Connection conn = null;
+        List<Question> quest;
+		
+        try {
+        	//create connection
+        	conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
+        	if (conn== null) {
+				throw new SQLException();
+			}
+        	//create statement
+        	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        	//execute query
+            ResultSet rs = QuestionQueries.getQuestions(stmt);
+            
+            if (!rs.first()){
+            	quest = null;
+            }else {
+            	//returned one value
+            	rs.first();
+            	quest = new ArrayList<>();
+            	int i = 0;
+            	do{
+            		//Make question 
+            		Question q;
+            		
+            		if(rs.getString("Tipo").equals("EXERCISE") ) {
+            			String body = rs.getString("Testo");
+            			String image = rs.getString("Immagine");
+            			q = new QuestionExercise();
+            			q.getClass().getMethod("setText", String.class).invoke(q, body);
+            			q.getClass().getMethod("setImage", String.class).invoke(q, image);
+            		}
+            		else {
+            			String body = rs.getString("Testo");
+            			q = new QuestionProblem();
+            			q.getClass().getMethod("setText", String.class).invoke(q, body);
+            			
+            		}
+
+            		q.setId(rs.getInt("ID"));
+            		q.setTitle(rs.getString("Titolo"));
+            		q.setSolved(rs.getBoolean("Risolto"));
+            		q.setStudent(StudentDao.findStudent(rs.getString("Studente")));
+            		q.setQuestionSub(SubjectDao.getSubjectByName(rs.getString("Materia")));
+
+                    quest.add(q);
+                    i++;
+                    
+                }while(i<11 & rs.next());
+            }
+            rs.close();
+            } finally {     
+            	if(stmt != null){
+            		stmt.close();
+            	}
+            	if (conn != null) {
+    				SingletonConnectionDB.close();
+    			}
+            	
+            }
+        
+		return quest;
+		
+	}
 
 }

@@ -18,5 +18,11 @@ public class QuestionProblem extends Question {
 	public String getText() {
 		return text;
 	}
+	
+	@Override
+	public QuestionType whoAmI() {
+		return QuestionType.PROBLEM;
+	}
+
 
 }

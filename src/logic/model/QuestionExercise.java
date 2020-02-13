@@ -33,5 +33,11 @@ public class QuestionExercise extends Question {
 	public String getImage() {
 		return this.image;
 	}
+	
+	@Override
+	public QuestionType whoAmI() {
+		return QuestionType.EXERCISE;
+	}
+
 
 }

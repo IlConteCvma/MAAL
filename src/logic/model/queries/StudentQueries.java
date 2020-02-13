@@ -14,6 +14,11 @@ public class StudentQueries {
 		String sql = "SELECT * FROM studente where Username = '" + username + "'and Password = '"+password+"';";
 		return stmt.executeQuery(sql);
 	}
+	
+	public static ResultSet selectSingleStudent(Statement stmt, String username ) throws SQLException{
+		String sql = "SELECT * FROM studente where Username = '" + username + "' ;";
+		return stmt.executeQuery(sql);
+	}
 		
 }
 

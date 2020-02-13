@@ -57,5 +57,7 @@ public abstract class Question {
 		return this.solved;
 	}
 	
+	public abstract QuestionType whoAmI(); 
+	
 }
 	
