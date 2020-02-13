@@ -8,6 +8,10 @@ import logic.model.Question;
 
 public class QuestionQueries {
 	
+	private QuestionQueries() {
+		 throw new IllegalStateException("Utility class");
+	 }
+	
 	public static void saveQuestion(Statement stmt,Question question,String text,String image,String type) throws SQLException  {
 		
 		String sql =" INSERT INTO domandaproposta (ID,Titolo,Testo,Immagine,Risolto,Tipo,Studente,Materia) "

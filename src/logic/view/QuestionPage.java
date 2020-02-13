@@ -21,7 +21,7 @@ public class QuestionPage extends Page {
 		GraphicElementInterface nav = new NavbarElement();
 		NoControllerGrapichElement qPage = new NoControllerGrapichElement(destination);
 		GraphicController controller;
-		if(destination == "../../resources/QuestionProblemView.fxml") {
+		if(destination.equals("../../resources/QuestionProblemView.fxml") ) {
 			controller = new QuestionProblemGraphicController(param);
 		}else {
 			controller = new QuestionExerciseGraphicController(param);
@@ -41,7 +41,7 @@ public class QuestionPage extends Page {
 
 	@Override
 	protected void createPage() throws IOException {
-		// TODO Auto-generated method stub
+		//nothing to do overriding Page method
 
 	}
 
