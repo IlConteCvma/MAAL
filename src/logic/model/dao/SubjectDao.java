@@ -12,6 +12,8 @@ import logic.model.queries.SubjectQueries;
 
 public class SubjectDao {
 	
+	private static final String INDEX = "Indice";
+	private static final String ABBREVATION = "Sigla";
 	
 	public Subject getSubjectLesson(int idLesson)  throws SQLException {
         
@@ -34,8 +36,8 @@ public class SubjectDao {
             	rs.first();
             	
             	String name = rsGetString(rs,"Materia");
-            	String abbreviation = rsGetString(rs,"Sigla");
-            	double index = rsGetDouble(rs,"Indice");
+            	String abbreviation = rsGetString(rs,ABBREVATION);
+            	double index = rsGetDouble(rs,INDEX);
             	
             	subjectOfLesson = new Subject(name, abbreviation, index);
             }
@@ -73,8 +75,8 @@ public class SubjectDao {
             	do{
             		
             		String name = rsGetString(rs,"Materia");
-                	String abbreviation = rsGetString(rs,"Sigla");
-                	double index = rsGetDouble(rs,"Indice");
+                	String abbreviation = rsGetString(rs,ABBREVATION);
+                	double index = rsGetDouble(rs,INDEX);
                 	
                     Subject sub = new Subject(name,abbreviation,index);
                    
@@ -116,8 +118,8 @@ public class SubjectDao {
             	//returned one value
             	rs.first();
             	String nm = rsGetString(rs,"Nome");
-            	String abbreviation = rsGetString(rs,"Sigla");
-            	double index = rsGetDouble(rs,"Indice");
+            	String abbreviation = rsGetString(rs,ABBREVATION);
+            	double index = rsGetDouble(rs,INDEX);
             	
             	subject = new Subject(nm, abbreviation, index);
             }

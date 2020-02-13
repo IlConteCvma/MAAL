@@ -27,9 +27,7 @@ public class StudentDao {
         	
             ResultSet rs = StudentQueries.selectStudent(stmt, possibleUsername, possiblePassword);
 
-            if (!rs.first()){
-            	studLog = null;
-            }else {
+            if (rs.first()){
             	rs.first();
             	SingletonConnectionDB.increaseCount();
             	String name = rs.getString("Nome");

@@ -38,13 +38,9 @@ public class RoomDao {
             	if(stmt != null){
             		stmt.close();
             	}
-            	try {
-            		if (conn != null) {
-            			conn.close();
-            		}    
-            	} catch (SQLException se) {
-            		se.printStackTrace();
-            	}
+            	if (conn != null) {
+					SingletonConnectionDB.close();
+				}
             }
         	return nameRoomOfLesson;
 	}

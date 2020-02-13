@@ -23,11 +23,11 @@ public class TimeApi {
 		}
 		
 		int hourToExit = actualHourTime  + hourAdd;
-		int minuteToExit = (int) (actualMinuteTime /*+ minutes*/ + minutesAdd);
+		int minuteToExit = actualMinuteTime /*+ minutes*/ + minutesAdd;
 		hourAdd = 0;
 		if(minuteToExit>=60) {
-			hourAdd = (int)(minuteToExit/60);
-			minuteToExit = (int) (minuteToExit - hourAdd * 60);
+			hourAdd = minuteToExit/60;
+			minuteToExit = minuteToExit - hourAdd * 60;
 		}
 		hourToExit = hourToExit + hourAdd;
 		String hourToExitString ="";

@@ -42,7 +42,7 @@ public class HomeMenuGraphicController extends GraphicController {
 		AlertControl.infoBox(NOTAVAILABLE, WARNING);
 	}
 	
-	public void logOutButton() throws Exception {
+	public void logOutButton() throws IOException {
 		goToPage(NamePage.LOGIN);
 	}
 

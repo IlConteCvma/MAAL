@@ -46,7 +46,7 @@ public class ViewTimeToExitController {
 	}
 	
 	public void getInfoByWeather(){
-		WeatherApi weather = new WeatherApi();
+		/*WeatherApi weather = new WeatherApi();
 		String rainIntensity = null;
 		try {
 			rainIntensity = weather.getRainIntensity();
@@ -57,7 +57,7 @@ public class ViewTimeToExitController {
 			nextJourney.setLateForWeather(5);
 		}else if(rainIntensity.equals("Moderate")){
 			nextJourney.setLateForWeather(10);
-		}
+		}*/
 	}
 	
 	public void estimateTimeToExit() throws IOException{
@@ -82,7 +82,7 @@ public class ViewTimeToExitController {
 			if(timeToExit < 0) {
 				AlertControl.infoBox("E' troppo tardi!", "ALERT");
 			}else {
-				timeToExitBean.setHourToExit(time.timeAdd(minutes));
+				timeToExitBean.setHourToExit(time.timeAdd(timeToExit));
 				timeToExitBean.setNextJourney(nextJourney);
 				timeToExitBean.setNextLesson(nextLesson);
 				timeToExitController = new TimeToExitGraphicController(timeToExitBean);
@@ -102,7 +102,7 @@ public class ViewTimeToExitController {
 			List<Integer> range = timeToExitBean.getNextLesson().getRoomLesson().getSeatOfPriority(priority);
 			int allPlaces = range.get(1) - range.get(0);
 			int busyPlaces = allPlaces - freePlaces;		
-			minute = WEIGHT * timeToExitBean.getNextLesson().getSubjectLesson().getIndexOfStudents() * (busyPlaces/allPlaces);
+			minute = WEIGHT * timeToExitBean.getNextLesson().getSubjectLesson().getIndexOfStudents() * ((double)busyPlaces/allPlaces);
 		}else {
 			minute = Double.MAX_VALUE;
 		}

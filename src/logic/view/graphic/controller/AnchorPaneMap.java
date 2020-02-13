@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebEvent;
 import javafx.scene.web.WebView;
 import logic.model.StringParser;
 import logic.view.ViewComponent;

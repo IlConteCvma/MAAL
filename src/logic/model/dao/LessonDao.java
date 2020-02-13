@@ -60,9 +60,7 @@ public class LessonDao {
 	        	//execute query
 	            ResultSet rs = LessonQueries.selectInfoLessonById(stmt,idLesson);
 	            //check if a returned zero value
-	            if (!rs.first()){
-	            	nextLesson = null; //lesson not found
-	            }else {
+	            if (rs.first()){
 	            	//returned one value
 	            	rs.first();
 	            	Time startHour = rs.getTime("OraInizio");
