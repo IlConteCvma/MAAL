@@ -22,6 +22,9 @@ public class SeatDao {
         try {
         	//create connection
         	conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
+        	if (conn== null) {
+				throw new SQLException();
+			}
         	//create statement
         	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
         	//execute query
@@ -63,6 +66,9 @@ public class SeatDao {
         try {
         	//create connection
         	conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
+        	if (conn== null) {
+				throw new SQLException();
+			}
         	//create statement
         	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
         	//execute query
@@ -86,6 +92,9 @@ public class SeatDao {
         try {
         	//create connection
         	conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
+        	if (conn== null) {
+				throw new SQLException();
+			}
         	//create statement
         	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
         	//execute query

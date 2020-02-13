@@ -45,9 +45,11 @@ public class AnchorPaneMap extends Decorator{
         });
         
         VBox verticalBox = new VBox(webView, b);
-        verticalBox.setMaxWidth(anchorPane.getWidth());
-        verticalBox.setMaxHeight(anchorPane.getHeight());
 		anchorPane.getChildren().add(verticalBox);
+		verticalBox.setMaxWidth(256);
+        verticalBox.setMaxHeight(238);
+        b.setMinWidth(256);
+        
 		return anchorPane;
     }
 	

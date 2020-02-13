@@ -23,15 +23,19 @@ public class LoginGraphicController extends GraphicController{
 	LoginController lg = new LoginController();
 	
 	@FXML
-	public void signIn(ActionEvent e) throws IOException, SQLException {
+	public void signIn(ActionEvent e) throws IOException{
 		
 		StudentBean possibleStudent = new StudentBean();
 		possibleStudent.setUsername(user.getText());
 		possibleStudent.setPassword(psw.getText());
-		if(lg.login(possibleStudent)) {
-			goToPage(NamePage.HOME);
-		}else {
-			AlertControl.infoBox("Data are strong", WARNING);
+		try {
+			if(lg.login(possibleStudent)) {
+				goToPage(NamePage.HOME);
+			}else {
+				AlertControl.infoBox("Data are strong", WARNING);
+			}
+		} catch (SQLException e1) {
+			AlertControl.infoBox("Ops.. connection failed", WARNING);
 		}
 		
 	}

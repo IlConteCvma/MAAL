@@ -13,9 +13,7 @@ import logic.model.SingletonConnectionDB;
 import logic.model.queries.QuestionQueries;
 
 public class QuestionDao {
-	protected static Statement stmt;
-    protected static Connection connection;
-    
+	protected static Statement stmt;    
     private QuestionDao() {
         throw new IllegalStateException("Utility class");
       }
@@ -23,10 +21,13 @@ public class QuestionDao {
     
 	public static int getNewId() throws SQLException {
 		int count;
+		Connection conn = null;
 		try {
-			connection = (SingletonConnectionDB.getSingletonConnection()).getConnection();
-        	
-            stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+			conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
+        	if(conn==null) {
+        		throw new SQLException();
+        	}
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             
 		ResultSet rs = QuestionQueries.getId(stmt);
@@ -45,7 +46,7 @@ public class QuestionDao {
           	if(stmt != null){
           		stmt.close();
           	}
-          	if (connection != null) {
+          	if (conn != null) {
   				SingletonConnectionDB.close();
   			}
           }
@@ -59,13 +60,15 @@ public class QuestionDao {
 		
 
 		String text;
-
+		Connection conn = null;
 		
 		
 		try {
-			connection = (SingletonConnectionDB.getSingletonConnection()).getConnection();
-        	
-            stmt = connection.createStatement();
+			conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
+			if(conn==null) {
+        		throw new SQLException();
+        	}
+            stmt = conn.createStatement();
     
            
 		}

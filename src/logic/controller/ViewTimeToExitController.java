@@ -46,7 +46,7 @@ public class ViewTimeToExitController {
 	}
 	
 	public void getInfoByWeather(){
-		
+		/*
 		 
 		WeatherApi weather = new WeatherApi();
 		String rainIntensity = null;
@@ -61,7 +61,7 @@ public class ViewTimeToExitController {
 			nextJourney.setLateForWeather(10);
 		}
 		
-		
+		*/
 	}
 	
 	public void estimateTimeToExit() throws IOException{
