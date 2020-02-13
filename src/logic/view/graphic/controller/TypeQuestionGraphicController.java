@@ -4,10 +4,11 @@ package logic.view.graphic.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -119,13 +120,25 @@ public class TypeQuestionGraphicController extends GraphicController{
 
 			@Override
 			public void handle(ActionEvent event) {
-				subj.setStyle("-fx-background-color: #0bbd3d;");
 				
+				//gridPane.setDisable(false);
+				 List<Node> list = gridPane.getChildren();
+				 for(int i = 0; i<list.size();i++) {
+					 
+					 list.get(i).setDisable(false);
+					 list.get(i).setStyle(null);;
+				 }
+				 
+				
+				
+				subj.setStyle("-fx-background-color: #0bbd3d;");
+				subj.setDisable(true);
 				subSelect = subj.getAccessibleText();
 				
 				buttonPro.setDisable(false);
 				buttonExe.setDisable(false);
-				gridPane.setDisable(true);
+				
+				//gridPane.setDisable(true);
 				
 			}
 		

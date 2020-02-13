@@ -182,9 +182,9 @@ public class QuestionDao {
             		q.setQuestionSub(SubjectDao.getSubjectByName(rs.getString("Materia")));
 
                     quest.add(q);
-                    i++;
+                    //i++;
                     
-                }while(i<11 && rs.next());
+                }while(/*i<11 &&*/ rs.next());
             }
             rs.close();
             } finally {     
