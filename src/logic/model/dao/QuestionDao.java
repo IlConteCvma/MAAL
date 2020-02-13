@@ -184,7 +184,7 @@ public class QuestionDao {
                     quest.add(q);
                     i++;
                     
-                }while(i<11 & rs.next());
+                }while(i<11 && rs.next());
             }
             rs.close();
             } finally {     

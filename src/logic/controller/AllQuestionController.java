@@ -9,6 +9,7 @@ import logic.bean.QuestionBean;
 import logic.bean.QuestionExerciseBean;
 import logic.bean.QuestionProblemBean;
 import logic.model.Question;
+import logic.model.QuestionType;
 import logic.model.dao.QuestionDao;
 
 
@@ -17,7 +18,7 @@ public class AllQuestionController {
 	
 	
 	public AllQuestionController() {
-		
+		// Do nothing because of not using 
 	}
 	
 	public List<QuestionBean> getQuestions() {
@@ -33,7 +34,7 @@ public class AllQuestionController {
 					
 					Question appQuest = quest.get(i);
 					QuestionBean appBean;
-					if(appQuest.whoAmI().equals("EXERCISE")) {
+					if(appQuest.whoAmI() == QuestionType.EXERCISE) {
 						appBean = new QuestionExerciseBean();
 						
 						Object returned = appQuest.getClass().getMethod("getText").invoke(appQuest);
@@ -61,12 +62,10 @@ public class AllQuestionController {
 			}
 		
 		}
-		catch(SQLException e) {
+		catch(SQLException | ReflectiveOperationException ex) {
 			bean = null;
 		}
-		catch(ReflectiveOperationException e) {
-			bean = null;
-		}
+	
 		
 		
 		

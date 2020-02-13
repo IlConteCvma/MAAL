@@ -32,29 +32,16 @@ public class StudentDao {
 			}
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = StudentQueries.selectStudent(stmt, possibleUsername, possiblePassword);
-			if (rs.first()) {
-				rs.first();
-				SingletonConnectionDB.increaseCount();
-				String name = rs.getString("Nome");
-				String surname = rs.getString("Cognome");
-				String username = rs.getString("Username");
-				String password = rs.getString("Password");
-				String address = rs.getString("Indirizzo");
-				String streetNumber = rs.getString("Civico");
-				String city = rs.getString("Citta");
-				String typeVehicle = rs.getString("Veicolo");
-
-				Vehicle vehicleStudent = new Vehicle(TypeVehicle.valueOf(typeVehicle));
-				Address addressStudent = new Address(address, streetNumber, city);
-
-				studLog = new Student(name, surname, username, password, addressStudent, vehicleStudent);
-				Session.getSession().setStudent(studLog);
+			studLog = buildStudent(rs);
+			if (studLog == null) {
+				throw new SQLException();
 			}
 
+			SingletonConnectionDB.increaseCount();
+			Session.getSession().setStudent(studLog);
 			rs.close();
-		} catch (SQLException e) {
-			throw e;
-		} finally {
+		} 
+		 finally {
 
 			if (stmt != null) {
 				stmt.close();
@@ -68,10 +55,10 @@ public class StudentDao {
 		return studLog;
 	}
 	
-	public static Student findStudent(String Username) throws SQLException {
+	public static Student findStudent(String username) throws SQLException {
 		Statement stmt = null;
 		Connection conn = null;
-		Student studLog = null;
+		Student stud = null;
 		ResultSet rs = null;
 
 		try {
@@ -80,30 +67,16 @@ public class StudentDao {
 				throw new SQLException();
 			}
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			rs = StudentQueries.selectSingleStudent(stmt, Username);
-			if (rs.first()) {
-				rs.first();
-				
-				String name = rs.getString("Nome");
-				String surname = rs.getString("Cognome");
-				String username = rs.getString("Username");
-				String password = null;
-				String address = rs.getString("Indirizzo");
-				String streetNumber = rs.getString("Civico");
-				String city = rs.getString("Citta");
-				String typeVehicle = rs.getString("Veicolo");
+			rs = StudentQueries.selectSingleStudent(stmt, username);
 
-				Vehicle vehicleStudent = new Vehicle(TypeVehicle.valueOf(typeVehicle));
-				Address addressStudent = new Address(address, streetNumber, city);
-
-				studLog = new Student(name, surname, username, password, addressStudent, vehicleStudent);
-				Session.getSession().setStudent(studLog);
+			stud = buildStudent(rs);
+			if (stud == null) {
+				throw new SQLException();
 			}
-
+			
 			rs.close();
-		} catch (SQLException e) {
-			throw e;
-		} finally {
+		} 
+		finally {
 
 			if (stmt != null) {
 				stmt.close();
@@ -114,6 +87,33 @@ public class StudentDao {
 			}
 		}
 
-		return studLog;
+		return stud;
+	}
+	
+	private static Student buildStudent(ResultSet rs) throws SQLException {
+		if (!rs.first()){
+			
+			return null;
+		}
+		else {
+			rs.first();
+			
+			String name = rs.getString("Nome");
+			String surname = rs.getString("Cognome");
+			String userna = rs.getString("Username");
+			String password = null;
+			String address = rs.getString("Indirizzo");
+			String streetNumber = rs.getString("Civico");
+			String city = rs.getString("Citta");
+			String typeVehicle = rs.getString("Veicolo");
+
+			Vehicle vehicleStudent = new Vehicle(TypeVehicle.valueOf(typeVehicle));
+			Address addressStudent = new Address(address, streetNumber, city);
+
+			
+			return  new Student(name, surname, userna, password, addressStudent, vehicleStudent);
+			
+		}
+		 
 	}
 }
