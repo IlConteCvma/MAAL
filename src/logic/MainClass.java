@@ -2,6 +2,7 @@ package logic;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -23,7 +24,9 @@ public class MainClass extends Application{
 		
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
+		stage.getIcons().add(new Image("file:view/resources/img/logo.png"));
 		stage.setTitle("MAAL Assistant");
+		stage.getIcons().add(new Image(getClass().getResourceAsStream("view/resources/img/logo.png")));
 		stage.setResizable(false);
 		stage.show();
 		

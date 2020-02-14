@@ -27,6 +27,10 @@ public class Vehicle {
 		}
 	}
 	
+	public TypeVehicle getType() {
+		return this.type;
+	}
+	
 	public double getSpeed() {
 		return speed;
 	}

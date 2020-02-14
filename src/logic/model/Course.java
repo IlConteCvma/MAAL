@@ -8,6 +8,11 @@ public class Course {
 	private List<Subject> subjectOfCourse;
 	private List<Student> studentOfCourse;
 	
+	public Course(String nameOfCourse, List<Subject> subjectOfCourse) {
+		this.nameOfCourse = nameOfCourse;
+		this.subjectOfCourse = subjectOfCourse;
+	}
+	
 	public Course(String nameOfCourse, List<Subject> subjectOfCourse, List<Student> studentOfCourse) {
 		this.nameOfCourse = nameOfCourse;
 		this.subjectOfCourse = subjectOfCourse;

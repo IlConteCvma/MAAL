@@ -47,8 +47,6 @@ public class ViewTimeToExitController {
 	}
 	
 	public void getInfoByWeather(){
-		/*
-		 
 		WeatherApi weather = new WeatherApi();
 		String rainIntensity = null;
 		try {
@@ -61,8 +59,6 @@ public class ViewTimeToExitController {
 		}else if(rainIntensity.equals("Moderate")){
 			nextJourney.setLateForWeather(10);
 		}
-		
-		*/
 	}
 	
 	public void estimateTimeToExit() throws IOException, TimeException, LessonNotFoundException{

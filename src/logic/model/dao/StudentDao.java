@@ -25,7 +25,7 @@ public class StudentDao {
 
 		try {
 			conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
-			if (conn== null) {
+			if (conn == null) {
 				throw new SQLException();
 			}
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -36,10 +36,9 @@ public class StudentDao {
 			}
 
 			SingletonConnectionDB.increaseCount();
-			
+
 			rs.close();
-		} 
-		 finally {
+		} finally {
 
 			if (stmt != null) {
 				stmt.close();
@@ -52,7 +51,7 @@ public class StudentDao {
 
 		return studLog;
 	}
-	
+
 	public static Student findStudent(String username) throws SQLException {
 		Statement stmt = null;
 		Connection conn = null;
@@ -61,7 +60,7 @@ public class StudentDao {
 
 		try {
 			conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
-			if (conn== null) {
+			if (conn == null) {
 				throw new SQLException();
 			}
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -71,10 +70,9 @@ public class StudentDao {
 			if (stud == null) {
 				throw new SQLException();
 			}
-			
+
 			rs.close();
-		} 
-		finally {
+		} finally {
 
 			if (stmt != null) {
 				stmt.close();
@@ -87,15 +85,14 @@ public class StudentDao {
 
 		return stud;
 	}
-	
+
 	private static Student buildStudent(ResultSet rs) throws SQLException {
-		if (!rs.first()){
-			
+		if (!rs.first()) {
+
 			return null;
-		}
-		else {
+		} else {
 			rs.first();
-			
+
 			String name = rs.getString("Nome");
 			String surname = rs.getString("Cognome");
 			String userna = rs.getString("Username");
@@ -108,10 +105,35 @@ public class StudentDao {
 			Vehicle vehicleStudent = new Vehicle(TypeVehicle.valueOf(typeVehicle));
 			Address addressStudent = new Address(address, streetNumber, city);
 
-			
-			return  new Student(name, surname, userna, password, addressStudent, vehicleStudent);
-			
+			return new Student(name, surname, userna, password, addressStudent, vehicleStudent);
+
 		}
-		 
+
+	}
+
+	public static void insertNewStudent(Student newStudent) throws SQLException {
+
+		Statement stmt = null;
+		Connection conn = null;
+		try {
+			// create connection
+			conn = (SingletonConnectionDB.getSingletonConnection()).getConnection();
+			if (conn == null) {
+				throw new SQLException();
+			}
+			// create statement
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			// execute query
+			StudentQueries.insertNewStudent(stmt, newStudent);
+		} finally {
+			if (stmt != null) {
+				stmt.close();
+			}
+			if (conn != null) {
+				SingletonConnectionDB.close();
+			}
+
+		}
+
 	}
 }
