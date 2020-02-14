@@ -5,6 +5,10 @@ import java.sql.Statement;
 
 public class LessonStudentQueries {
 
+	private LessonStudentQueries() {
+		throw new IllegalStateException("Utility class");
+	}
+	
 	public static int followNewSubject(Statement stmt, String username, String nameSubject) throws SQLException  {
 		
 		String sql = "INSERT INTO `segue` (`Studente`, `Materia`) VALUES ('"+username+"', '"+nameSubject+"');";

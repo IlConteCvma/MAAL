@@ -113,14 +113,12 @@ public class RegistrationGraphicController extends GraphicController implements 
 	public void signUp() {
 
 		// check data inserted
-		if (checkData()) {
-			if (AlertControl.confirmation()) {
+		if (checkData() && AlertControl.confirmation()) {
 				UserBean newUser = new UserBean();
 				populeBean(newUser);
 				regCtrl.createStudent(newUser);
 				container.getChildren().remove(1);
 				chooseCourse();
-			}
 		}
 	}
 

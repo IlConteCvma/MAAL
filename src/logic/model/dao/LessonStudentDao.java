@@ -11,6 +11,10 @@ import logic.model.queries.LessonStudentQueries;
 
 public class LessonStudentDao {
 
+	private LessonStudentDao() {
+		throw new IllegalStateException("Utility class");
+	}
+	
 	public static void followMoreSubject(String username, List<String> subjectsFollow) throws SQLException{
 
 			Statement stmt = null;

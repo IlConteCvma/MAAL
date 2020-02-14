@@ -41,12 +41,13 @@ public class AlertControl {
     	Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
     	alert.setHeaderText("");
     	alert.showAndWait();
-
+    	
     	if (alert.getResult() == ButtonType.YES) {
     	    return true;
-    	}else {
-			return false;
     	}
+		
+    	return false;
+    	
     }
 	
 }
