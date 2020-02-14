@@ -2,6 +2,7 @@ package logic.view;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 
 public class AlertControl {
 	
@@ -22,6 +23,30 @@ public class AlertControl {
         alert.setHeaderText(headerMessage);
         alert.setContentText(infoMessage);
         alert.showAndWait();
+    }
+    
+    public static boolean confirmation() {
+    	Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+    	alert.setHeaderText("");
+    	alert.showAndWait();
+
+    	if (alert.getResult() == ButtonType.YES) {
+    	    return true;
+    	}else {
+			return false;
+    	}
+    }
+    
+    public static boolean chooseQuestion() {
+    	Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+    	alert.setHeaderText("");
+    	alert.showAndWait();
+
+    	if (alert.getResult() == ButtonType.YES) {
+    	    return true;
+    	}else {
+			return false;
+    	}
     }
 	
 }

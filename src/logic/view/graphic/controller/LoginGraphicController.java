@@ -45,8 +45,8 @@ public class LoginGraphicController extends GraphicController{
 		AlertControl.infoBox("Operation not available", WARNING);
 	}
 	
-	public void signUp() {
-		AlertControl.infoBox("Operation not available", WARNING);
+	public void signUp() throws IOException {
+		goToPage(NamePage.REGISTRATION);
 	}
 
 }

@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import logic.bean.TimeToExitBean;
-import logic.view.ViewComponent;
 import logic.view.graphic.elements.AnchorPaneComponent;
 
 public class TimeToExitGraphicController extends GraphicController implements Initializable{
@@ -46,7 +45,7 @@ public class TimeToExitGraphicController extends GraphicController implements In
 			anchorPane.draw().getChildren().remove(0);
 			anchorPaneContainer.getChildren().remove(2);
 		}
-		ViewComponent anchorPaneMap = new AnchorPaneMap(anchorPane);
+		AnchorPaneMap anchorPaneMap = new AnchorPaneMap(anchorPane);
 		anchorPaneContainer.getChildren().add(anchorPaneMap.draw());
 	}
 	
@@ -60,7 +59,7 @@ public class TimeToExitGraphicController extends GraphicController implements In
 			anchorPane.draw().getChildren().remove(0);
 			anchorPaneContainer.getChildren().remove(2);
 		}
-		ViewComponent anchorPaneRoom = new AnchorPaneRoom(anchorPane, timeToExitBean.getNextLesson());
+		AnchorPaneRoom anchorPaneRoom = new AnchorPaneRoom(anchorPane, timeToExitBean.getNextLesson());
 		anchorPaneContainer.getChildren().add(anchorPaneRoom.draw());
 	}
 

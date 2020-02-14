@@ -43,7 +43,9 @@ public class HomeMenuGraphicController extends GraphicController {
 	}
 	
 	public void logOutButton() throws IOException {
-		goToPage(NamePage.LOGIN);
+		if(AlertControl.confirmation()) {
+			goToPage(NamePage.LOGIN);
+		}
 	}
 
 	

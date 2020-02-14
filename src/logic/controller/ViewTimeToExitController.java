@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import execption.LessonNotFoundException;
+import execption.TimeException;
 import javafx.scene.Scene;
 import logic.MainClass;
 import logic.Session;
@@ -15,7 +17,6 @@ import logic.model.MapsApi;
 import logic.model.TimeApi;
 import logic.model.WeatherApi;
 import logic.model.dao.SeatDao;
-import logic.view.AlertControl;
 import logic.view.HomeTimePage;
 import logic.view.Page;
 import logic.view.graphic.controller.TimeToExitGraphicController;
@@ -46,7 +47,7 @@ public class ViewTimeToExitController {
 	}
 	
 	public void getInfoByWeather(){
-		
+		/*
 		 
 		WeatherApi weather = new WeatherApi();
 		String rainIntensity = null;
@@ -61,10 +62,10 @@ public class ViewTimeToExitController {
 			nextJourney.setLateForWeather(10);
 		}
 		
-		
+		*/
 	}
 	
-	public void estimateTimeToExit() throws IOException{
+	public void estimateTimeToExit() throws IOException, TimeException, LessonNotFoundException{
 		Lesson nextLesson = nextLessonController.getNextLesson();
 		if(nextLesson != null) {
 			TimeApi time = new TimeApi();
@@ -84,7 +85,7 @@ public class ViewTimeToExitController {
 			}while(timeToExit<0 && i < 3);
 			timeToExitBean.setPriority(i);
 			if(timeToExit < 0) {
-				AlertControl.infoBox("E' troppo tardi!", "ALERT");
+				throw new TimeException();
 			}else {
 				timeToExitBean.setHourToExit(time.timeAdd(timeToExit));
 				timeToExitBean.setNextJourney(nextJourney);
@@ -96,7 +97,7 @@ public class ViewTimeToExitController {
 				MainClass.getStage().setScene(scene);
 			}
 		}else {
-			AlertControl.infoBox("You have not lesson today", "NOT LESSON");
+			throw new LessonNotFoundException();
 		}
 	}
 	

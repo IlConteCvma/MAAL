@@ -14,6 +14,7 @@ public class PageFactory {
 		switch(type) {
 			case HOME: return new HomePage();
 			case LOGIN: return new LoginPage();
+			case REGISTRATION: return new RegistrationPage();
 			case QUESTIONTYPE: return new TypeQuestionPage();
 			case ALLQUESTION: return new AllQuestionPage();
 			

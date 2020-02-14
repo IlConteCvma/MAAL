@@ -7,6 +7,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.shape.Rectangle?>
@@ -60,5 +62,10 @@
       </SplitPane>
       <Polygon fill="WHITE" layoutX="114.0" layoutY="68.0" points="-32.699974060058594, -71.1999740600586, 56.59999084472656, 65.0, 149.00001525878906, -71.1999740600586" stroke="BLACK" strokeType="INSIDE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="132.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="171.0" />
+      <ImageView fitHeight="120.0" fitWidth="106.0" layoutX="44.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

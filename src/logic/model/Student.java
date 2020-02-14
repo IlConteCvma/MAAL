@@ -9,16 +9,13 @@ public class Student {
 	private Address myAddress;
 	private Vehicle vehicle;
 	
-	
 	public Student(String name, String surname, String username, String password,Address myAddress,Vehicle vehicle) {
 		this.name = name;
 		this.surname = surname;
 		this.username = username;
 		this.password = password;
 		this.myAddress = myAddress;
-		this.vehicle = vehicle;
-
-	
+		this.vehicle = vehicle;	
 	}
 	
 	public Address getAddress() {
