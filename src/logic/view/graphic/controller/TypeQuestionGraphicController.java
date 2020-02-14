@@ -2,15 +2,19 @@ package logic.view.graphic.controller;
 
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import logic.bean.SubjectBean;
 import logic.controller.InsertQuestionController;
@@ -21,9 +25,9 @@ import logic.view.NamePage;
 
 
 
-public class TypeQuestionGraphicController extends GraphicController{
+public class TypeQuestionGraphicController extends GraphicController implements Initializable{
 	
-	@FXML Button clickMe;
+	
 	@FXML Button buttonExe;
 	@FXML Button buttonPro;
 	@FXML GridPane gridPane;
@@ -33,6 +37,12 @@ public class TypeQuestionGraphicController extends GraphicController{
 	
 	public TypeQuestionGraphicController() {
 		this.controller = new InsertQuestionController();
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		mySubject();
+		
 	}
 	
 	
@@ -68,7 +78,7 @@ public class TypeQuestionGraphicController extends GraphicController{
 	}
 	
 
-	public void mySubject() {
+	private void mySubject() {
 		 
 		List<SubjectBean> bean = this.controller.getSubjects();
 		gridPane.setVgap(25);
@@ -89,7 +99,7 @@ public class TypeQuestionGraphicController extends GraphicController{
 				showSubject(bean.get(i).getName(),bean.get(i).getAbbrevation(),row,col);
 				col++;
 			}
-			clickMe.setDisable(true);
+			
 		}
 		
 		else {
@@ -97,7 +107,7 @@ public class TypeQuestionGraphicController extends GraphicController{
 			text.setMinSize(110, 30);
 			text.setText("You don't follow any \nsubject\nCheck your profile");
 			text.setTextAlignment(TextAlignment.CENTER);
-			clickMe.setDisable(true);
+		
 			
 			this.gridPane.getChildren().add(text);
 		}
@@ -109,7 +119,11 @@ public class TypeQuestionGraphicController extends GraphicController{
 		Button subj = new Button();
 		subj.setText(abbr);
 		subj.setAccessibleText(name);
-		subj.setMinSize(130, 50);
+		subj.setMinSize(125, 40);
+		
+		
+		subj.setTextFill(Color.WHITE);
+		subj.setStyle("-fx-background-color:  #272F54;");
 		
 		
 		
@@ -124,7 +138,7 @@ public class TypeQuestionGraphicController extends GraphicController{
 				 for(int i = 0; i<list.size();i++) {
 					 
 					 list.get(i).setDisable(false);
-					 list.get(i).setStyle(null);
+					 list.get(i).setStyle("-fx-background-color:  #272F54;");
 				 }
 				 
 				
@@ -144,6 +158,12 @@ public class TypeQuestionGraphicController extends GraphicController{
 		gridPane.add(subj, col, row);
 		
 	}
+
+
+
+
+
+	
 	
 
 

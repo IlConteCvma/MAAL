@@ -7,32 +7,31 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="589.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.graphic.controller.HomeBoxGraphicController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.graphic.controller.HomeBoxGraphicController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fbfbfb" height="468.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="589.0" />
-      <AnchorPane layoutY="42.0" prefHeight="377.0" prefWidth="567.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e2e7ec" height="468.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="599.0" />
+      <AnchorPane layoutY="52.0" prefHeight="377.0" prefWidth="567.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f6c640" height="383.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" style="-fx-background-color: f6c640;" width="567.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66171f" height="119.0" layoutX="397.0" layoutY="251.0" rotate="13.6" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="116.0" />
-            <Label layoutX="2.0" layoutY="83.0" prefHeight="54.0" prefWidth="563.0" style="-fx-alignment: CENTER;" text="Welcome ">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
+            <Polygon fill="#851c28e5" layoutX="299.0" layoutY="343.0" points="-299.0000305175781, 40.0, 268.0, 40.0, -16.000030517578125, -111.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Polygon fill="#851d29e5" layoutX="121.0" layoutY="316.0" points="445.800048828125, 67.5999755859375, 163.50003051757812, -83.0, 445.800048828125, -39.600006103515625" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Polygon fill="#851d29e5" layoutX="110.0" layoutY="306.0" points="-110.0000228881836, 77.0, 173.50003051757812, -73.0, -110.0000228881836, -30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Polygon fill="#66171f" layoutX="75.0" layoutY="252.0" points="-75.00003814697266, 24.39996337890625, 296.6000061035156, -29.20001220703125, -75.00003814697266, 1.5999755859375" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Polygon fill="#66171f" layoutX="638.0" layoutY="253.0" points="-71.0, 24.0, -437.0000305175781, -29.0, -71.0, -1.4000244140625" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Polygon fill="#e1ae40" layoutX="71.0" layoutY="243.0" points="-71.00003814697266, 12.20001220703125, 300.1999816894531, -20.20001220703125, -71.00003814697266, -61.80000305175781" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Rectangle arcHeight="2.0" arcWidth="2.0" fill="#e1ae40" height="230.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" style="-fx-background-color: f6c640;" width="567.0" />
             <Label fx:id="dataOfStudent" layoutY="128.0" prefHeight="35.0" prefWidth="567.0" style="-fx-alignment: CENTER;" text=" ">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="-1.0" layoutY="164.0" prefHeight="18.0" prefWidth="567.0" style="-fx-alignment: CENTER;" text="Would you use the assistant of you journey to University?" />
-            <Polygon fill="#66171f" layoutX="497.0" layoutY="321.0" points="69.4000244140625, -44.79998779296875, 19.0, -55.20001220703125, -11.4000244140625, 61.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <Polygon fill="#66171f" layoutX="444.0" layoutY="349.0" points="-51.199951171875, -119.20001220703125, 122.4000244140625, 33.0, 122.4000244140625, -72.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66171f" height="22.0" layoutX="-2.0" layoutY="257.0" rotate="-14.3" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="205.0" AnchorPane.topAnchor="257.0" />
-            <Polygon fill="#66171f" layoutX="253.0" layoutY="355.0" points="313.4000244140625, -74.60003662109375, -249.99996948242188, -65.00006103515625, 45.20001220703125, -154.59999084472656" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <Polygon fill="#a22531" layoutX="299.0" layoutY="343.0" points="-299.0000305175781, 40.0, 268.0, 40.0, -2.199951171875, -121.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <Polygon fill="#a22531" layoutX="228.0" layoutY="320.0" points="-228.00003051757812, -31.0, -228.00003051757812, 63.5999755859375, 72.60003662109375, -98.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <Polygon fill="#a22531" layoutX="304.0" layoutY="262.0" points="-8.0, -40.0, 263.0, 122.39996337890625, 263.0, 21.5999755859375" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <Button layoutX="241.0" layoutY="256.0" mnemonicParsing="false" onAction="#getStarted" prefHeight="40.0" prefWidth="101.0" style="-fx-background-color: #E45652;" text="Get started" />
+            <Label layoutX="-3.0" layoutY="351.0" prefHeight="18.0" prefWidth="567.0" style="-fx-alignment: CENTER; -fx-text-fill: #ffffff;" text="Would you use the assistant of you journey to University?" textFill="WHITE" />
+            <Button layoutX="221.0" layoutY="296.0" mnemonicParsing="false" onAction="#getStarted" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: #272F54;" text="Get started" textFill="WHITE" />
+            <Label layoutX="2.0" layoutY="41.0" prefHeight="54.0" prefWidth="563.0" style="-fx-alignment: CENTER;" text="Welcome ">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Polygon fill="#e1ae40" layoutX="638.0" layoutY="246.0" points="-71.00003814697266, 12.20001220703125, -431.6000061035156, -24.0, -71.00003814697266, -61.80000305175781" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </children>
       </AnchorPane>
    </children>

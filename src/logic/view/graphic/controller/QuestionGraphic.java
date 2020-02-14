@@ -28,15 +28,17 @@ public class QuestionGraphic extends GraphicController {
 	
 	
 	
-	public void commData() throws QuestionException{
+	public boolean commData() throws QuestionException{
 		
 		
 		if(title.getText().isEmpty() ) {
 			this.message.setText("Please enter a title");
+			return false;
 			
 		}
 		else if(body.getText().isEmpty()) {
 			this.message.setText("Please the body");
+			return false;
 		}
 		
 		else {
@@ -51,11 +53,12 @@ public class QuestionGraphic extends GraphicController {
 				this.message.setText("Sorry some error");
 				throw new QuestionException(e.getMessage());
 			}
-			
+			return true;
 		}
 	}
 	
 	public void sendData() {
+		
 		try {
 			InsertQuestionController controller = new InsertQuestionController(this.factory,qBean);
 			controller.startSave(this.subject);

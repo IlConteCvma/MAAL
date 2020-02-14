@@ -27,9 +27,11 @@ public class QuestionExerciseGraphicController extends QuestionGraphic {
 
 	
 	public void commit() throws QuestionException  {
-		commData();
-		myData();
-		sendData();
+		if(super.commData()) {
+				myData();
+			super.sendData();
+		}
+		
 		
 	}
 	
