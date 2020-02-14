@@ -32,7 +32,9 @@ public class NavbarGraphicController extends GraphicController {
 		AlertControl.infoBox("Operation not available", "WARNING");
 	}
 	public void logOutButton() throws IOException {
-		goToPage(NamePage.LOGIN);
+		if(AlertControl.confirmation()) {
+			goToPage(NamePage.LOGIN);
+		}
 	}
 			
 }

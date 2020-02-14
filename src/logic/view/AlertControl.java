@@ -28,26 +28,10 @@ public class AlertControl {
     public static boolean confirmation() {
     	Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
     	alert.setHeaderText("");
+    	alert.setTitle("Confirmation");
     	alert.showAndWait();
 
-    	if (alert.getResult() == ButtonType.YES) {
-    	    return true;
-    	}else {
-			return false;
-    	}
-    }
-    
-    public static boolean chooseQuestion() {
-    	Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
-    	alert.setHeaderText("");
-    	alert.showAndWait();
-    	
-    	if (alert.getResult() == ButtonType.YES) {
-    	    return true;
-    	}
-		
-    	return false;
-    	
+    	return alert.getResult() == ButtonType.YES;
     }
 	
 }
