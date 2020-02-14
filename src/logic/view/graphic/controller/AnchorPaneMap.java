@@ -10,6 +10,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import logic.model.StringParser;
@@ -31,7 +32,8 @@ public class AnchorPaneMap extends Decorator{
         
 		Button b = new Button("OPEN IN MAPS");
 		b.setMinWidth(anchorPane.getWidth());
-		
+		b.setStyle("-fx-background-color:  #272F54;");
+		b.setTextFill(Color.WHITE);
 		b.setAlignment(Pos.CENTER);
 		b.setOnAction(new EventHandler<ActionEvent>() {
             @Override

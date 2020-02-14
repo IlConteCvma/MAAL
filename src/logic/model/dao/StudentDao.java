@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import logic.Session;
 import logic.model.Address;
 import logic.model.SingletonConnectionDB;
 import logic.model.Student;
@@ -38,7 +36,7 @@ public class StudentDao {
 			}
 
 			SingletonConnectionDB.increaseCount();
-			Session.getSession().setStudent(studLog);
+			
 			rs.close();
 		} 
 		 finally {
