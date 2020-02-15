@@ -3,6 +3,8 @@ package logic.view;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 public class AlertControl {
 	
@@ -27,6 +29,15 @@ public class AlertControl {
     
     public static boolean confirmation() {
     	Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+    	alert.setHeaderText("");
+    	alert.setTitle("Confirmation");
+    	alert.showAndWait();
+
+    	return alert.getResult() == ButtonType.YES;
+    }
+    
+    public static boolean confirmation(String msg) {
+    	Alert alert = new Alert(AlertType.CONFIRMATION, msg, ButtonType.YES, ButtonType.NO);
     	alert.setHeaderText("");
     	alert.setTitle("Confirmation");
     	alert.showAndWait();

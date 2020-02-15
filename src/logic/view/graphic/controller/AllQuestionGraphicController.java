@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Hyperlink;
@@ -24,7 +23,7 @@ import logic.controller.AllQuestionController;
 import logic.view.AlertControl;
 import logic.view.NamePage;
 
-public class AllQuestionGraphicController extends GraphicController implements Initializable{
+public class AllQuestionGraphicController extends GraphicController{
 	
 	@FXML VBox table;
 	
@@ -47,7 +46,7 @@ public class AllQuestionGraphicController extends GraphicController implements I
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+				
 		AllQuestionController controller = new AllQuestionController();
 		List<QuestionBean> bean = controller.getQuestions();
 		table.setSpacing(5);

@@ -10,7 +10,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -30,7 +29,7 @@ import logic.model.TypeVehicle;
 import logic.view.AlertControl;
 import logic.view.NamePage;
 
-public class RegistrationGraphicController extends GraphicController implements Initializable {
+public class RegistrationGraphicController extends GraphicController {
 
 	private static final int ROWPERSONALDATA = 2;
 	private static final int COLPERSONALDATA = 2;
@@ -98,7 +97,7 @@ public class RegistrationGraphicController extends GraphicController implements 
 		choiceBoxProfession.getSelectionModel().selectedItemProperty()
 				.addListener((ObservableValue<? extends String> observable, String oldValue,
 						String newValue) -> changeProfession(newValue));
-
+		
 		// Set choiche box
 		choiceBoxVehicle.getItems().addAll(TypeVehicle.BUS, TypeVehicle.CAR, TypeVehicle.SCOOTER);
 		choiceBoxVehicle.getSelectionModel().select(0);
@@ -113,7 +112,7 @@ public class RegistrationGraphicController extends GraphicController implements 
 	public void signUp() {
 
 		// check data inserted
-		if (checkData() && AlertControl.confirmation()) {
+		if (checkData() && AlertControl.confirmation("Are your data correct?")) {
 				UserBean newUser = new UserBean();
 				populeBean(newUser);
 				regCtrl.createStudent(newUser);
@@ -212,7 +211,7 @@ public class RegistrationGraphicController extends GraphicController implements 
 		// check personal data
 		for (int i = 0; i < textFieldPersonalData.length - 1; i++) {
 			if (textFieldPersonalData[i].getText().isEmpty()) {
-				AlertControl.infoBox("Check personal data", "Error");
+				AlertControl.infoBox("Please insert your personal data", "Error");
 				return false;
 			}
 		}
@@ -220,7 +219,7 @@ public class RegistrationGraphicController extends GraphicController implements 
 		// check credential
 		for (int i = 0; i < textFieldCredential.length; i++) {
 			if (textFieldCredential[i].getText().isEmpty()) {
-				AlertControl.infoBox("Check credential", "Error");
+				AlertControl.infoBox("Please insert your credential", "Error");
 				return false;
 			}
 		}

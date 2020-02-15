@@ -1,14 +1,20 @@
 package logic.view.graphic.controller;
 
 import javafx.fxml.*;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import logic.bean.StudentBean;
 import logic.controller.LoginController;
 import logic.view.AlertControl;
 import logic.view.NamePage;
-import java.io.IOException;
-import java.sql.SQLException;
+import logic.view.graphic.elements.PhraseSelector;
 
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+import execption.AssistantException;
 import javafx.event.*;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -18,9 +24,25 @@ public class LoginGraphicController extends GraphicController{
 	@FXML private PasswordField psw;
 	@FXML private TextField user;
 	@FXML private AnchorPane rootPane;
+	@FXML private Label label;
 	
-	private static final String WARNING = "WARNING";
-	LoginController lg = new LoginController();
+	
+	private static final String WARNING = "COMING SOON";
+	LoginController lg;
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		lg = new LoginController();
+		
+		try {
+			this.label.setText(PhraseSelector.select("src/logic/view/resources/LoginPhrase.txt"));
+		} catch (AssistantException e) {
+			//default message
+			this.label.setText("Welcome");
+		}
+		
+		
+	}
 	
 	@FXML
 	public void signIn(ActionEvent e) throws IOException{
@@ -48,5 +70,8 @@ public class LoginGraphicController extends GraphicController{
 	public void signUp() throws IOException {
 		goToPage(NamePage.REGISTRATION);
 	}
+
+
+	
 
 }

@@ -2,16 +2,20 @@ package logic.view.graphic.controller;
 
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
+import logic.Session;
 import logic.view.AlertControl;
 import logic.view.NamePage;
 
 
 
-public class HomeMenuGraphicController extends GraphicController {
+public class HomeMenuGraphicController extends GraphicController{
 	
-	private static final String WARNING = "WARNING";
+	private static final String WARNING = "COMING SOON";
 	private static final String NOTAVAILABLE = "Operation not available";
 	@FXML
 	public void homeButton(ActionEvent e) throws IOException {
@@ -45,7 +49,16 @@ public class HomeMenuGraphicController extends GraphicController {
 	public void logOutButton() throws IOException {
 		if(AlertControl.confirmation()) {
 			goToPage(NamePage.LOGIN);
+			Session.getSession().setStudent(null);
 		}
+	}
+	
+	
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		//nothing to do
+		
 	}
 
 	

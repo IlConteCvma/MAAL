@@ -1,24 +1,56 @@
 package logic.view.graphic.controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import logic.Session;
+import logic.model.Student;
 import logic.view.AlertControl;
 import logic.view.NamePage;
 
 
-public class NavbarGraphicController extends GraphicController {
+public class NavbarGraphicController extends GraphicController{
+
+
+	@FXML Button homeButton;
+	@FXML Button calButton;
+	@FXML Button profButton;
+	@FXML MenuButton forum;
+	@FXML Label nameLab;
 	
-	private HomeMenuGraphicController controlHome = new HomeMenuGraphicController();
+	private final static String clickOff = "-fx-background-color :  #FBF9F9;"
+			+ "-fx-border-color:  #626262;"
+			+ "-fx-text-fill:  #000000";
+	private final static String clickOn =  "-fx-background-color :  #DEDEDE;"
+			+ "-fx-border-color:  #626262;"
+			+ "-fx-text-fill:  #000000";
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		homeButton.setStyle(clickOn);
+		Student app = Session.getSession().getStudent();
+		
+		String visual = app.getName()+" "+app.getSurname()+" ("+app.getUsername()+")";
+		nameLab.setText(visual);
+		
+	}
 	
 	@FXML
 	public void homeButton(ActionEvent e) throws IOException {
-		controlHome.homeButton(e);
+		clearButton();
+		homeButton.setDisable(true);
+		goToPage(NamePage.HOME);
+
 	}	
 	
 	public void calendarButton() {
-		AlertControl.infoBox("Operation not available", "WARNING");
+		AlertControl.infoBox("Operation not available","COMING SOON");
 	}
 	
 	public void allQuestion() throws IOException {
@@ -29,12 +61,44 @@ public class NavbarGraphicController extends GraphicController {
 	}
 	
 	public void profileButton() {
-		AlertControl.infoBox("Operation not available", "WARNING");
+		AlertControl.infoBox("Operation not available", "COMING SOON");
 	}
 	public void logOutButton() throws IOException {
 		if(AlertControl.confirmation()) {
+			Session.getSession().setStudent(null);
 			goToPage(NamePage.LOGIN);
 		}
 	}
+	
+	private void clearButton() {
+		homeButton.setStyle(clickOff);
+		profButton.setStyle(clickOff);
+		calButton.setStyle(clickOff);
+		forum.setStyle(clickOff);
+		
+	}
+	
+	public void setHome() {
+		clearButton();
+		homeButton.setStyle(clickOn);
+	}
+	
+	public void setForum() {
+		clearButton();
+		forum.setStyle(clickOn);
+	}
+	
+	public void setProfile() {
+		clearButton();
+		profButton.setStyle(clickOn);
+	}
+	
+	public void setCalendar() {
+		clearButton();
+		calButton.setStyle(clickOn);
+	}
+
+
+	
 			
 }

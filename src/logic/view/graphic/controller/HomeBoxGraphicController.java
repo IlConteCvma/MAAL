@@ -9,14 +9,13 @@ import java.util.ResourceBundle;
 import execption.LessonNotFoundException;
 import execption.TimeException;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import logic.Session;
 import logic.bean.StudentBean;
 import logic.controller.ViewTimeToExitController;
 import logic.view.AlertControl;
 
-public class HomeBoxGraphicController extends GraphicController implements Initializable{
+public class HomeBoxGraphicController extends GraphicController{
 
 	private ViewTimeToExitController controlUC = new ViewTimeToExitController();
 	

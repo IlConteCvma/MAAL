@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,7 +24,7 @@ import logic.view.NamePage;
 
 
 
-public class TypeQuestionGraphicController extends GraphicController implements Initializable{
+public class TypeQuestionGraphicController extends GraphicController{
 	
 	
 	@FXML Button buttonExe;

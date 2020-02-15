@@ -2,13 +2,14 @@ package logic.view.graphic.controller;
 
 import java.io.IOException;
 
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import logic.MainClass;
 import logic.view.Page;
 import logic.view.PageFactory;
 import logic.view.NamePage;
 
-public abstract class GraphicController {
+public abstract class GraphicController implements Initializable {
 	
 	protected void goToPage(NamePage page) throws IOException {
 		Page root = PageFactory.createPage(page);

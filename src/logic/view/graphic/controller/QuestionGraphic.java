@@ -1,9 +1,12 @@
 package logic.view.graphic.controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import execption.QuestionException;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import logic.bean.QuestionBean;
@@ -12,8 +15,11 @@ import logic.model.QuestionFactory;
 import logic.view.AlertControl;
 import logic.view.NamePage;
 
+
 public class QuestionGraphic extends GraphicController {
-	
+
+	private static final String WARNING = "COMING SOON";
+	private static final String NOTAVAILABLE = "Operation not available";
 	protected QuestionFactory factory;
 	protected String subject;
 	protected QuestionBean qBean;
@@ -76,4 +82,17 @@ public class QuestionGraphic extends GraphicController {
 	public void back() throws IOException {
 		goToPage(NamePage.QUESTIONTYPE);
 	}
+	
+	public void saveLocal() {
+		AlertControl.infoBox(NOTAVAILABLE, WARNING);
+	}
+
+
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		message.setAlignment(Pos.CENTER);
+		message.setText(subject);
+	}
+
 }
