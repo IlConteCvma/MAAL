@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import execption.AssistantException;
+import execption.UserException;
 import javafx.event.*;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -51,13 +52,12 @@ public class LoginGraphicController extends GraphicController{
 		possibleStudent.setUsername(user.getText());
 		possibleStudent.setPassword(psw.getText());
 		try {
-			if(lg.login(possibleStudent)) {
-				goToPage(NamePage.HOME);
-			}else {
-				AlertControl.infoBox("Data are strong", WARNING);
-			}
+			lg.login(possibleStudent);
+			goToPage(NamePage.HOME);
 		} catch (SQLException e1) {
 			AlertControl.infoBox("Ops.. connection failed", WARNING);
+		} catch (UserException e1) {
+			AlertControl.infoBox("Ops.. user not found", WARNING);
 		}
 		
 	}

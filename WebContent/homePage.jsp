@@ -33,7 +33,7 @@
 
 	<div
 		style="border: solid; background-color: white; position: absolute; top: 20.5%; right: 5.2%; width: 66%; height: 58%">
-		<form action="home.jsp" name="myform" method="POST">
+		<form action="${pageContext.request.contextPath}/TimeToExitServlet" name="myform" method="POST">
 			<input name="login" type="submit" id="login" value="Get started"
 				class="btn btn-info" style="background-color: #272F54">
 		</form>
