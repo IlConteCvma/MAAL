@@ -6,8 +6,6 @@ import java.util.List;
 
 import execption.LessonNotFoundException;
 import execption.TimeException;
-import javafx.scene.Scene;
-import logic.MainClass;
 import logic.Session;
 import logic.bean.SeatBean;
 import logic.bean.TimeToExitBean;
@@ -17,9 +15,6 @@ import logic.model.MapsApi;
 import logic.model.TimeApi;
 import logic.model.WeatherApi;
 import logic.model.dao.SeatDao;
-import logic.view.HomeTimePage;
-import logic.view.Page;
-import logic.view.graphic.controller.TimeToExitGraphicController;
 
 public class ViewTimeToExitController {
 	
@@ -61,7 +56,7 @@ public class ViewTimeToExitController {
 		}
 	}
 	
-	public void estimateTimeToExit() throws IOException, TimeException, LessonNotFoundException{
+	public TimeToExitBean estimateTimeToExit() throws IOException, TimeException, LessonNotFoundException{
 		Lesson nextLesson = nextLessonController.getNextLesson();
 		if(nextLesson != null) {
 			TimeApi time = new TimeApi();
@@ -69,7 +64,7 @@ public class ViewTimeToExitController {
 			timeToExitBean.setNextLesson(nextLesson);
 			double speedAverage = Session.getSession().getStudent().getVehicle().getSpeed();
 			getInfoByMaps();
-			getInfoByWeather();
+			//getInfoByWeather();
 			nextJourney.setDistance(nextJourney.getDistance() + PERCENTDISTANCEADD * nextJourney.getDistance()); //add 14% -> value take by test
 			double minutes = (int) (nextJourney.getDistance() / (speedAverage*0.016)) + nextJourney.getDistance() + MINUTEOFADVANCE;
 			long timeExit = time.getTimeMinuteDiff(nextLesson.getStartHour().toString(), time.getStringHour(time.getCurrentDate()));
@@ -86,11 +81,7 @@ public class ViewTimeToExitController {
 				timeToExitBean.setHourToExit(time.timeAdd(timeToExit));
 				timeToExitBean.setNextJourney(nextJourney);
 				timeToExitBean.setNextLesson(nextLesson);
-				new TimeToExitGraphicController(timeToExitBean);
-				
-				Page root = new HomeTimePage(timeToExitBean);
-				Scene scene = new Scene(root);
-				MainClass.getStage().setScene(scene);
+				return timeToExitBean;
 			}
 		}else {
 			throw new LessonNotFoundException();

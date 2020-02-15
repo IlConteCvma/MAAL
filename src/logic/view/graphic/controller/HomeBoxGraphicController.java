@@ -9,16 +9,20 @@ import java.util.ResourceBundle;
 import execption.LessonNotFoundException;
 import execption.TimeException;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import logic.MainClass;
 import logic.Session;
 import logic.bean.StudentBean;
+import logic.bean.TimeToExitBean;
 import logic.controller.ViewTimeToExitController;
 import logic.view.AlertControl;
+import logic.view.HomeTimePage;
+import logic.view.Page;
 
 public class HomeBoxGraphicController extends GraphicController{
 
 	private ViewTimeToExitController controlUC = new ViewTimeToExitController();
-	
 	@FXML private Label dataOfStudent;
 	
 	@Override
@@ -30,7 +34,12 @@ public class HomeBoxGraphicController extends GraphicController{
 		StudentBean studLog = new StudentBean();
 		studLog.setUsername(Session.getSession().getStudent().getUsername());
 		try {
-			controlUC.estimateTimeToExit();
+			TimeToExitBean timeToExit = controlUC.estimateTimeToExit();
+			new TimeToExitGraphicController(timeToExit);
+			
+			Page root = new HomeTimePage(timeToExit);
+			Scene scene = new Scene(root);
+			MainClass.getStage().setScene(scene);
 		} catch (TimeException e) {
 			AlertControl.infoBox("It's too late", "I'm sorry");
 		} catch (LessonNotFoundException e) {

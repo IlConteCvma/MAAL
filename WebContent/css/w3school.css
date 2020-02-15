@@ -1,0 +1,36 @@
+@charset "ISO-8859-1";
+
+
+ul {
+	list-style-type: none;
+	margin:5%;
+	padding: 1%;
+	overflow: hidden;
+	background-color: #FFFFFF;	
+	border:solid;
+}
+
+.menuBox{
+	display: grid;
+	margin: 5%;
+	overflow: hidden;
+	background-color: #A22531;	
+	border:solid;
+	width:20%;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: black;
+	text-align: center;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+li a:hover {
+	background-color: #DEDEDE;
+}

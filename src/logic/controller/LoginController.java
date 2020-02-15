@@ -14,9 +14,10 @@ public class LoginController {
 		String username = potentialStud.getUsername();
 		String password = potentialStud.getPassword();
 		Student stud = StudentDao.findStudentLog(username,password);
-		Session.getSession().setStudent(stud);
+		
 		if(stud != null) {
 			found = true;
+			Session.getSession().setStudent(stud);
 		}
 		
 		return found;
