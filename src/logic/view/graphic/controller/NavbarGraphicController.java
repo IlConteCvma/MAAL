@@ -24,16 +24,16 @@ public class NavbarGraphicController extends GraphicController{
 	@FXML MenuButton forum;
 	@FXML Label nameLab;
 	
-	private final static String clickOff = "-fx-background-color :  #FBF9F9;"
+	private static final  String CLICKOFF = "-fx-background-color :  #FBF9F9;"
 			+ "-fx-border-color:  #626262;"
 			+ "-fx-text-fill:  #000000";
-	private final static String clickOn =  "-fx-background-color :  #DEDEDE;"
+	private static final  String CLICKON =  "-fx-background-color :  #DEDEDE;"
 			+ "-fx-border-color:  #626262;"
 			+ "-fx-text-fill:  #000000";
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		homeButton.setStyle(clickOn);
+		homeButton.setStyle(CLICKON);
 		Student app = Session.getSession().getStudent();
 		
 		String visual = app.getName()+" "+app.getSurname()+" ("+app.getUsername()+")";
@@ -71,31 +71,31 @@ public class NavbarGraphicController extends GraphicController{
 	}
 	
 	private void clearButton() {
-		homeButton.setStyle(clickOff);
-		profButton.setStyle(clickOff);
-		calButton.setStyle(clickOff);
-		forum.setStyle(clickOff);
+		homeButton.setStyle(CLICKOFF);
+		profButton.setStyle(CLICKOFF);
+		calButton.setStyle(CLICKOFF);
+		forum.setStyle(CLICKOFF);
 		
 	}
 	
 	public void setHome() {
 		clearButton();
-		homeButton.setStyle(clickOn);
+		homeButton.setStyle(CLICKON);
 	}
 	
 	public void setForum() {
 		clearButton();
-		forum.setStyle(clickOn);
+		forum.setStyle(CLICKON);
 	}
 	
 	public void setProfile() {
 		clearButton();
-		profButton.setStyle(clickOn);
+		profButton.setStyle(CLICKON);
 	}
 	
 	public void setCalendar() {
 		clearButton();
-		calButton.setStyle(clickOn);
+		calButton.setStyle(CLICKON);
 	}
 
 
