@@ -233,7 +233,7 @@ public class RegistrationGraphicController extends GraphicController {
 		newUser.setUsername(textFieldCredential[0].getText());
 		newUser.setPassword(textFieldCredential[1].getText());
 		newUser.setAddress(textFieldPersonalData[2].getText());
-		newUser.setCity(textFieldPersonalData[2].getText());
+		newUser.setCity(textFieldPersonalData[3].getText());
 		newUser.setNumberOfStreet(streetNumberField.getText());
 		newUser.setVehicle(choiceBoxVehicle.getValue());
 	}

@@ -25,14 +25,12 @@ public class LoginServlet extends HttpServlet {
      */
     public LoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -48,10 +46,8 @@ public class LoginServlet extends HttpServlet {
 	        	LoginController logCtrl = new LoginController();
 	        	try{
 	        		logCtrl.login(sBean);
-	        		request.getRequestDispatcher("homePage.jsp").forward(request, response);
-	        	}catch(SQLException e){
-	        		response.setStatus(0);
-	        	}catch(UserException e) {
+	        		request.getRequestDispatcher("prova.jsp").forward(request, response);
+	        	}catch(SQLException | UserException e){
 	        		response.setStatus(0);
 	        	}
 	    }

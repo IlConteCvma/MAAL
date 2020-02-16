@@ -26,7 +26,6 @@ public class TimeToExitServlet extends HttpServlet {
 	 */
 	public TimeToExitServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -35,7 +34,6 @@ public class TimeToExitServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -56,11 +54,9 @@ public class TimeToExitServlet extends HttpServlet {
 			request.getSession().setAttribute("timeBean", timeBean);
 			response.setStatus(1);
 			request.getRequestDispatcher("timeToExit.jsp").forward(request, response);
-		} catch (TimeException e) {
+		} catch (TimeException | LessonNotFoundException e) {
 			response.setStatus(0);
-		} catch (LessonNotFoundException e) {
-			response.setStatus(0);
-		}
+		} 
 
 	}
 
