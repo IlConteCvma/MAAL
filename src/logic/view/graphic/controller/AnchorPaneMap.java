@@ -13,7 +13,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import logic.model.StringParser;
+import logic.controller.ViewTimeToExitController;
+import logic.view.AlertControl;
 import logic.view.ViewComponent;
 
 public class AnchorPaneMap extends Decorator{
@@ -23,7 +24,6 @@ public class AnchorPaneMap extends Decorator{
 	}
 	
 	public AnchorPane manageMap(AnchorPane anchorPane) {
-		StringParser parser = new StringParser();
 		WebView webView = new WebView();
         WebEngine webEngine = webView.getEngine();
         
@@ -39,9 +39,10 @@ public class AnchorPaneMap extends Decorator{
             @Override
             public void handle(ActionEvent e) { 	
 					try {
-						Desktop.getDesktop().browse(new URL(parser.parseStringMaps()).toURI()) ;
+						ViewTimeToExitController controlUC = new ViewTimeToExitController();
+						Desktop.getDesktop().browse(new URL(controlUC.getRoad()).toURI()) ;
 					} catch (IOException | URISyntaxException e1) {
-						e1.printStackTrace();
+						AlertControl.infoBox("Error connection to Google Maps", "Error connection");
 					}
             }
         });

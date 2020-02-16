@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap - Prebuilt Layout</title>
+<title>MAAL Assistant</title>
 <!-- Bootstrap -->
 <!-- <link href="css/bootstrap-4.4.1.css" rel="stylesheet"> -->
 <link href="css/bootstrap-3.4.1.css" rel="stylesheet" type="text/css">
@@ -20,7 +20,7 @@
 <![endif]-->
 
 </head>
-<body>
+<body style="background-color: #e2e7ec">
 	<div class="container">
 		<br> <br>
 		<div class="row text-center">
@@ -68,30 +68,31 @@
 		</div>
 		<div class="row">
 			<div class="col-md-4">
-				<div style="background-color: #A22531"
+				<div
+					style="background-color: #A22531; min-width: 370px; min-height: 492px;"
 					class="btn-group-vertical jumbotron text-center"
 					aria-label="Vertical button group" role="group">
 					<br>
-					<button type="button" class="btn btn-primary btn-lg"
-						style="background-color: :#272F54">Communication</button>
+					<button type="submit" class="btn btn-primary btn-lg"
+						style="background-color: #272F54; width: 100%">Communication</button>
 					<br>
-					<button style="background-color: :#272F54" type="button"
-						class="btn btn-primary btn-lg">
+					<button style="background-color: #272F54; width: 100%"
+						type="button" class="btn btn-primary btn-lg">
 						Today<br> lesson <br>
 					</button>
 					<br>
 
-					<button style="background-color: :#272F54" type="button"
-						class="btn btn-primary btn-lg">Lesson&nbsp;</button>
+					<button style="background-color: #272F54; width: 100%"
+						type="button" class="btn btn-primary btn-lg">Lesson&nbsp;</button>
 					<br> <br> <a href="index.jsp">
-						<button style="background-color: :#272F54" type="button"
-							class="btn btn-primary btn-lg">Logout</button>
+						<button style="background-color: #272F54; width: 100%;"
+							type="button" class="btn btn-primary btn-lg">Logout</button>
 					</a> <br> <br>
 
 
 				</div>
 			</div>
-			<div style="background-color: #F6C640"
+			<div style="background-color: #F6C640; min-height: 492px;"
 				class="jumbotron jumbotron-fluid text-center col-lg-8 col-md-8">
 				<h1 class="display-4">Welcome</h1>
 				<p class="lead">Would you use the assistant of you journey to
@@ -105,18 +106,32 @@
 						class="btn btn-info" style="background-color: #272F54">
 				</form>
 				<%
-				if(request.getAttribute("exit") != null){
-					int exit = (int)request.getAttribute("exit");
-					switch(exit){
-						case 2:	%> <script> alert("It's too late!") </script> <% 
-								break;
-						case 3: %> <script> alert("Today you haven't lesson. Good relax!") </script> <%
-								break;
-						case 4: %> <script> alert("Ops error request to secondary actor.. Retry!") </script> <% 
-								break;
+					if (request.getAttribute("exit") != null) {
+						int exit = (int) request.getAttribute("exit");
+						switch (exit) {
+							case 2 :
+				%>
+				<script>
+					alert("It's too late!")
+				</script>
+				<%
+					break;
+							case 3 :
+				%>
+				<script>
+					alert("Today you haven't lesson. Good relax!")
+				</script>
+				<%
+					break;
+							case 4 :
+				%>
+				<script>
+					alert("Ops error request to secondary actor.. Retry!")
+				</script>
+				<%
+					break;
+						}
 					}
-				}
-				
 				%>
 			</div>
 		</div>

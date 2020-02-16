@@ -14,6 +14,7 @@ import logic.bean.TimeToExitBean;
 import logic.model.Journey;
 import logic.model.Lesson;
 import logic.model.MapsApi;
+import logic.model.StringParser;
 import logic.model.TimeApi;
 import logic.model.WeatherApi;
 import logic.model.dao.SeatDao;
@@ -61,7 +62,7 @@ public class ViewTimeToExitController {
 			timeToExitBean.setNextLesson(nextLesson);
 			double speedAverage = Session.getSession().getStudent().getVehicle().getSpeed();
 			getInfoByMaps();
-			getInfoByWeather();
+			//getInfoByWeather();
 			nextJourney.setDistance(nextJourney.getDistance() + PERCENTDISTANCEADD * nextJourney.getDistance()); //add 14% -> value take by test
 			double minutes = (int) (nextJourney.getDistance() / (speedAverage*0.016)) + nextJourney.getDistance() + MINUTEOFADVANCE;
 			long timeExit = time.getTimeMinuteDiff(nextLesson.getStartHour().toString(), time.getStringHour(time.getCurrentDate()));
@@ -97,6 +98,11 @@ public class ViewTimeToExitController {
 			minute = Double.MAX_VALUE;
 		}
 		return minute;
+	}
+	
+	public String getRoad() {
+		StringParser sParse = new StringParser();
+		return sParse.parseStringMaps();
 	}
 	
 	public void occupateSeat(SeatBean seat) throws SQLException {

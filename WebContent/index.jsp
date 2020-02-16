@@ -9,7 +9,7 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <link href="css/style.css" rel="stylesheet" type="text/css">
-<title>MAAL assistant</title>
+<title>MAAL Assistant</title>
 </head>
 
 <body>

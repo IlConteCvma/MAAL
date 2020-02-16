@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>MAAL Assistant</title>
 </head>
-<body>
+<body style="background-color: #e2e7ec">
 
 </body>
 </html>

@@ -62,27 +62,10 @@ public class AnchorPaneRoom extends Decorator{
 						controlUC = new ViewTimeToExitController();
 						
 						if(b.getAccessibleText() == "free") {
-							try {
-								controlUC.occupateSeat(sBean);
-							} catch (SQLException e) {
-								AlertControl.infoBox("Error connection db", "ERROR CONNECTION");
-							}
-							roomLesson.getPlaces().get((indexClicled-1)).occupateSeat();
-							b.setStyle("-fx-background-color: red");
-							b.setAccessibleText("busy");
-							AlertControl.infoBox("Seat booked", "BOOK");
+							occupySeat(sBean, b);
 						}else {
-							try {
-								controlUC.freeSeat(sBean);
-							} catch (SQLException e) {
-								AlertControl.infoBox("Error connection db", "ERROR CONNECTION");
-							}
-							roomLesson.getPlaces().get((indexClicled-1)).freeSeat();
-							b.setStyle("-fx-background-color: green");
-							b.setAccessibleText("free");
-							AlertControl.infoBox("Seat unbooked", "UNBOOK");
-						}
-						
+							freeSeat(sBean, b);
+						}	
 					}
 				});
 				
@@ -94,6 +77,30 @@ public class AnchorPaneRoom extends Decorator{
 		return anchorPane;
 	}
 
+	public void freeSeat(SeatBean sBean, Button b) {
+		try {
+			controlUC.freeSeat(sBean);
+		} catch (SQLException e) {
+			AlertControl.infoBox("Error connection db", "ERROR CONNECTION");
+		}
+		roomLesson.getPlaces().get((sBean.getIndex()-1)).freeSeat();
+		b.setStyle("-fx-background-color: green");
+		b.setAccessibleText("free");
+		AlertControl.infoBox("Seat unbooked", "UNBOOK");
+	}
+	
+	public void occupySeat(SeatBean sBean, Button b) {
+		try {
+			controlUC.occupateSeat(sBean);
+		} catch (SQLException e) {
+			AlertControl.infoBox("Error connection db", "ERROR CONNECTION");
+		}
+		roomLesson.getPlaces().get((sBean.getIndex()-1)).occupateSeat();
+		b.setStyle("-fx-background-color: red");
+		b.setAccessibleText("busy");
+		AlertControl.infoBox("Seat booked", "BOOK");
+	}
+	
 	public void colorButton(Button b) {
 		int indexClicled = Integer.parseInt(b.getText());
 		if(roomLesson.getPlaces().get((indexClicled - 1)).getState()) {

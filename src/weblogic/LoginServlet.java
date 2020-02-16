@@ -18,6 +18,7 @@ import logic.controller.LoginController;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final String GOBACK = "/index.jsp";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -49,14 +50,14 @@ public class LoginServlet extends HttpServlet {
 	        		request.getServletContext().getRequestDispatcher("/prova.jsp").forward(request, response);
 	        	}catch(SQLException s) {
 	        		request.setAttribute("exit", 2);
-	        		request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+	        		request.getServletContext().getRequestDispatcher(GOBACK).forward(request, response);
 	        	} catch (EntityNotFoundException e) {
 	        		request.setAttribute("exit", 3);
-	        		request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+	        		request.getServletContext().getRequestDispatcher(GOBACK).forward(request, response);
 	        	}	
 	    }else {
 	    	request.setAttribute("exit", 4);
-	    	request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+	    	request.getServletContext().getRequestDispatcher(GOBACK).forward(request, response);
 	    }
 	    
 	}

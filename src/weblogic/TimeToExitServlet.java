@@ -22,7 +22,7 @@ import logic.controller.ViewTimeToExitController;
 @WebServlet("/TimeToExitServlet")
 public class TimeToExitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private static final String GOBACK = "/prova.jsp";
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -58,13 +58,13 @@ public class TimeToExitServlet extends HttpServlet {
 			request.getRequestDispatcher("timeToExit.jsp").forward(request,response);
 		} catch (TimeException t) {
 			request.setAttribute("exit", 2);
-			request.getRequestDispatcher("prova.jsp").forward(request,response);
+			request.getRequestDispatcher(GOBACK).forward(request,response);
 		} catch (EntityNotFoundException l) {
 			request.setAttribute("exit", 3);
-			request.getRequestDispatcher("prova.jsp").forward(request,response);
+			request.getRequestDispatcher(GOBACK).forward(request,response);
 		} catch(JSONException e) {
 			request.setAttribute("exit", 4);
-			request.getRequestDispatcher("prova.jsp").forward(request,response);
+			request.getRequestDispatcher(GOBACK).forward(request,response);
 		}
 
 	}
