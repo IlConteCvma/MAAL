@@ -6,7 +6,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import execption.LessonNotFoundException;
+import org.json.JSONException;
+
+import execption.EntityNotFoundException;
 import execption.TimeException;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -42,8 +44,10 @@ public class HomeBoxGraphicController extends GraphicController{
 			MainClass.getStage().setScene(scene);
 		} catch (TimeException e) {
 			AlertControl.infoBox("It's too late", "I'm sorry");
-		} catch (LessonNotFoundException e) {
+		} catch (EntityNotFoundException e) {
 			AlertControl.infoBox("Today you haven't lesson, you can relax!", "I'm happy for you!");
+		} catch(JSONException e) {
+			AlertControl.infoBox("Error request to secondary actor..Retry!", "Error request");
 		}
 	}
 }

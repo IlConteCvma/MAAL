@@ -8,8 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import execption.UserException;
+import execption.EntityNotFoundException;
 import logic.bean.StudentBean;
 import logic.controller.LoginController;
 
@@ -39,18 +38,27 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	    if (request.getParameter("username") != null && request.getParameter("password") != null) {
+	    if (!request.getParameter("username").isEmpty() && !request.getParameter("password").isEmpty()) {
 	        	StudentBean sBean = new StudentBean();
 	    		sBean.setUsername(request.getParameter("username")); 
 	        	sBean.setPassword(request.getParameter("password"));
 	        	LoginController logCtrl = new LoginController();
 	        	try{
 	        		logCtrl.login(sBean);
-	        		request.getRequestDispatcher("prova.jsp").forward(request, response);
-	        	}catch(SQLException | UserException e){
-	        		response.setStatus(0);
-	        	}
+	        		request.setAttribute("exit", 1);
+	        		request.getServletContext().getRequestDispatcher("/prova.jsp").forward(request, response);
+	        	}catch(SQLException s) {
+	        		request.setAttribute("exit", 2);
+	        		request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+	        	} catch (EntityNotFoundException e) {
+	        		request.setAttribute("exit", 3);
+	        		request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+	        	}	
+	    }else {
+	    	request.setAttribute("exit", 4);
+	    	request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	    }
+	    
 	}
 
 }

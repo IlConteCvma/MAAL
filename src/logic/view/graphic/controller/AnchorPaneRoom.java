@@ -1,5 +1,7 @@
 package logic.view.graphic.controller;
 
+import java.sql.SQLException;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -60,13 +62,21 @@ public class AnchorPaneRoom extends Decorator{
 						controlUC = new ViewTimeToExitController();
 						
 						if(b.getAccessibleText() == "free") {
-							controlUC.occupateSeat(sBean);
+							try {
+								controlUC.occupateSeat(sBean);
+							} catch (SQLException e) {
+								AlertControl.infoBox("Error connection db", "ERROR CONNECTION");
+							}
 							roomLesson.getPlaces().get((indexClicled-1)).occupateSeat();
 							b.setStyle("-fx-background-color: red");
 							b.setAccessibleText("busy");
 							AlertControl.infoBox("Seat booked", "BOOK");
 						}else {
-							controlUC.freeSeat(sBean);
+							try {
+								controlUC.freeSeat(sBean);
+							} catch (SQLException e) {
+								AlertControl.infoBox("Error connection db", "ERROR CONNECTION");
+							}
 							roomLesson.getPlaces().get((indexClicled-1)).freeSeat();
 							b.setStyle("-fx-background-color: green");
 							b.setAccessibleText("free");

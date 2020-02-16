@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import execption.LessonNotFoundException;
+import org.json.JSONException;
+
+import execption.EntityNotFoundException;
 import execption.TimeException;
 import logic.Session;
 import logic.bean.StudentBean;
@@ -51,12 +53,19 @@ public class TimeToExitServlet extends HttpServlet {
 		// Passa il controllo alla nuova pagina
 		try {
 			timeBean = useCaseController.estimateTimeToExit();
-			request.getSession().setAttribute("timeBean", timeBean);
-			response.setStatus(1);
-			request.getRequestDispatcher("timeToExit.jsp").forward(request, response);
-		} catch (TimeException | LessonNotFoundException e) {
-			response.setStatus(0);
-		} 
+			request.setAttribute("exit", 1);
+			request.setAttribute("timeBean", timeBean);
+			request.getRequestDispatcher("timeToExit.jsp").forward(request,response);
+		} catch (TimeException t) {
+			request.setAttribute("exit", 2);
+			request.getRequestDispatcher("prova.jsp").forward(request,response);
+		} catch (EntityNotFoundException l) {
+			request.setAttribute("exit", 3);
+			request.getRequestDispatcher("prova.jsp").forward(request,response);
+		} catch(JSONException e) {
+			request.setAttribute("exit", 4);
+			request.getRequestDispatcher("prova.jsp").forward(request,response);
+		}
 
 	}
 

@@ -115,7 +115,11 @@ public class RegistrationGraphicController extends GraphicController {
 		if (checkData() && AlertControl.confirmation("Are your data correct?")) {
 				UserBean newUser = new UserBean();
 				populeBean(newUser);
-				regCtrl.createStudent(newUser);
+				try {
+					regCtrl.createStudent(newUser);
+				} catch (SQLException e) {
+					AlertControl.infoBox("Error connect to db", "Error connection db");
+				}
 				container.getChildren().remove(1);
 				chooseCourse();
 		}

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import execption.EntityNotFoundException;
 import logic.model.Address;
 import logic.model.SingletonConnectionDB;
 import logic.model.Student;
@@ -17,7 +18,7 @@ public class StudentDao {
 		throw new IllegalStateException("Utility class");
 	}
 
-	public static Student findStudentLog(String possibleUsername, String possiblePassword) throws SQLException {
+	public static Student findStudentLog(String possibleUsername, String possiblePassword) throws SQLException, EntityNotFoundException {
 		Statement stmt = null;
 		Connection conn = null;
 		Student studLog = null;
@@ -32,7 +33,7 @@ public class StudentDao {
 			rs = StudentQueries.selectStudent(stmt, possibleUsername, possiblePassword);
 			studLog = buildStudent(rs);
 			if (studLog == null) {
-				throw new SQLException();
+				throw new EntityNotFoundException("Student");
 			}
 
 			SingletonConnectionDB.increaseCount();

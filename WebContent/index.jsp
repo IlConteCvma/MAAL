@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,8 +29,23 @@
 			<br>
 				 <input name="tipoLogin" type="hidden" value="user" id="tipoLogin" class="btn btn-warning">
 			<br>
+			
+			<%
+				if(request.getAttribute("exit") != null){
+					int exit = (int)request.getAttribute("exit");
+					switch(exit){
+						case 2:	%> <script> alert("error connection db") </script> <% 
+								break;
+						case 3: %> <p> Dati errati </p> <%
+								break;
+						case 4: %> <script> alert("compile form please") </script> <% 
+								break;
+					}
+				}
+				
+			%>
+			
 		</div>
-
 	</form>
 </body>
 
