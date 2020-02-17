@@ -6,11 +6,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class WeatherApi {
-
-	private static RequestHttpApi connection = new RequestHttpApi();
-	private static String apikey = "ZAAAfY4M6OPp0uA0GelvMwZPTZRAANm3";
 	
 	public String getRainIntensity() throws IOException, JSONException{
+		RequestHttpApi connection = new RequestHttpApi();
+		String apikey = "ZAAAfY4M6OPp0uA0GelvMwZPTZRAANm3";
 		String urlRequest = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/120?apikey="+apikey;
     	String response = connection.sendRequest(urlRequest);
     	JSONObject positionObj = new JSONObject(response);

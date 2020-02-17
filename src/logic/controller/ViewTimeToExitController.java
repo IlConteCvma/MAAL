@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.json.JSONException;
-
 import execption.EntityNotFoundException;
 import execption.TimeException;
 import logic.Session;
@@ -32,17 +31,15 @@ public class ViewTimeToExitController {
 	private Journey nextJourney;
 	private TimeToExitBean timeToExitBean;
 	
-	public void getInfoByMaps() throws JSONException, IOException{
+	private void getInfoByMaps() throws JSONException, IOException{
 		MapsApi map = new MapsApi();
 		//Calculate latitude and longitude 
 		nextJourney = new Journey(map.getPosition(Session.getSession().getStudent().getAddress().getFullAddress()));
 		//Calculate distance in km
-		nextJourney.setDistance(map.calculateDistance(nextJourney.getOriginAddress(),nextJourney.getDestinationAddress()));
-		
-			
+		nextJourney.setDistance(map.calculateDistance(nextJourney.getOriginAddress(),nextJourney.getDestinationAddress()));	
 	}
 	
-	public void getInfoByWeather() throws JSONException, IOException{
+	private void getInfoByWeather() throws JSONException, IOException{
 		WeatherApi weather = new WeatherApi();
 		String rainIntensity = null;
 		rainIntensity = weather.getRainIntensity();
@@ -86,7 +83,7 @@ public class ViewTimeToExitController {
 		}
 	}
 	
-	public double calculateTimeBasedOccupationRoom(int priority) {
+	private double calculateTimeBasedOccupationRoom(int priority) {
 		int freePlaces = timeToExitBean.getNextLesson().getRoomLesson().getNumberOfFreePlacesForPriority(priority);
 		double minute = 0;
 		if(freePlaces != 0) {

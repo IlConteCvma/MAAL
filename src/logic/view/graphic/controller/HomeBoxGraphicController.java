@@ -63,7 +63,6 @@ public class HomeBoxGraphicController extends GraphicController{
 	
 	@FXML
 	public void getHelp() {
-		
 		AlertControl.infoBox("Sorry my programmers didn't give me a very rich vocabulary ... Click get started ", "Help page","Here to help");
 	}
 	

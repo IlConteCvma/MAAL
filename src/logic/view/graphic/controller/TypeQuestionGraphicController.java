@@ -49,7 +49,7 @@ public class TypeQuestionGraphicController extends GraphicController{
 	@FXML
 	public void getHelp() {
 		
-		AlertControl.infoBox("Sorry my programmers didn't give me a very rich vocabulary ... Choose one subject and after the type of question you wont to enter ", "Help page","Here to help");
+		AlertControl.infoBox("Sorry my programmers didn't give me a very rich vocabulary ... Choose one subject and after the type of question you want to enter ", "Help page","Here to help");
 	}
 	
 	public void homeButton() throws IOException {

@@ -6,11 +6,10 @@ import java.util.List;
 import org.json.*;
 
 public class MapsApi{
-
-	private static RequestHttpApi connection = new RequestHttpApi();
-	private static String apikey = "AIzaSyBxqvZv-6yD5NY-JGuO8kuSqdxHNYj3Fs0";
     
     public List<Double> getPosition(String place) throws IOException, JSONException{
+    	RequestHttpApi connection = new RequestHttpApi();
+    	String apikey = "AIzaSyBxqvZv-6yD5NY-JGuO8kuSqdxHNYj3Fs0";
     	String urlRequest = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="+place+"&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=" + apikey;
     	String response = connection.sendRequest(urlRequest);
     	JSONObject positionObj = new JSONObject(response);
