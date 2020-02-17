@@ -22,7 +22,7 @@ public class QuestionQueries {
 	}
 
 	public static ResultSet getId(Statement stmt) throws SQLException {
-		String sql ="SELECT count(*) AS count FROM domandaproposta ;";
+		String sql ="SELECT max(id) AS count FROM domandaproposta ;";
 		return stmt.executeQuery(sql);
 		
 	}

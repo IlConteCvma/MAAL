@@ -13,17 +13,24 @@ public class AlertControl {
 
  	public static void infoBox(String infoMessage, String titleBar)
     {
-        infoBox(infoMessage, titleBar, null);
+        
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle(titleBar);
+        alert.setHeaderText(null);
+        alert.setContentText(infoMessage);
+        alert.showAndWait();
+        
     }
 
 
     public static void infoBox(String infoMessage, String titleBar, String headerMessage)
     {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle(titleBar);
-        alert.setHeaderText(headerMessage);
-        alert.setContentText(infoMessage);
-        alert.showAndWait();
+    	Alert alert = new Alert(AlertType.WARNING);
+    	alert.setTitle(titleBar);
+    	alert.setHeaderText(headerMessage);
+    	alert.setContentText(infoMessage);
+    	alert.showAndWait();
+        
     }
     
     public static boolean confirmation() {

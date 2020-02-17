@@ -17,6 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import logic.bean.SubjectBean;
 import logic.controller.InsertQuestionController;
+import logic.view.AlertControl;
 import logic.view.NamePage;
 
 
@@ -45,8 +46,11 @@ public class TypeQuestionGraphicController extends GraphicController{
 	}
 	
 	
-	
-	
+	@FXML
+	public void getHelp() {
+		
+		AlertControl.infoBox("Sorry my programmers didn't give me a very rich vocabulary ... Choose one subject and after the type of question you wont to enter ", "Help page","Here to help");
+	}
 	
 	public void homeButton() throws IOException {
 		goToPage(NamePage.HOME);
