@@ -28,6 +28,7 @@ public class AnchorPaneRoom extends Decorator{
 	
 	public AnchorPane createRoom(AnchorPane anchorPane) {
 		GridPane room = new GridPane();
+		room.setLayoutX(-8);
 		room.setHgap(10);
 		room.setVgap(10);
 		
@@ -47,7 +48,6 @@ public class AnchorPaneRoom extends Decorator{
 				int index = (roomLesson.getNumColumn()*i+j) + 1;
 				Button b = new Button(""+index);
 				b.setMaxWidth(Double.MAX_VALUE);
-				
 				colorButton(b);
 				
 				b.setOnAction(new EventHandler<ActionEvent>() {

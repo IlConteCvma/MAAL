@@ -28,7 +28,7 @@ public class QuestionQueries {
 	}
 	
 	public static ResultSet getQuestions(Statement stmt,String username) throws SQLException{
-		String sql ="SELECT * FROM domandaproposta WHERE materia in (SELECT materia FROM segue WHERE studente = '"+username+"' );";
+		String sql ="SELECT * FROM domandaproposta WHERE materia in (SELECT materia FROM segue WHERE studente = '"+username+"') ORDER BY domandaproposta.ID;";
 		return stmt.executeQuery(sql);
 		
 	}

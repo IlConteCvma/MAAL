@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ 
+page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
+import="logic.Session"
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,11 +57,25 @@
 								</ul></li>
 
 							<li><a href="#">Profile</a></li>
-						</ul>
+						
 						<form class="navbar-form navbar-left" role="search">
 							<div class="form-group"></div>
 							<input type="text" class="form-control" placeholder="Search">
 						</form>
+			<%
+          	String usr = Session.getSession().getStudent().getName()+" "+Session.getSession().getStudent().getSurname()+"("+Session.getSession().getStudent().getUsername()+")";
+          %>
+          <table style="margin-top:2%">
+          	<tr>
+          		<th>  <li disable><label"><%=usr%>  </label></li></th>
+          		<th> <a href="index.jsp">
+           				<img style="width:20px;height:19px;margin-left:5xpx" src="img/logout.png">
+           			</a> 
+           		</th>
+          	</tr>
+          </table>
+          </ul>
+						
 					</div>
 					<!-- /.navbar-collapse -->
 				</div>
@@ -69,7 +85,7 @@
 		<div class="row">
 			<div class="col-md-4">
 				<div
-					style="background-color: #A22531; min-width: 370px; min-height: 492px;"
+					style="background-color: #A22531; min-width: 370px; min-height: 507px;"
 					class="btn-group-vertical jumbotron text-center"
 					aria-label="Vertical button group" role="group">
 					<br>
@@ -78,12 +94,12 @@
 					<br>
 					<button style="background-color: #272F54; width: 100%"
 						type="button" class="btn btn-primary btn-lg">
-						Today<br> lesson <br>
+						Today lesson <br>
 					</button>
 					<br>
 
 					<button style="background-color: #272F54; width: 100%"
-						type="button" class="btn btn-primary btn-lg">Lesson&nbsp;</button>
+						type="button" class="btn btn-primary btn-lg">Lesson info </button>
 					<br> <br> <a href="index.jsp">
 						<button style="background-color: #272F54; width: 100%;"
 							type="button" class="btn btn-primary btn-lg">Logout</button>
@@ -92,9 +108,10 @@
 
 				</div>
 			</div>
-			<div style="background-color: #F6C640; min-height: 492px;"
+			<div style="background-color: #F6C640; min-height: 507px;"
 				class="jumbotron jumbotron-fluid text-center col-lg-8 col-md-8">
 				<h1 class="display-4">Welcome</h1>
+				<h2> <%=Session.getSession().getStudent().getName()+" "+Session.getSession().getStudent().getSurname()%>  </h2>
 				<p class="lead">Would you use the assistant of you journey to
 					University?</p>
 				<br> <br> <br> <br> <br> <br>

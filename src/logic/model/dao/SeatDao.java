@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import logic.model.Seat;
 import logic.model.SingletonConnectionDB;
 import logic.model.queries.SeatQueries;
@@ -72,7 +71,8 @@ public class SeatDao {
         	//create statement
         	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
         	//execute query
-            SeatQueries.occupySeat(stmt, nameRoom, idSeat);
+            if(SeatQueries.occupySeat(stmt, nameRoom, idSeat) == 0) {
+            }
             } finally {     
             	if(stmt != null){
             		stmt.close();

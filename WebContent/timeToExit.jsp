@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="logic.bean.TimeToExitBean"%>
+	pageEncoding="ISO-8859-1" import="logic.bean.TimeToExitBean, logic.Session"%>
 
 <!DOCTYPE>
 
@@ -23,6 +23,20 @@
 	text-align: center;
 }
 
+.room {
+	display: grid;
+	grid-template-columns: 16% 16% 16% 16% 16% 16%;
+	padding: 1px;
+}
+
+.seat {
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	padding: 2px;
+	margin: 1px;
+	font-size: 10px;
+	text-align: center;
+}
+
 .grid-container {
 	display: grid;
 	grid-template-columns: 50% 50%;
@@ -41,19 +55,13 @@
 
 <title>MAAL Assistant</title>
 <!-- Bootstrap -->
-<!-- <link href="css/bootstrap-4.4.1.css" rel="stylesheet"> -->
-<link href="css/bootstrap-3.4.1.css" rel="stylesheet" type="text/css">
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+  <link href="css/bootstrap-3.4.1.css" rel="stylesheet" type="text/css">
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
 
 </head>
 <%
-	TimeToExitBean req = (TimeToExitBean) (request.getAttribute("timeBean"));
+	TimeToExitBean req = (TimeToExitBean) (session.getAttribute("timeBean2"));
 %>
 <body style="background-color: #e2e7ec">
 	<div class="container">
@@ -81,20 +89,34 @@
 									class="sr-only">(current)</span></a></li>
 							<li><a href="#">Calendar</a></li>
 
-							<li class="Forum"><a class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false">Forum<span class="caret"></span></a>
+							<li><a class="dropdown-toggle" data-toggle="dropdown"
+								role="button" aria-haspopup="true" aria-expanded="false">Forum<span
+									class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="InsertQuestion.jsp">Insert question</a></li>
 									<li><a href="AllQuestion.jsp">View all question</a></li>
 								</ul></li>
 
 							<li><a href="#">Profile</a></li>
-						</ul>
+						
 						<form class="navbar-form navbar-left" role="search">
 							<div class="form-group"></div>
 							<input type="text" class="form-control" placeholder="Search">
 						</form>
+						
+				<%
+          	String usr = Session.getSession().getStudent().getName()+" "+Session.getSession().getStudent().getSurname()+"("+Session.getSession().getStudent().getUsername()+")";
+          %>
+          <table style="margin-top:2%">
+          	<tr>
+          		<th>  <li disable><label"><%=usr%>  </label></li></th>
+          		<th> <a href="index.jsp">
+           				<img style="width:20px;height:19px;margin-left:5xpx" src="img/logout.png">
+           			</a> 
+           		</th>
+          	</tr>
+          </table>
+          </ul>
 					</div>
 					<!-- /.navbar-collapse -->
 				</div>
@@ -104,7 +126,7 @@
 		<div class="row">
 			<div class="col-md-4">
 				<div
-					style="background-color: #A22531; min-width: 370px; min-height: 492px;"
+					style="background-color: #A22531; min-width: 370px; min-height: 507px;"
 					class="btn-group-vertical jumbotron text-center"
 					aria-label="Vertical button group" role="group">
 					<br>
@@ -113,12 +135,12 @@
 					<br>
 					<button style="background-color: #272F54; width: 100%"
 						type="button" class="btn btn-primary btn-lg">
-						Today<br> lesson <br>
+						Today lesson <br>
 					</button>
 					<br>
 
 					<button style="background-color: #272F54; width: 100%"
-						type="button" class="btn btn-primary btn-lg">Lesson&nbsp;</button>
+						type="button" class="btn btn-primary btn-lg">Lesson info</button>
 					<br> <br> <a href="index.jsp">
 						<button style="background-color: #272F54; width: 100%;"
 							type="button" class="btn btn-primary btn-lg">Logout</button>
@@ -127,7 +149,7 @@
 
 				</div>
 			</div>
-			<div style="background-color: #F6C640; min-height: 492px;"
+			<div style="background-color: #F6C640; min-height: 507px;"
 				class="jumbotron jumbotron-fluid text-center col-lg-8 col-md-8">
 				<div class="grid-container">
 					<div class="grid-item">
@@ -140,8 +162,39 @@
 							<%=req.getNextLesson().getRoomLesson().getName()%>
 						</p>
 					</div>
+
 					<div class="grid-item">
-						<p>Coming soon</p>
+						<p>Book the seat</p>
+						<form style="display: block-inline"
+							action="${pageContext.request.contextPath}/ManageRoomServlet"
+							method="POST">
+							<div class="room">
+
+								<%
+									for (int i = 0; i < req.getNextLesson().getRoomLesson().getNumberOfPlaces(); i++) {
+								%>
+								<div class="seat">
+									<%
+										if (req.getNextLesson().getRoomLesson().getPlaces().get(i).getState()) {
+									%><input style="display: inline; background-color: red"
+										type="submit" name="seat" value="<%=i + 1%>" disabled>
+									<input type="hidden" name="<%=i + 1%>" value="red">
+									<%
+										} else {
+									%>
+									<input style="display: inline; background-color: green"
+										type="submit" name="seat" value="<%=i + 1%>"> <input
+										type="hidden" name="<%=i + 1%>" value="green">
+									<%
+										}
+									%>
+								</div>
+								<%
+									}
+								%>
+
+							</div>
+						</form>
 					</div>
 
 					<div class="grid-item">
@@ -211,5 +264,14 @@
 			</div>
 		</div>
 	</div>
+	
+	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+    <!-- <script src="js/jquery-3.4.1.min.js"></script> -->
+    <script src="js/jquery-1.12.4.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed --> 
+    <script src="js/popper.min.js"></script>
+    <!-- <script src="js/bootstrap-4.4.1.js"></script> -->
+  <script src="js/bootstrap-3.4.1.js"></script>
 </body>
 </html>

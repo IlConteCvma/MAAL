@@ -15,6 +15,8 @@
 <body>
 <body style="background-color:#F6C640 ">
 	<h1>Welcome MAAL Assistant</h1>
+	<a href="registration.jsp"><button style="background-color: #272F54;"
+						type="button" class="btn btn-primary btn-lg"> Sign up</button></a>
 	<form action="${pageContext.request.contextPath}/LoginServlet" name="myform" method="POST">
 
 		<div style="background-color:#A22531;border: solid; position: absolute; left: 60%; width: 20%;  text-align: center;">

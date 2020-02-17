@@ -54,7 +54,7 @@ public class TimeToExitServlet extends HttpServlet {
 		try {
 			timeBean = useCaseController.estimateTimeToExit();
 			request.setAttribute("exit", 1);
-			request.setAttribute("timeBean", timeBean);
+			request.getSession().setAttribute("timeBean2", timeBean);
 			request.getRequestDispatcher("timeToExit.jsp").forward(request,response);
 		} catch (TimeException t) {
 			request.setAttribute("exit", 2);
