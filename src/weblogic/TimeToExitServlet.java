@@ -54,15 +54,9 @@ public class TimeToExitServlet extends HttpServlet {
 
 		// Passa il controllo alla nuova pagina
 		try {
-			try {
-				timeBean = useCaseController.estimateTimeToExit();
-			} catch (IOException e) {
-				request.setAttribute("exit", 5);
-				request.getRequestDispatcher(GOBACK).forward(request,response);
-			} catch (SQLException e) {
-				request.setAttribute("exit", 6);
-				request.getRequestDispatcher(GOBACK).forward(request,response);
-			}
+
+			timeBean = useCaseController.estimateTimeToExit();
+		 
 			request.setAttribute("exit", 1);
 			request.getSession().setAttribute("timeBean2", timeBean);
 			request.getRequestDispatcher("timeToExit.jsp").forward(request,response);
@@ -74,6 +68,13 @@ public class TimeToExitServlet extends HttpServlet {
 			request.getRequestDispatcher(GOBACK).forward(request,response);
 		} catch(JSONException e) {
 			request.setAttribute("exit", 4);
+			request.getRequestDispatcher(GOBACK).forward(request,response);
+		}
+		catch (IOException e) {
+			request.setAttribute("exit", 5);
+			request.getRequestDispatcher(GOBACK).forward(request,response);
+		} catch (SQLException e) {
+			request.setAttribute("exit", 6);
 			request.getRequestDispatcher(GOBACK).forward(request,response);
 		}
 

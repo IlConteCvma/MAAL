@@ -14,6 +14,10 @@ import logic.model.queries.LessonQueries;
 
 public class LessonDao {
 	
+	private LessonDao() {
+		throw new IllegalStateException("Utility class");
+	}
+	
 
 	 public static Lesson getNextLesson() throws SQLException, EntityNotFoundException {
 		 Lesson nextLesson = null;

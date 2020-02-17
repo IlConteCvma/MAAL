@@ -12,9 +12,14 @@ import logic.model.queries.SubjectQueries;
 
 public class SubjectDao {
 	
+	
+	
 	private static final String INDEX = "Indice";
 	private static final String ABBREVATION = "Sigla";
 	
+	private SubjectDao() {
+		throw new IllegalStateException("Utility class");
+	}
 	public static Subject getSubjectByLesson(int idLesson)  throws SQLException {
         
 	 	Statement stmt = null;

@@ -10,6 +10,11 @@ import logic.model.SingletonConnectionDB;
 import logic.model.queries.RoomQueries;
 
 public class RoomDao {
+	
+	private RoomDao() {
+		throw new IllegalStateException("Utility class");
+	}
+	
 
 	public static Room getRoomOfLesson(int idLesson) throws SQLException {
 		Statement stmt = null;

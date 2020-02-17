@@ -12,6 +12,10 @@ import logic.model.queries.SeatQueries;
 
 public class SeatDao {
 	
+	private SeatDao() {
+		throw new IllegalStateException("Utility class");
+	}
+	
 	public static List<Seat> getSeatsOfRoom(String nameRoom) throws SQLException {
         
 	 	Statement stmt = null;
