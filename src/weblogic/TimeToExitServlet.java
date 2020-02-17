@@ -1,6 +1,8 @@
 package weblogic;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,7 +54,15 @@ public class TimeToExitServlet extends HttpServlet {
 
 		// Passa il controllo alla nuova pagina
 		try {
-			timeBean = useCaseController.estimateTimeToExit();
+			try {
+				timeBean = useCaseController.estimateTimeToExit();
+			} catch (IOException e) {
+				request.setAttribute("exit", 5);
+				request.getRequestDispatcher(GOBACK).forward(request,response);
+			} catch (SQLException e) {
+				request.setAttribute("exit", 6);
+				request.getRequestDispatcher(GOBACK).forward(request,response);
+			}
 			request.setAttribute("exit", 1);
 			request.getSession().setAttribute("timeBean2", timeBean);
 			request.getRequestDispatcher("timeToExit.jsp").forward(request,response);

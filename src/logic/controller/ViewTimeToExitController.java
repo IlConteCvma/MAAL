@@ -54,7 +54,7 @@ public class ViewTimeToExitController {
 		}
 	}
 	
-	public TimeToExitBean estimateTimeToExit() throws IOException, TimeException, EntityNotFoundException{
+	public TimeToExitBean estimateTimeToExit() throws IOException, TimeException, EntityNotFoundException, SQLException{
 		Lesson nextLesson = nextLessonController.getNextLesson();
 		if(nextLesson != null) {
 			TimeApi time = new TimeApi();
@@ -62,7 +62,7 @@ public class ViewTimeToExitController {
 			timeToExitBean.setNextLesson(nextLesson);
 			double speedAverage = Session.getSession().getStudent().getVehicle().getSpeed();
 			getInfoByMaps();
-			//getInfoByWeather();
+			getInfoByWeather();
 			nextJourney.setDistance(nextJourney.getDistance() + PERCENTDISTANCEADD * nextJourney.getDistance()); //add 14% -> value take by test
 			double minutes = (int) (nextJourney.getDistance() / (speedAverage*0.016)) + nextJourney.getDistance() + MINUTEOFADVANCE;
 			long timeExit = time.getTimeMinuteDiff(nextLesson.getStartHour().toString(), time.getStringHour(time.getCurrentDate()));
@@ -105,13 +105,11 @@ public class ViewTimeToExitController {
 		return sParse.parseStringMaps();
 	}
 	
-	public void occupateSeat(SeatBean seat) throws SQLException {
-		SeatDao seatDao = new SeatDao();
-		seatDao.occupySeat(seat.getRoom().getName(), seat.getIndex());
+	public void occupateSeat(SeatBean seat) throws SQLException {	
+		SeatDao.occupySeat(seat.getRoom().getName(), seat.getIndex());
 	}
 	
 	public void freeSeat(SeatBean seat) throws SQLException {
-		SeatDao seatDao = new SeatDao();
-		seatDao.freeSeat(seat.getRoom().getName(), seat.getIndex());	
+		SeatDao.freeSeat(seat.getRoom().getName(), seat.getIndex());	
 	}
 }

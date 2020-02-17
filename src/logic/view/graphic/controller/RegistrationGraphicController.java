@@ -174,7 +174,7 @@ public class RegistrationGraphicController extends GraphicController {
 							try {
 								goToPage(NamePage.LOGIN);
 							} catch (IOException e1) {
-								e1.printStackTrace();
+								AlertControl.infoBox("Internal error", "ERROR");
 							}
 						}
 	            }
@@ -183,7 +183,6 @@ public class RegistrationGraphicController extends GraphicController {
 	        gp.add(l, 0, subjcetOfCourse.size()+1);
 	        container.getChildren().add(gp);
 		} catch (SQLException e) {
-			e.printStackTrace();
 			AlertControl.infoBox("Ops..", "I'm sorry!");
 		}
 	}
@@ -203,7 +202,7 @@ public class RegistrationGraphicController extends GraphicController {
 			try {
 				regCtrl.followSubject(subjectNames);
 			} catch (SQLException e) {
-				e.printStackTrace();
+				AlertControl.infoBox("Error in db connection", "ERROR");
 			}
 			return true;
 		}

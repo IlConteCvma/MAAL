@@ -19,7 +19,8 @@ import logic.model.queries.QuestionQueries;
 
 
 public class QuestionDao {
-	protected static Statement stmt;    
+	protected static Statement stmt;  
+	
     private QuestionDao() {
         throw new IllegalStateException("Utility class");
       }

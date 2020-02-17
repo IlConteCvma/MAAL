@@ -5,47 +5,47 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="MAAL">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../../eclipse/java-2019-09/eclipse/"/>
+    <property name="ECLIPSE_HOME" value="../../eclipse/"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
     <path id="Apache Tomcat v9.0 [Apache Tomcat v9.0].libraryclasspath">
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/annotations-api.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/catalina-ant.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/catalina-ha.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/catalina-ssi.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/catalina-storeconfig.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/catalina-tribes.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/catalina.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/ecj-4.13.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/el-api.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/jasper-el.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/jasper.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/jaspic-api.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/json-20190722.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/jsp-api.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/mysql-connector-java-5.1.25.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/okhttp-3.9.0.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/okio-1.13.0.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/servlet-api.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-api.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-coyote.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-dbcp.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-i18n-cs.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-i18n-de.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-i18n-es.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-i18n-fr.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-i18n-ja.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-i18n-ko.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-i18n-pt-BR.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-i18n-ru.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-i18n-zh-CN.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-jdbc.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-jni.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-util-scan.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-util.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/tomcat-websocket.jar"/>
-        <pathelement location="../../../Desktop/apache-tomcat-9.0.31/lib/websocket-api.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/annotations-api.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/catalina-ant.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/catalina-ha.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/catalina-ssi.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/catalina-storeconfig.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/catalina-tribes.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/catalina.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/ecj-4.13.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/el-api.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/jasper-el.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/jasper.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/jaspic-api.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/json-20190722.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/jsp-api.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/mysql-connector-java-5.1.25.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/okhttp-3.9.0.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/okio-1.13.0.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/servlet-api.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-api.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-coyote.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-dbcp.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-i18n-cs.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-i18n-de.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-i18n-es.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-i18n-fr.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-i18n-ja.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-i18n-ko.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-i18n-pt-BR.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-i18n-ru.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-i18n-zh-CN.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-jdbc.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-jni.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-util-scan.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-util.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/tomcat-websocket.jar"/>
+        <pathelement location="../../apache-tomcat-9.0.30/lib/websocket-api.jar"/>
     </path>
     <path id="Web App Libraries.libraryclasspath"/>
     <path id="EAR Libraries.libraryclasspath"/>
@@ -54,15 +54,17 @@
         <path refid="Apache Tomcat v9.0 [Apache Tomcat v9.0].libraryclasspath"/>
         <path refid="Web App Libraries.libraryclasspath"/>
         <path refid="EAR Libraries.libraryclasspath"/>
-        <pathelement location="../../../Desktop/Jar esterni progetto/json-20190722.jar"/>
-        <pathelement location="../../../Desktop/Jar esterni progetto/mysql-connector-java-5.1.25.jar"/>
-        <pathelement location="../../../Desktop/Jar esterni progetto/okhttp-3.9.0.jar"/>
-        <pathelement location="../../../Desktop/Jar esterni progetto/okio-1.13.0.jar"/>
+        <pathelement location="../../Jar/json-20190722.jar"/>
+        <pathelement location="../../Jar/mysql-connector-java-5.1.25.jar"/>
+        <pathelement location="../../Jar/okhttp-3.9.0.jar"/>
+        <pathelement location="../../Jar/okio-1.13.0.jar"/>
     </path>
     <target name="init">
         <mkdir dir="build/classes"/>
         <copy includeemptydirs="false" todir="build/classes">
             <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.xtend"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -94,38 +96,13 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="LoginGraphicController (1)">
-        <java classname="logic.view.LoginGraphicController" failonerror="true" fork="yes">
+    <target name="DocsConnectionPropsHelper">
+        <java classname="com.mysql.jdbc.DocsConnectionPropsHelper" failonerror="true" fork="yes">
             <classpath refid="MAAL.classpath"/>
         </java>
     </target>
-    <target name="LoginGraphicController">
-        <java classname="logic.view.resources.LoginGraphicController" failonerror="true" fork="yes">
-            <classpath refid="MAAL.classpath"/>
-        </java>
-    </target>
-    <target name="LoginView (1)">
-        <java classname="view.LoginView" failonerror="true" fork="yes">
-            <classpath refid="MAAL.classpath"/>
-        </java>
-    </target>
-    <target name="LoginView">
-        <java classname="logic.LoginView" failonerror="true" fork="yes">
-            <classpath refid="MAAL.classpath"/>
-        </java>
-    </target>
-    <target name="MainClass">
+    <target name="MainClass (1)">
         <java classname="logic.MainClass" failonerror="true" fork="yes">
-            <classpath refid="MAAL.classpath"/>
-        </java>
-    </target>
-    <target name="MapsApi (1)">
-        <java classname="logic.model.MapsApi" failonerror="true" fork="yes">
-            <classpath refid="MAAL.classpath"/>
-        </java>
-    </target>
-    <target name="TimeApi">
-        <java classname="logic.model.TimeApi" failonerror="true" fork="yes">
             <classpath refid="MAAL.classpath"/>
         </java>
     </target>

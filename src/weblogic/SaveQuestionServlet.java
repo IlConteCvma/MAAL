@@ -44,6 +44,7 @@ public class SaveQuestionServlet extends HttpServlet {
 		QuestionFactory factory;
 		QuestionBean qBean;
 		if(!title.isEmpty() && !body.isEmpty()) {
+			
 			if(request.getParameter("typeQuest") != null) {
 				factory = new QuestionExerciseFactory();
 				image = request.getParameter("image");
@@ -51,6 +52,7 @@ public class SaveQuestionServlet extends HttpServlet {
 			else {
 				factory = new QuestionProblemFactory();
 			}
+			
 			qBean=factory.createBean();
 			qBean.setTitle(title);
 			try {
@@ -59,13 +61,7 @@ public class SaveQuestionServlet extends HttpServlet {
 				request.setAttribute("exit", -1);
 			}
 			if(image != null) {
-				qBean.setType(QuestionType.EXERCISE);
-				try {
-					qBean.getClass().getMethod("setImage", String.class).invoke(qBean, image);
-				}
-				catch(ReflectiveOperationException e) {
-					request.setAttribute("exit", -1);
-				}
+				setImage(request,image,qBean);
 				
 			}else {
 				qBean.setType(QuestionType.PROBLEM);
@@ -83,6 +79,7 @@ public class SaveQuestionServlet extends HttpServlet {
 				
 			}
 			request.getRequestDispatcher("AllQuestion.jsp").forward(request, response);
+			
 		}
 		else {
 			request.setAttribute("exit", 3);
@@ -90,6 +87,17 @@ public class SaveQuestionServlet extends HttpServlet {
 		}
 	
 		
+	}
+	
+	private void setImage(HttpServletRequest request,String image,QuestionBean qBean) {
+		
+		qBean.setType(QuestionType.EXERCISE);
+		try {
+			qBean.getClass().getMethod("setImage", String.class).invoke(qBean, image);
+		}
+		catch(ReflectiveOperationException e) {
+			request.setAttribute("exit", -1);
+		}
 	}
 
 }

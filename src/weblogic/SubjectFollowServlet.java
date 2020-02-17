@@ -43,6 +43,7 @@ public class SubjectFollowServlet extends HttpServlet {
 		RegistrationController regCtrl = new RegistrationController();
 		try {
 			regCtrl.followSubject(list);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} catch (SQLException e) {
 			request.setAttribute("exit", 2);
 		}

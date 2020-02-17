@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import execption.QuestionException;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import logic.bean.QuestionBean;
@@ -26,6 +27,7 @@ public class QuestionGraphic extends GraphicController {
 	@FXML protected Label message;
 	@FXML protected TextArea title;
 	@FXML protected TextArea body;
+	@FXML protected Button saveButton;
 	
 	public QuestionGraphic(String param) {
 				
@@ -76,7 +78,9 @@ public class QuestionGraphic extends GraphicController {
 			
 			this.message.setText("Error on save");
 		}
-		this.message.setText("finito");
+		this.message.setText("Save completed");
+		saveButton.setDisable(true);
+		
 	}
 	
 	public void back() throws IOException {

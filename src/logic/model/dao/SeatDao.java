@@ -12,7 +12,7 @@ import logic.model.queries.SeatQueries;
 
 public class SeatDao {
 	
-	public List<Seat> getSeatsOfRoom(String nameRoom) throws SQLException {
+	public static List<Seat> getSeatsOfRoom(String nameRoom) throws SQLException {
         
 	 	Statement stmt = null;
         Connection conn = null;
@@ -57,7 +57,7 @@ public class SeatDao {
         	return seatsOfRoom;
     }
 	
-	public void occupySeat(String nameRoom, int idSeat) throws SQLException {
+	public static void occupySeat(String nameRoom, int idSeat) throws SQLException {
         
 	 	Statement stmt = null;
         Connection conn = null;
@@ -71,8 +71,7 @@ public class SeatDao {
         	//create statement
         	stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
         	//execute query
-            if(SeatQueries.occupySeat(stmt, nameRoom, idSeat) == 0) {
-            }
+            SeatQueries.occupySeat(stmt, nameRoom, idSeat);
             } finally {     
             	if(stmt != null){
             		stmt.close();
@@ -84,7 +83,7 @@ public class SeatDao {
             }
       }
 	
-	public void freeSeat(String nameRoom, int idSeat) throws SQLException {
+	public static void freeSeat(String nameRoom, int idSeat) throws SQLException {
         
 	 	Statement stmt = null;
         Connection conn = null;

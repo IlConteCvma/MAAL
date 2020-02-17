@@ -15,7 +15,7 @@ public class SubjectDao {
 	private static final String INDEX = "Indice";
 	private static final String ABBREVATION = "Sigla";
 	
-	public Subject getSubjectLesson(int idLesson)  throws SQLException {
+	public static Subject getSubjectByLesson(int idLesson)  throws SQLException {
         
 	 	Statement stmt = null;
         Connection conn = null;
