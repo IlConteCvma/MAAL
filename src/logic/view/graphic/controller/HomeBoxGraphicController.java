@@ -24,7 +24,6 @@ import logic.view.graphic.elements.PhraseSelector;
 
 public class HomeBoxGraphicController extends GraphicController{
 
-	private ViewTimeToExitController controlUC;
 	@FXML private Label dataOfStudent;
 	@FXML private Label textLabel;
 	
@@ -43,7 +42,7 @@ public class HomeBoxGraphicController extends GraphicController{
 	public void getStarted() throws IOException, SQLException  {
 		
 		try {
-			controlUC = new ViewTimeToExitController();
+			ViewTimeToExitController controlUC = new ViewTimeToExitController();
 			TimeToExitBean timeToExit = controlUC.estimateTimeToExit();
 						
 			Page root = new HomeTimePage(timeToExit);

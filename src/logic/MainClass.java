@@ -27,7 +27,7 @@ public class MainClass extends Application{
 		
 		stage.setTitle("MAAL Assistant");
 		stage.getIcons().add(new Image(getClass().getResourceAsStream("view/resources/img/logo.png")));
-		
+		//stage.setMaxHeight(600);
 		stage.setMaxWidth(900);
 		stage.setResizable(false);
 		stage.show();
