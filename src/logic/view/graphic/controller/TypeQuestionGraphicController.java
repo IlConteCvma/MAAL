@@ -1,7 +1,5 @@
 package logic.view.graphic.controller;
 
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -27,6 +25,8 @@ import logic.view.NamePage;
 
 public class TypeQuestionGraphicController extends GraphicController{
 	
+
+	
 	
 	@FXML Button buttonExe;
 	@FXML Button buttonPro;
@@ -49,32 +49,37 @@ public class TypeQuestionGraphicController extends GraphicController{
 		AlertControl.infoBox("Sorry my programmers didn't give me a very rich vocabulary ... Choose one subject and after the type of question you want to enter ", "Help page","Here to help");
 	}
 	
-	public void homeButton() throws IOException {
+	public void homeButton() {
 		goToPage(NamePage.HOME);
+		
 	}
 	
 
-	public void typeExercise() throws IOException {
+	public void typeExercise(){
 		
 		String[] args = new String[2];
 		args[0]= this.subSelect;
 		args[1]= "../../resources/QuestionExerciseView.fxml";
 		
-		goToPage(NamePage.EXERCISE, args);
+
+			goToPage(NamePage.EXERCISE, args);
 		
 		
 	}
-	public void back() throws IOException {
-		goToPage(NamePage.ALLQUESTION);
+	public void back(){
+
+			goToPage(NamePage.ALLQUESTION);
+
 	}
 	
-	public void typeProblem() throws IOException {
+	public void typeProblem() {
 
 		String[] args = new String[2];
 		args[0]=this.subSelect;
 		args[1]="../../resources/QuestionProblemView.fxml";
 		
 		goToPage(NamePage.PROBLEM, args);
+
 	}
 	
 

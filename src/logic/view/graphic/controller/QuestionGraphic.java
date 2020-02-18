@@ -1,6 +1,6 @@
 package logic.view.graphic.controller;
 
-import java.io.IOException;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -75,7 +75,7 @@ public class QuestionGraphic extends GraphicController {
 		
 		}
 		catch(QuestionException e){
-			
+			//il messaggio deve catturlo dall'exception e
 			AlertControl.infoBox("error on save DB", "ERROR");
 			
 			this.message.setText("Error on save");
@@ -84,8 +84,9 @@ public class QuestionGraphic extends GraphicController {
 		
 	}
 	
-	public void back() throws IOException {
+	public void back(){
 		goToPage(NamePage.QUESTIONTYPE);
+		
 	}
 	
 	public void saveLocal() {

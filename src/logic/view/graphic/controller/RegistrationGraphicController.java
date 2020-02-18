@@ -1,6 +1,6 @@
 package logic.view.graphic.controller;
 
-import java.io.IOException;
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -30,6 +30,7 @@ import logic.view.AlertControl;
 import logic.view.NamePage;
 
 public class RegistrationGraphicController extends GraphicController {
+	
 
 	private static final int ROWPERSONALDATA = 2;
 	private static final int COLPERSONALDATA = 2;
@@ -105,8 +106,9 @@ public class RegistrationGraphicController extends GraphicController {
 	}
 
 	@FXML
-	public void signIn() throws IOException {
+	public void signIn() {
 		goToPage(NamePage.LOGIN);
+	
 	}
 
 	@FXML
@@ -173,11 +175,8 @@ public class RegistrationGraphicController extends GraphicController {
 	            public void handle(ActionEvent e) { 	
 						if(completeRegistration(allSubject)) {
 							AlertControl.infoBox("Welcome in MAAL\n\nRegistration completed!", "WELCOME");
-							try {
-								goToPage(NamePage.LOGIN);
-							} catch (IOException e1) {
-								AlertControl.infoBox("Internal error", "ERROR");
-							}
+							goToPage(NamePage.LOGIN);
+							
 						}
 	            }
 	        });

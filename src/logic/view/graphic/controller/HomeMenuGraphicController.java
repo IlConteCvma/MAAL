@@ -1,7 +1,7 @@
 package logic.view.graphic.controller;
 
 
-import java.io.IOException;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,9 +17,11 @@ public class HomeMenuGraphicController extends GraphicController{
 	
 	private static final String WARNING = "COMING SOON";
 	private static final String NOTAVAILABLE = "Operation not available";
+	
 	@FXML
-	public void homeButton(ActionEvent e) throws IOException {
-		goToPage(NamePage.HOME);
+	public void homeButton(ActionEvent e){
+			goToPage(NamePage.HOME);
+		
 	}
 	
 	public void calendarButton() {
@@ -46,10 +48,11 @@ public class HomeMenuGraphicController extends GraphicController{
 		AlertControl.infoBox(NOTAVAILABLE, WARNING);
 	}
 	
-	public void logOutButton() throws IOException {
+	public void logOutButton(){
 		if(AlertControl.confirmation()) {
 			goToPage(NamePage.LOGIN);
 			Session.getSession().setStudent(null);
+			
 		}
 	}
 	

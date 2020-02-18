@@ -9,7 +9,6 @@ import logic.view.AlertControl;
 import logic.view.NamePage;
 import logic.view.graphic.elements.PhraseSelector;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -46,7 +45,7 @@ public class LoginGraphicController extends GraphicController{
 	}
 	
 	@FXML
-	public void signIn(ActionEvent e) throws IOException{
+	public void signIn(ActionEvent e){
 		
 		StudentBean possibleStudent = new StudentBean();
 		possibleStudent.setUsername(user.getText());
@@ -67,8 +66,9 @@ public class LoginGraphicController extends GraphicController{
 		AlertControl.infoBox("Operation not available", WARNING);
 	}
 	
-	public void signUp() throws IOException {
+	public void signUp() {
 		goToPage(NamePage.REGISTRATION);
+		
 	}
 
 

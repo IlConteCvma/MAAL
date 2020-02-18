@@ -18,6 +18,7 @@ import logic.view.NamePage;
 public class NavbarGraphicController extends GraphicController{
 
 
+
 	@FXML Button homeButton;
 	@FXML Button calButton;
 	@FXML Button profButton;
@@ -42,10 +43,12 @@ public class NavbarGraphicController extends GraphicController{
 	}
 	
 	@FXML
-	public void homeButton(ActionEvent e) throws IOException {
-		clearButton();
-		homeButton.setDisable(true);
-		goToPage(NamePage.HOME);
+	public void homeButton(ActionEvent e){
+
+			goToPage(NamePage.HOME);
+			clearButton();
+			homeButton.setDisable(true);
+		
 
 	}	
 	
@@ -53,11 +56,13 @@ public class NavbarGraphicController extends GraphicController{
 		AlertControl.infoBox("Operation not available","COMING SOON");
 	}
 	
-	public void allQuestion() throws IOException {
+	public void allQuestion() {
 		goToPage(NamePage.ALLQUESTION);
+		
 	}
-	public void newQuestion() throws IOException {
+	public void newQuestion() {
 		goToPage(NamePage.QUESTIONTYPE);
+		
 	}
 	
 	public void profileButton() {

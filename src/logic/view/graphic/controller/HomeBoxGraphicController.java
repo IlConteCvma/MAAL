@@ -39,7 +39,7 @@ public class HomeBoxGraphicController extends GraphicController{
 		}
 	}
 	
-	public void getStarted() throws IOException, SQLException  {
+	public void getStarted(){
 		
 		try {
 			ViewTimeToExitController controlUC = new ViewTimeToExitController();
@@ -54,6 +54,10 @@ public class HomeBoxGraphicController extends GraphicController{
 			AlertControl.infoBox("Today you haven't lesson, you can relax!", "I'm happy for you!");
 		} catch(JSONException e) {
 			AlertControl.infoBox("Error request to secondary actor..Retry!", "Error request");
+		} catch (SQLException e) {
+			AlertControl.infoBox("Error on DB connection", "Error request on Database");
+		} catch (IOException e) {
+			AlertControl.infoBox(PAGEERROR, ERROR);
 		}
 	}
 	
