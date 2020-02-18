@@ -1,29 +1,37 @@
 package logic.view.graphic.controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import logic.MainClass;
+import logic.Session;
 import logic.bean.SeatBean;
+import logic.bean.TimeToExitBean;
 import logic.controller.BookSeatController;
-import logic.model.Lesson;
 import logic.model.Room;
 import logic.view.AlertControl;
+import logic.view.HomeTimePage;
+import logic.view.Page;
 import logic.view.ViewComponent;
 
 public class AnchorPaneRoom extends Decorator{
 
+	private TimeToExitBean tBean;
 	private Room roomLesson;
 	private BookSeatController controlSeat;
 	
-	public AnchorPaneRoom(ViewComponent anchorPaneComponent, Lesson lesson) {
+	public AnchorPaneRoom(ViewComponent anchorPaneComponent, TimeToExitBean tBean) {
 		super(anchorPaneComponent);
-		this.roomLesson = lesson.getRoomLesson();
+		this.tBean = tBean;
+		this.roomLesson = tBean.getNextLesson().getRoomLesson();
 	}
 	
 	public AnchorPane createRoom(AnchorPane anchorPane) {
@@ -53,17 +61,19 @@ public class AnchorPaneRoom extends Decorator{
 				b.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent event) {
-						int indexClicled = Integer.parseInt(b.getText());
+						int indexClicked = Integer.parseInt(b.getText());
 						
 						//popule bean seat
 						SeatBean sBean = new SeatBean();
-						sBean.setIndex(indexClicled);
+						sBean.setIndex(indexClicked);
 						sBean.setRoom(roomLesson);
 						controlSeat = new BookSeatController();
 						
 						if(b.getAccessibleText() == "free") {
+							Session.getSession().setIndexOfSeat(indexClicked);
 							occupySeat(sBean, b);
 						}else {
+							Session.getSession().setIndexOfSeat(0);
 							freeSeat(sBean, b);
 						}	
 					}
@@ -86,7 +96,15 @@ public class AnchorPaneRoom extends Decorator{
 		roomLesson.getPlaces().get((sBean.getIndex()-1)).freeSeat();
 		b.setStyle("-fx-background-color: green");
 		b.setAccessibleText("free");
-		AlertControl.infoBox("Seat unbooked", "UNBOOK");
+		AlertControl.infoBox("You don't follow lesson? Ok, enjoy your free time!", "UNBOOK");
+		Page root = null;
+		try {
+			root = new HomeTimePage(tBean);
+		} catch (IOException e) {
+			AlertControl.infoBox("Internal error", "Error");
+		}
+		Scene scene = new Scene(root);
+		MainClass.getStage().setScene(scene);
 	}
 	
 	public void occupySeat(SeatBean sBean, Button b) {
@@ -98,18 +116,32 @@ public class AnchorPaneRoom extends Decorator{
 		roomLesson.getPlaces().get((sBean.getIndex()-1)).occupateSeat();
 		b.setStyle("-fx-background-color: red");
 		b.setAccessibleText("busy");
-		AlertControl.infoBox("Seat booked", "BOOK");
+		AlertControl.infoBox("Seat booked! You can book one only seat!!", "BOOK");
+		Page root = null;
+		try {
+			root = new HomeTimePage(tBean);
+		} catch (IOException e) {
+			AlertControl.infoBox("Internal error", "Error");
+		}
+		Scene scene = new Scene(root);
+		MainClass.getStage().setScene(scene);
 	}
 	
 	public void colorButton(Button b) {
-		int indexClicled = Integer.parseInt(b.getText());
-		if(roomLesson.getPlaces().get((indexClicled - 1)).getState()) {
+		int index = Integer.parseInt(b.getText());
+		if(roomLesson.getPlaces().get((index - 1)).getState()) {
 			b.setStyle("-fx-background-color: red");
 			b.setAccessibleText("busy");
 			b.setDisable(true);
+			if(Session.getSession().getIndexOfSeat() != 0 && index == Session.getSession().getIndexOfSeat() ) {
+				b.setDisable(false);
+			}
 		}else {
 			b.setStyle("-fx-background-color: green");
 			b.setAccessibleText("free");
+			if(Session.getSession().getIndexOfSeat() != 0) {
+				b.setDisable(true);
+			}
 		}
 	}
 	

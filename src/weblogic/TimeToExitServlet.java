@@ -25,11 +25,18 @@ import logic.controller.ViewTimeToExitController;
 public class TimeToExitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String GOBACK = "/prova.jsp";
+	private int seatOccuped;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public TimeToExitServlet() {
 		super();
+		seatOccuped = 0;
+	}
+	
+	public TimeToExitServlet(int index) {
+		super();
+		seatOccuped = index;
 	}
 
 	/**
@@ -56,7 +63,7 @@ public class TimeToExitServlet extends HttpServlet {
 		try {
 
 			timeBean = useCaseController.estimateTimeToExit();
-		 
+			request.setAttribute("seatOccuped", seatOccuped);
 			request.setAttribute("exit", 1);
 			request.getSession().setAttribute("timeBean2", timeBean);
 			request.getRequestDispatcher("timeToExit.jsp").forward(request,response);

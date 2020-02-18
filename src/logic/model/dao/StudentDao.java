@@ -36,17 +36,11 @@ public class StudentDao {
 				throw new EntityNotFoundException("Student");
 			}
 
-			SingletonConnectionDB.increaseCount();
-
 			rs.close();
 		} finally {
 
 			if (stmt != null) {
 				stmt.close();
-			}
-			if (conn != null) {
-				SingletonConnectionDB.close();
-				SingletonConnectionDB.increaseCount();
 			}
 		}
 
@@ -77,10 +71,6 @@ public class StudentDao {
 
 			if (stmt != null) {
 				stmt.close();
-			}
-			if (conn != null) {
-				SingletonConnectionDB.close();
-				SingletonConnectionDB.increaseCount();
 			}
 		}
 
@@ -130,10 +120,6 @@ public class StudentDao {
 			if (stmt != null) {
 				stmt.close();
 			}
-			if (conn != null) {
-				SingletonConnectionDB.close();
-			}
-
 		}
 
 	}

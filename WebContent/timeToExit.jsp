@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="logic.bean.TimeToExitBean, logic.Session"%>
+	pageEncoding="ISO-8859-1"
+	import="logic.bean.TimeToExitBean, logic.Session"%>
 
 <!DOCTYPE>
 
@@ -55,8 +56,8 @@
 
 <title>MAAL Assistant</title>
 <!-- Bootstrap -->
-  <link href="css/bootstrap-3.4.1.css" rel="stylesheet" type="text/css">
-  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap-3.4.1.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
 
 </head>
@@ -98,25 +99,29 @@
 								</ul></li>
 
 							<li><a href="#">Profile</a></li>
-						
-						<form class="navbar-form navbar-left" role="search">
-							<div class="form-group"></div>
-							<input type="text" class="form-control" placeholder="Search">
-						</form>
-						
-				<%
-          	String usr = Session.getSession().getStudent().getName()+" "+Session.getSession().getStudent().getSurname()+"("+Session.getSession().getStudent().getUsername()+")";
-          %>
-          <table style="margin-top:2%">
-          	<tr>
-          		<th>  <li disable><label"><%=usr%>  </label></li></th>
-          		<th> <a href="index.jsp">
-           				<img style="width:20px;height:19px;margin-left:5xpx" src="img/logout.png">
-           			</a> 
-           		</th>
-          	</tr>
-          </table>
-          </ul>
+
+							<form class="navbar-form navbar-left" role="search">
+								<div class="form-group"></div>
+								<input type="text" class="form-control" placeholder="Search">
+							</form>
+
+							<%
+								String usr = Session.getSession().getStudent().getName() + " "
+										+ Session.getSession().getStudent().getSurname() + "("
+										+ Session.getSession().getStudent().getUsername() + ")";
+							%>
+							<table style="margin-top: 2%">
+								<tr>
+									<th>
+										<li disable><label"><%=usr%> </label></li>
+									</th>
+									<th><a href="index.jsp"> <img
+											style="width: 20px; height: 19px; margin-left: 5xpx"
+											src="img/logout.png">
+									</a></th>
+								</tr>
+							</table>
+						</ul>
 					</div>
 					<!-- /.navbar-collapse -->
 				</div>
@@ -176,16 +181,36 @@
 								<div class="seat">
 									<%
 										if (req.getNextLesson().getRoomLesson().getPlaces().get(i).getState()) {
-									%><input style="display: inline; background-color: red"
-										type="submit" name="seat" value="<%=i + 1%>" disabled>
-									<input type="hidden" name="<%=i + 1%>" value="red">
+												if (request.getAttribute("seatOccuped") != null
+														&& (int) (request.getAttribute("seatOccuped")) == (i+1)) {
+									%>
+									<input style="display: inline; background-color: red"
+										type="submit" name="seat" value="<%=i + 1%>">
 									<%
 										} else {
 									%>
+									<input style="display: inline; background-color: red"
+										type="submit" name="seat" value="<%=i + 1%>" disabled>
+									<%
+										}
+									%>
+									<input type="hidden" name="<%=i + 1%>" value="red">
+									<%
+										}else{ 
+											if (request.getAttribute("seatOccuped") != null
+													&& (int) (request.getAttribute("seatOccuped")) != 0) {
+									%>
 									<input style="display: inline; background-color: green"
-										type="submit" name="seat" value="<%=i + 1%>"> <input
+										type="submit" name="seat" value="<%=i + 1%>" disabled> <input
 										type="hidden" name="<%=i + 1%>" value="green">
 									<%
+										}else{
+											%>
+											<input style="display: inline; background-color: green"
+										type="submit" name="seat" value="<%=i + 1%>"> <input
+										type="hidden" name="<%=i + 1%>" value="green">
+											<%
+										}
 										}
 									%>
 								</div>
@@ -264,14 +289,14 @@
 			</div>
 		</div>
 	</div>
-	
-	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-    <!-- <script src="js/jquery-3.4.1.min.js"></script> -->
-    <script src="js/jquery-1.12.4.min.js"></script>
 
-    <!-- Include all compiled plugins (below), or include individual files as needed --> 
-    <script src="js/popper.min.js"></script>
-    <!-- <script src="js/bootstrap-4.4.1.js"></script> -->
-  <script src="js/bootstrap-3.4.1.js"></script>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<!-- <script src="js/jquery-3.4.1.min.js"></script> -->
+	<script src="js/jquery-1.12.4.min.js"></script>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/popper.min.js"></script>
+	<!-- <script src="js/bootstrap-4.4.1.js"></script> -->
+	<script src="js/bootstrap-3.4.1.js"></script>
 </body>
 </html>

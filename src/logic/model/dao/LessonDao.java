@@ -67,9 +67,6 @@ public class LessonDao {
 	            	if(stmt != null){
 	            		stmt.close();
 	            	}
-	            	if (conn != null) {
-	    				SingletonConnectionDB.close();
-	    			}
 	            }
 	        	return nextLesson;
 	    }
@@ -103,9 +100,6 @@ public class LessonDao {
 	            	if(stmt != null){
 	            		stmt.close();
 	            	}
-	            	if (conn != null) {
-	    				SingletonConnectionDB.close();
-	    			}
 	            }
 	        	return id;
 	    }

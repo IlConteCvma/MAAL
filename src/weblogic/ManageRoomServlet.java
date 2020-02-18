@@ -42,17 +42,25 @@ public class ManageRoomServlet extends HttpServlet {
 		String color = request.getParameter(""+indexSeat);
 		BookSeatController controlSeat = new BookSeatController();
 		TimeToExitBean req = (TimeToExitBean)request.getSession().getAttribute("timeBean2");
+		SeatBean seatOfStudent = new SeatBean();
+		seatOfStudent.setIndex(indexSeat);
+		seatOfStudent.setRoom(req.getNextLesson().getRoomLesson());
+		TimeToExitServlet service = null;
 		if(color.equals("green")) {
-			SeatBean seatOccuped = new SeatBean();
-			seatOccuped.setIndex(indexSeat);
-			seatOccuped.setRoom(req.getNextLesson().getRoomLesson());
 			try {
-				controlSeat.occupateSeat(seatOccuped);
+				controlSeat.occupateSeat(seatOfStudent);
+				service = new TimeToExitServlet(indexSeat);
 			} catch (SQLException e) {
-				request.setAttribute("exit", 0);
+				request.setAttribute("exit", 2);
+			}
+		}else {
+			try {
+				controlSeat.freeSeat(seatOfStudent);
+				service = new TimeToExitServlet(0);
+			} catch (SQLException e) {
+				request.setAttribute("exit", 2);
 			}
 		}
-		TimeToExitServlet service = new TimeToExitServlet();
 		service.doPost(request, response);
 	}
 

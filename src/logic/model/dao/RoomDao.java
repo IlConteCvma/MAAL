@@ -46,9 +46,6 @@ public class RoomDao {
 			if (stmt != null) {
 				stmt.close();
 			}
-			if (conn != null) {
-				SingletonConnectionDB.close();
-			}
 		}
 		return roomOfLesson;
 
@@ -88,9 +85,6 @@ public class RoomDao {
 		} finally {
 			if (stmt != null) {
 				stmt.close();
-			}
-			if (conn != null) {
-				SingletonConnectionDB.close();
 			}
 		}
 		return roomOfLesson;

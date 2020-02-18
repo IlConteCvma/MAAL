@@ -53,9 +53,6 @@ public class QuestionDao {
           	if(stmt != null){
           		stmt.close();
           	}
-          	if (conn != null) {
-  				SingletonConnectionDB.close();
-  			}
           }
       	return count+1;
 		
@@ -192,10 +189,6 @@ public class QuestionDao {
             	if(stmt != null){
             		stmt.close();
             	}
-            	if (conn != null) {
-    				SingletonConnectionDB.close();
-    			}
-            	
             }
         
 		return quest;

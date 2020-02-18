@@ -53,9 +53,6 @@ public class SeatDao {
             	if(stmt != null){
             		stmt.close();
             	}
-            	if (conn != null) {
-    				SingletonConnectionDB.close();
-    			}
             	
             }
         	return seatsOfRoom;
@@ -80,10 +77,6 @@ public class SeatDao {
             	if(stmt != null){
             		stmt.close();
             	}
-            	if (conn != null) {
-    				SingletonConnectionDB.close();
-    			}
-            	
             }
       }
 	
@@ -106,10 +99,6 @@ public class SeatDao {
             	if(stmt != null){
             		stmt.close();
             	}
-            	if (conn != null) {
-    				SingletonConnectionDB.close();
-    			}
-            	
             }
       }
 }

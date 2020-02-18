@@ -54,9 +54,6 @@ public class SubjectDao {
             	if(stmt != null){
             		stmt.close();
             	}
-            	if (conn != null) {
-    				SingletonConnectionDB.close();
-    			}
             }
         	return subjectOfLesson;
     }
@@ -100,10 +97,6 @@ public class SubjectDao {
             	if(stmt != null){
             		stmt.close();
             	}
-            	if (conn != null) {
-    				SingletonConnectionDB.close();
-    			}
-            	
             }
 		
 		return subject;
@@ -142,9 +135,6 @@ public class SubjectDao {
             	if(stmt != null){
             		stmt.close();
             	}
-            	if (conn != null) {
-    				SingletonConnectionDB.close();
-    			}
             }
         	return subject;
 		

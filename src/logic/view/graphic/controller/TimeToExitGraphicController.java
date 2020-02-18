@@ -58,7 +58,7 @@ public class TimeToExitGraphicController extends GraphicController{
 			anchorPane.draw().getChildren().remove(0);
 			anchorPaneContainer.getChildren().remove(2);
 		}
-		AnchorPaneRoom anchorPaneRoom = new AnchorPaneRoom(anchorPane, timeToExitBean.getNextLesson());
+		AnchorPaneRoom anchorPaneRoom = new AnchorPaneRoom(anchorPane, timeToExitBean);
 		anchorPaneContainer.getChildren().add(anchorPaneRoom.draw());
 	}
 
