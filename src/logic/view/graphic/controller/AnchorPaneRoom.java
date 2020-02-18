@@ -97,14 +97,7 @@ public class AnchorPaneRoom extends Decorator{
 		b.setStyle("-fx-background-color: green");
 		b.setAccessibleText("free");
 		AlertControl.infoBox("You don't follow lesson? Ok, enjoy your free time!", "UNBOOK");
-		Page root = null;
-		try {
-			root = new HomeTimePage(tBean);
-		} catch (IOException e) {
-			AlertControl.infoBox("Internal error", "Error");
-		}
-		Scene scene = new Scene(root);
-		MainClass.getStage().setScene(scene);
+		refresh();
 	}
 	
 	public void occupySeat(SeatBean sBean, Button b) {
@@ -117,14 +110,7 @@ public class AnchorPaneRoom extends Decorator{
 		b.setStyle("-fx-background-color: red");
 		b.setAccessibleText("busy");
 		AlertControl.infoBox("Seat booked! You can book one only seat!!", "BOOK");
-		Page root = null;
-		try {
-			root = new HomeTimePage(tBean);
-		} catch (IOException e) {
-			AlertControl.infoBox("Internal error", "Error");
-		}
-		Scene scene = new Scene(root);
-		MainClass.getStage().setScene(scene);
+		refresh();
 	}
 	
 	public void colorButton(Button b) {
@@ -143,6 +129,17 @@ public class AnchorPaneRoom extends Decorator{
 				b.setDisable(true);
 			}
 		}
+	}
+	
+	private void refresh() {
+		Page root = null;
+		try {
+			root = new HomeTimePage(tBean);
+		} catch (IOException e) {
+			AlertControl.infoBox("Internal error", "Error");
+		}
+		Scene scene = new Scene(root);
+		MainClass.getStage().setScene(scene);
 	}
 	
 	@Override
