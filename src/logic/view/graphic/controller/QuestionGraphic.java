@@ -70,6 +70,8 @@ public class QuestionGraphic extends GraphicController {
 		try {
 			InsertQuestionController controller = new InsertQuestionController(this.factory,qBean);
 			controller.startSave(this.subject);
+			this.message.setText("Save completed");
+			saveButton.setDisable(true);
 		
 		}
 		catch(QuestionException e){
@@ -78,8 +80,7 @@ public class QuestionGraphic extends GraphicController {
 			
 			this.message.setText("Error on save");
 		}
-		this.message.setText("Save completed");
-		saveButton.setDisable(true);
+		
 		
 	}
 	
