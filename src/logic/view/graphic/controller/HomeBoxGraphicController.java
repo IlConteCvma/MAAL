@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import org.json.JSONException;
-
 import execption.AssistantException;
 import execption.EntityNotFoundException;
 import execption.TimeException;
@@ -16,7 +15,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import logic.MainClass;
 import logic.Session;
-import logic.bean.StudentBean;
 import logic.bean.TimeToExitBean;
 import logic.controller.ViewTimeToExitController;
 import logic.view.AlertControl;
@@ -26,7 +24,7 @@ import logic.view.graphic.elements.PhraseSelector;
 
 public class HomeBoxGraphicController extends GraphicController{
 
-	private ViewTimeToExitController controlUC = new ViewTimeToExitController();
+	private ViewTimeToExitController controlUC;
 	@FXML private Label dataOfStudent;
 	@FXML private Label textLabel;
 	
@@ -43,12 +41,11 @@ public class HomeBoxGraphicController extends GraphicController{
 	}
 	
 	public void getStarted() throws IOException, SQLException  {
-		StudentBean studLog = new StudentBean();
-		studLog.setUsername(Session.getSession().getStudent().getUsername());
+		
 		try {
+			controlUC = new ViewTimeToExitController();
 			TimeToExitBean timeToExit = controlUC.estimateTimeToExit();
-			new TimeToExitGraphicController(timeToExit);
-			
+						
 			Page root = new HomeTimePage(timeToExit);
 			Scene scene = new Scene(root);
 			MainClass.getStage().setScene(scene);

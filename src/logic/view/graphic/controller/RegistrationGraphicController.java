@@ -45,7 +45,7 @@ public class RegistrationGraphicController extends GraphicController {
 	@FXML private AnchorPane container;
 	@FXML private Label title;
 	
-	private RegistrationController regCtrl = new RegistrationController();
+	private RegistrationController regCtrl;
 	TextField[] textFieldPersonalData = new TextField[4];
 	TextField[] textFieldCredential = new TextField[2];
 	TextField streetNumberField;
@@ -55,6 +55,7 @@ public class RegistrationGraphicController extends GraphicController {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		// Set the gridpane of personal data
+		
 		personalDataGridPane.setHgap(10);
 		personalDataGridPane.setVgap(10);
 		for (int i = 0; i < ROWPERSONALDATA; i++) {
@@ -116,6 +117,7 @@ public class RegistrationGraphicController extends GraphicController {
 				UserBean newUser = new UserBean();
 				populeBean(newUser);
 				try {
+					 regCtrl=new RegistrationController();
 					regCtrl.createStudent(newUser);
 				} catch (SQLException e) {
 					AlertControl.infoBox("Error connect to db", "Error connection db");

@@ -35,12 +35,9 @@ public class TypeQuestionGraphicController extends GraphicController{
 	
 	private InsertQuestionController controller;
 	
-	public TypeQuestionGraphicController() {
-		this.controller = new InsertQuestionController();
-	}
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		this.controller = new InsertQuestionController();
 		mySubject();
 		
 	}
@@ -82,7 +79,7 @@ public class TypeQuestionGraphicController extends GraphicController{
 	
 
 	private void mySubject() {
-		 
+		
 		List<SubjectBean> bean = this.controller.getSubjects();
 		gridPane.setVgap(25);
 		gridPane.setHgap(1);

@@ -23,7 +23,7 @@ public class ViewTimeToExitController {
 	private static final double PERCENTDISTANCEADD = 0.14;
 	
 	//association attribute
-	private ViewNextLessonController nextLessonController = new ViewNextLessonController();
+	private ViewNextLessonController nextLessonController;
 	
 	private Journey nextJourney;
 	private TimeToExitBean timeToExitBean;
@@ -49,6 +49,7 @@ public class ViewTimeToExitController {
 	}
 	
 	public TimeToExitBean estimateTimeToExit() throws IOException, TimeException, EntityNotFoundException, SQLException{
+		nextLessonController = new ViewNextLessonController();
 		Lesson nextLesson = nextLessonController.getNextLesson();
 		if(nextLesson != null) {
 			TimeApi time = new TimeApi();
