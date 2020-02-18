@@ -255,9 +255,9 @@
 					</div>
 					<div style="border: none; background-color: #F6C640;"
 						class="grid-item"></div>
-					<jsp:useBean id="controlUC" scope="session"
-						class="logic.controller.ViewTimeToExitController" />
-					<a href="<%=controlUC.getRoad()%>"><button
+					<jsp:useBean id="controlRoad" scope="session"
+						class="logic.controller.ViewRoadController" />
+					<a href="<%=controlRoad.getRoad()%>"><button
 							style="background-color: #272F54; width: 100%">Go to
 							google maps</button> </a>
 				</div>

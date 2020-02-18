@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import logic.bean.SeatBean;
 import logic.bean.TimeToExitBean;
-import logic.controller.ViewTimeToExitController;
+import logic.controller.BookSeatController;
 
 /**
  * Servlet implementation class ManageRoomServlet
@@ -40,14 +40,14 @@ public class ManageRoomServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int indexSeat = Integer.parseInt(request.getParameter("seat"));
 		String color = request.getParameter(""+indexSeat);
-		ViewTimeToExitController controlUC = new ViewTimeToExitController();
+		BookSeatController controlSeat = new BookSeatController();
 		TimeToExitBean req = (TimeToExitBean)request.getSession().getAttribute("timeBean2");
 		if(color.equals("green")) {
 			SeatBean seatOccuped = new SeatBean();
 			seatOccuped.setIndex(indexSeat);
 			seatOccuped.setRoom(req.getNextLesson().getRoomLesson());
 			try {
-				controlUC.occupateSeat(seatOccuped);
+				controlSeat.occupateSeat(seatOccuped);
 			} catch (SQLException e) {
 				request.setAttribute("exit", 0);
 			}

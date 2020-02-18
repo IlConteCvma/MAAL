@@ -8,15 +8,12 @@ import org.json.JSONException;
 import execption.EntityNotFoundException;
 import execption.TimeException;
 import logic.Session;
-import logic.bean.SeatBean;
 import logic.bean.TimeToExitBean;
 import logic.model.Journey;
 import logic.model.Lesson;
 import logic.model.MapsApi;
-import logic.model.StringParser;
 import logic.model.TimeApi;
 import logic.model.WeatherApi;
-import logic.model.dao.SeatDao;
 
 public class ViewTimeToExitController {
 	
@@ -97,16 +94,4 @@ public class ViewTimeToExitController {
 		return minute;
 	}
 	
-	public String getRoad() {
-		StringParser sParse = new StringParser();
-		return sParse.parseStringMaps();
-	}
-	
-	public void occupateSeat(SeatBean seat) throws SQLException {	
-		SeatDao.occupySeat(seat.getRoom().getName(), seat.getIndex());
-	}
-	
-	public void freeSeat(SeatBean seat) throws SQLException {
-		SeatDao.freeSeat(seat.getRoom().getName(), seat.getIndex());	
-	}
 }

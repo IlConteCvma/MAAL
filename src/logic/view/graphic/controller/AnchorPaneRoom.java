@@ -10,7 +10,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import logic.bean.SeatBean;
-import logic.controller.ViewTimeToExitController;
+import logic.controller.BookSeatController;
 import logic.model.Lesson;
 import logic.model.Room;
 import logic.view.AlertControl;
@@ -19,7 +19,7 @@ import logic.view.ViewComponent;
 public class AnchorPaneRoom extends Decorator{
 
 	private Room roomLesson;
-	private ViewTimeToExitController controlUC;
+	private BookSeatController controlSeat;
 	
 	public AnchorPaneRoom(ViewComponent anchorPaneComponent, Lesson lesson) {
 		super(anchorPaneComponent);
@@ -59,7 +59,7 @@ public class AnchorPaneRoom extends Decorator{
 						SeatBean sBean = new SeatBean();
 						sBean.setIndex(indexClicled);
 						sBean.setRoom(roomLesson);
-						controlUC = new ViewTimeToExitController();
+						controlSeat = new BookSeatController();
 						
 						if(b.getAccessibleText() == "free") {
 							occupySeat(sBean, b);
@@ -79,7 +79,7 @@ public class AnchorPaneRoom extends Decorator{
 
 	public void freeSeat(SeatBean sBean, Button b) {
 		try {
-			controlUC.freeSeat(sBean);
+			controlSeat.freeSeat(sBean);
 		} catch (SQLException e) {
 			AlertControl.infoBox("Error connection db", "ERROR CONNECTION");
 		}
@@ -91,7 +91,7 @@ public class AnchorPaneRoom extends Decorator{
 	
 	public void occupySeat(SeatBean sBean, Button b) {
 		try {
-			controlUC.occupateSeat(sBean);
+			controlSeat.occupateSeat(sBean);
 		} catch (SQLException e) {
 			AlertControl.infoBox("Error connection db", "ERROR CONNECTION");
 		}
