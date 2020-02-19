@@ -102,7 +102,7 @@
 		}
 		if(value){
        	%>
-       	<p class="label"><%= 
+       	<p class="label" id ="printLabel"><%= 
        	(String)session.getAttribute("subject")
        	%></p>
        	<!-- ${pageContext.request.contextPath}/QuestionServlet -->
@@ -157,7 +157,7 @@
 					%>
 					<div class="col-xs-3">
 	
-						<input type="submit" name="materia" value="<%=subjects.get(i).getAbbrevation()%>" class="btn btn-info" style="width:100%; background-color:#272F54">
+						<input type="submit" name="materia" value="<%=subjects.get(i).getAbbrevation()%>" class="btn btn-info" id ="button <%=i%>" style="width:100%; background-color:#272F54">
 						<input type="hidden" name="<%=subjects.get(i).getAbbrevation()%>" value="<%=subjects.get(i).getName()%>">
 						<br><br>
 					
