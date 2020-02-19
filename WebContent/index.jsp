@@ -14,21 +14,26 @@
 
 <body>
 <body style="background-color:#F6C640 ">
+	<div style="position:absolute;left:20%;top:30%;">
 	<h1>Welcome MAAL Assistant</h1>
+	<h5>If you are not already registered and you want a personal assistant</h5>
 	<a href="registration.jsp"><button style="background-color: #272F54;"
 						type="button" class="btn btn-primary btn-lg"> Sign up</button></a>
+	</div>
+	<img style="position:absolute;left:40%;top:50%;width:20%;max-height:50%" src="img/manBook.png">
 	<form action="${pageContext.request.contextPath}/LoginServlet" name="myform" method="POST">
 
-		<div style="background-color:#A22531;border: solid; position: absolute; left: 60%; width: 20%;  text-align: center;">
-		<br>	
-			<label for="username">Insert username</label> <br> <input id="username" name="username" type="text"> 
+		<div style="background-color:#A22531;border: solid; position: absolute; top:25%;left: 60%; width: 20%; min-height:55%; text-align: center;">
+		<br>
+			<p style="font-size:26px;color:white"> Sign in <p>	<br><br>
+			<label style="color:white">Insert username</label> <br> <input id="username" name="username" type="text"> 
 			<br> 
 			<br>
-			<label for="password">Insert password</label>
+			<label style="color:white">Insert password</label>
 			<br> <input id="password" name="password" type="password">
-			<br>
-			<br> <input name="login" type="submit" id="login" value="Sign in" class="btn btn-info" style="background-color:#272F54">
-			<br>
+			<br><br>
+			<br> <input name="login" type="submit" id="login" value="Sign in" class="btn btn-info" style="background-color:#272F54;width:50%">
+			<br> <a href="#"> Forgot the password? </a>
 				 <input name="tipoLogin" type="hidden" value="user" id="tipoLogin" class="btn btn-warning">
 			<br>
 			

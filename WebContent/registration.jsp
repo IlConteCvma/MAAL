@@ -14,13 +14,19 @@
 
 <body>
 <body style="background-color: #F6C640">
+	<div style="position:absolute;left:10%;top:30%;">
 	<h1>Welcome MAAL Assistant</h1>
+	<h5>Are you already registred?</h5>
 	<a href="index.jsp"><button style="background-color: #272F54;"
 			type="button" class="btn btn-primary btn-lg">Sign in</button></a>
+	</div>
+	<img style="position:absolute;left:25%;top:50%;width:20%;max-height:50%" src="img/regMan.png">
+	
+	
 	<form action="${pageContext.request.contextPath}/RegistrationServlet"
 		name="myform" method="POST">
 
-		<div style="background-color: #A22531; border: solid; position: absolute; left: 40%; width: 50%; text-align: center;">
+		<div style="background-color: #A22531; border: solid; position: absolute; top:25%;left: 45%; width: 50%; text-align: center;">
 			<center>
 				<h1>Compile form</h1>
 				<table>

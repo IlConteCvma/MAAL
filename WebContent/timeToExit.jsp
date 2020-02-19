@@ -81,7 +81,7 @@
 								class="icon-bar"></span><span class="icon-bar"></span><span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">MAAL</a>
+						<a class="navbar-brand" href="prova.jsp">MAAL</a>
 					</div>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="defaultNavbar1">
@@ -158,18 +158,18 @@
 				class="jumbotron jumbotron-fluid text-center col-lg-8 col-md-8">
 				<div class="grid-container">
 					<div class="grid-item">
-						<p>Next lesson is</p>
-						<p style="font-size: 50px">
+						<p style="color: #F6C640">Next lesson is</p>
+						<p style="color: #F6C640;font-size: 50px;">
 							<%=req.getNextLesson().getSubjectLesson().getAbbrevation()%>
 						</p>
-						<p>
+						<p style="color: #F6C640">
 							ROOM
 							<%=req.getNextLesson().getRoomLesson().getName()%>
 						</p>
 					</div>
 
 					<div class="grid-item">
-						<p>Book the seat</p>
+						<p style="color: #F6C640">Book the seat</p>
 						<form style="display: block-inline"
 							action="${pageContext.request.contextPath}/ManageRoomServlet"
 							method="POST">
@@ -181,8 +181,7 @@
 								<div class="seat">
 									<%
 										if (req.getNextLesson().getRoomLesson().getPlaces().get(i).getState()) {
-												if (request.getAttribute("seatOccuped") != null
-														&& (int) (request.getAttribute("seatOccuped")) == (i+1)) {
+												if (Session.getSession().getIndexOfSeat() == (i+1)) {
 									%>
 									<input style="display: inline; background-color: red"
 										type="submit" name="seat" value="<%=i + 1%>">
@@ -197,8 +196,7 @@
 									<input type="hidden" name="<%=i + 1%>" value="red">
 									<%
 										}else{ 
-											if (request.getAttribute("seatOccuped") != null
-													&& (int) (request.getAttribute("seatOccuped")) != 0) {
+											if (((int) Session.getSession().getIndexOfSeat() != -1 && (int) Session.getSession().getIndexOfSeat() != 0)) {
 									%>
 									<input style="display: inline; background-color: green"
 										type="submit" name="seat" value="<%=i + 1%>" disabled> <input
@@ -223,11 +221,11 @@
 					</div>
 
 					<div class="grid-item">
-						<p>Leave home at</p>
-						<p style="font-size: 50px">
+						<p style="color: #F6C640">Leave home at</p>
+						<p style="color: #F6C640;font-size: 50px">
 							<%=req.getHourToExit()%>
 						</p>
-						<p>
+						<p style="color: #F6C640">
 							FOR SEATS IN THE BAND
 							<%=req.getPriority()%>
 						</p>
@@ -282,13 +280,25 @@
 						class="grid-item"></div>
 					<jsp:useBean id="controlRoad" scope="session"
 						class="logic.controller.ViewRoadController" />
-					<a href="<%=controlRoad.getRoad()%>"><button
-							style="background-color: #272F54; width: 100%">Go to
+					<a target="_blank" href="<%=controlRoad.getRoad()%>"><button
+							style="background-color: #272F54;color: white; width: 100%" >Go to
 							google maps</button> </a>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<%
+		if(request.getAttribute("exit")!=null){
+			int valueExit = (int)request.getAttribute("exit");
+			switch(valueExit){
+				case 7:	%><script> alert("Seat unbooked") </script><%
+						break;
+				case 8:	%><script> alert("Seat booked") </script><%
+						break;
+			}
+		}
+	%>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<!-- <script src="js/jquery-3.4.1.min.js"></script> -->

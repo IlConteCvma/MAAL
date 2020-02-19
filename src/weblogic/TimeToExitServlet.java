@@ -31,7 +31,7 @@ public class TimeToExitServlet extends HttpServlet {
 	 */
 	public TimeToExitServlet() {
 		super();
-		seatOccuped = 0;
+		seatOccuped = -1;
 	}
 	
 	public TimeToExitServlet(int index) {
@@ -59,12 +59,20 @@ public class TimeToExitServlet extends HttpServlet {
 		ViewTimeToExitController useCaseController = new ViewTimeToExitController();
 		sBean.setUsername(Session.getSession().getStudent().getUsername());
 
+		if(seatOccuped != -1) {
+			if(seatOccuped == 0) {
+				request.setAttribute("exit", 7);
+			}else {
+				request.setAttribute("exit", 8);
+			}
+		}
+		
 		// Passa il controllo alla nuova pagina
 		try {
-
 			timeBean = useCaseController.estimateTimeToExit();
-			request.setAttribute("seatOccuped", seatOccuped);
-			request.setAttribute("exit", 1);
+			if(seatOccuped!=-1) {
+				Session.getSession().setIndexOfSeat(seatOccuped);
+			}
 			request.getSession().setAttribute("timeBean2", timeBean);
 			request.getRequestDispatcher("timeToExit.jsp").forward(request,response);
 		} catch (TimeException t) {
@@ -76,8 +84,7 @@ public class TimeToExitServlet extends HttpServlet {
 		} catch(JSONException e) {
 			request.setAttribute("exit", 4);
 			request.getRequestDispatcher(GOBACK).forward(request,response);
-		}
-		catch (IOException e) {
+		}catch (IOException e) {
 			request.setAttribute("exit", 5);
 			request.getRequestDispatcher(GOBACK).forward(request,response);
 		} catch (SQLException e) {

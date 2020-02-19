@@ -39,7 +39,7 @@ import="logic.Session"
 								class="icon-bar"></span><span class="icon-bar"></span><span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">MAAL</a>
+						<a class="navbar-brand" href="prova.jsp">MAAL</a>
 					</div>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="defaultNavbar1">
@@ -122,37 +122,30 @@ import="logic.Session"
 					<input name="login" type="submit" id="login" value="Get started"
 						class="btn btn-info" style="background-color: #272F54">
 				</form>
-				<%
-					if (request.getAttribute("exit") != null) {
-						int exit = (int) request.getAttribute("exit");
-						switch (exit) {
-							case 2 :
-				%>
-				<script>
-					alert("It's too late!")
-				</script>
-				<%
-					break;
-							case 3 :
-				%>
-				<script>
-					alert("Today you haven't lesson. Good relax!")
-				</script>
-				<%
-					break;
-							case 4 :
-				%>
-				<script>
-					alert("Ops error request to secondary actor.. Retry!")
-				</script>
-				<%
-					break;
-						}
-					}
-				%>
 			</div>
 		</div>
 	</div>
+	
+	
+	
+	<%
+		if(request.getAttribute("exit")!=null){
+			int valueExit = (int)request.getAttribute("exit");
+			switch(valueExit){
+				case 2:	%><script> alert("It's too late") </script><%
+						break;
+				case 3:	%><script> alert("You haven't lesson today, good relax") </script><%
+						break;
+				case 4:	%><script> alert("Error request to google maps, retry") </script><%
+						break;
+				case 5:	%><script> alert("Internal error") </script><%
+						break;
+				case 6:	%><script> alert("Error connect to db") </script><%
+						break;
+			}
+		}
+	%>
+	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<!-- <script src="js/jquery-3.4.1.min.js"></script> -->
 	<script src="js/jquery-1.12.4.min.js"></script>

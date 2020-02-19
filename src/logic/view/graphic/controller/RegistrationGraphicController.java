@@ -119,13 +119,13 @@ public class RegistrationGraphicController extends GraphicController {
 				UserBean newUser = new UserBean();
 				populeBean(newUser);
 				try {
-					 regCtrl=new RegistrationController();
+					regCtrl=new RegistrationController();
 					regCtrl.createStudent(newUser);
+					container.getChildren().remove(1);
+					chooseCourse();
 				} catch (SQLException e) {
-					AlertControl.infoBox("Error connect to db", "Error connection db");
+					AlertControl.infoBox("Error connect to db or username already used", "Error connection db");
 				}
-				container.getChildren().remove(1);
-				chooseCourse();
 		}
 	}
 
@@ -167,6 +167,8 @@ public class RegistrationGraphicController extends GraphicController {
 			gp.setLayoutX(135);
 			gp.setVgap(20);
 	        Button b = new Button("Follow");
+	        b.setStyle("-fx-background-color: #272F54;-fx-text-fill: white;");
+	        b.setMinWidth(202);
 	        gp.add(b, 0, subjcetOfCourse.size());
 	        gp.setAlignment(Pos.CENTER);
 	        b.setLayoutX(180);
@@ -176,7 +178,6 @@ public class RegistrationGraphicController extends GraphicController {
 						if(completeRegistration(allSubject)) {
 							AlertControl.infoBox("Welcome in MAAL\n\nRegistration completed!", "WELCOME");
 							goToPage(NamePage.LOGIN);
-							
 						}
 	            }
 	        });
@@ -211,9 +212,11 @@ public class RegistrationGraphicController extends GraphicController {
 	}
 	
 	private boolean checkData() {
+		
+		if(streetNumberField.getText().isEmpty()) return false;
 
 		// check personal data
-		for (int i = 0; i < textFieldPersonalData.length - 1; i++) {
+		for (int i = 0; i < textFieldPersonalData.length; i++) {
 			if (textFieldPersonalData[i].getText().isEmpty()) {
 				AlertControl.infoBox("Please insert your personal data", "Error");
 				return false;

@@ -44,7 +44,6 @@ public class HomeBoxGraphicController extends GraphicController{
 		try {
 			ViewTimeToExitController controlUC = new ViewTimeToExitController();
 			TimeToExitBean timeToExit = controlUC.estimateTimeToExit();
-						
 			Page root = new HomeTimePage(timeToExit);
 			Scene scene = new Scene(root);
 			MainClass.getStage().setScene(scene);
@@ -53,7 +52,7 @@ public class HomeBoxGraphicController extends GraphicController{
 		} catch (EntityNotFoundException e) {
 			AlertControl.infoBox("Today you haven't lesson, you can relax!", "I'm happy for you!");
 		} catch(JSONException e) {
-			AlertControl.infoBox("Error request to secondary actor..Retry!", "Error request");
+			AlertControl.infoBox("Error request to secondary actor..Retry or check your address", "Error request");
 		} catch (SQLException e) {
 			AlertControl.infoBox("Error on DB connection", "Error request on Database");
 		} catch (IOException e) {
