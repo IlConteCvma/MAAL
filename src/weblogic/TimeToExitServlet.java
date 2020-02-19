@@ -68,8 +68,7 @@ public class TimeToExitServlet extends HttpServlet {
 		
 		// Passa il controllo alla nuova pagina
 		try {
-			TimeToExitBean timeBean = new TimeToExitBean();
-			timeBean = useCaseController.estimateTimeToExit();
+			TimeToExitBean timeBean = useCaseController.estimateTimeToExit();
 			if(seatOccuped!=-1) {
 				Session.getSession().setIndexOfSeat(seatOccuped);
 			}
