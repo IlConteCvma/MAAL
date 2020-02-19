@@ -55,7 +55,6 @@ public class TimeToExitServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		StudentBean sBean = new StudentBean();
-		TimeToExitBean timeBean = new TimeToExitBean();
 		ViewTimeToExitController useCaseController = new ViewTimeToExitController();
 		sBean.setUsername(Session.getSession().getStudent().getUsername());
 
@@ -69,6 +68,7 @@ public class TimeToExitServlet extends HttpServlet {
 		
 		// Passa il controllo alla nuova pagina
 		try {
+			TimeToExitBean timeBean = new TimeToExitBean();
 			timeBean = useCaseController.estimateTimeToExit();
 			if(seatOccuped!=-1) {
 				Session.getSession().setIndexOfSeat(seatOccuped);

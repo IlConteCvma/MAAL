@@ -56,7 +56,7 @@ public class ViewTimeToExitController {
 			timeToExitBean.setNextLesson(nextLesson);
 			double speedAverage = Session.getSession().getStudent().getVehicle().getSpeed();
 			getInfoByMaps();
-			//getInfoByWeather();
+			getInfoByWeather();
 			nextJourney.setDistance(nextJourney.getDistance() + PERCENTDISTANCEADD * nextJourney.getDistance()); //add 14% -> value take by test
 			double minutes = (int) (nextJourney.getDistance() / (speedAverage*0.016)) + nextJourney.getDistance() + MINUTEOFADVANCE;
 			long timeExit = time.getTimeMinuteDiff(nextLesson.getStartHour().toString(), time.getStringHour(time.getCurrentDate()));
