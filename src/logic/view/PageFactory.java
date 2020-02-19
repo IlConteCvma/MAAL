@@ -41,13 +41,13 @@ public class PageFactory {
 	
 	public static Page createPage(NamePage type,Object arg) throws IOException {
 		
-		switch(type) {
-		
-			case SHOWQUEST: return new ShowQuestionPage(arg);
-			
-		default: throw new IOException("Invalid type or args");
+		if(type.equals(NamePage.SHOWQUEST)) {
+			return new ShowQuestionPage(arg);
 		}
-		
+		else {
+			throw new IOException("Invalid type or args");
+		}
+			
 		
 		
 	}
