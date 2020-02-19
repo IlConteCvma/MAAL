@@ -40,7 +40,11 @@ public class AnchorPaneMap extends Decorator{
             public void handle(ActionEvent e) { 	
 					try {
 						ViewRoadController controlRoad = new ViewRoadController();
-						Desktop.getDesktop().browse(new URL(controlRoad.getRoad()).toURI());
+						if(controlRoad.getRoad().equals("Error")) {
+							AlertControl.infoBox("Impossible send request to maps, check your address", "Error request");
+						}else {
+							Desktop.getDesktop().browse(new URL(controlRoad.getRoad()).toURI());
+						}
 					} catch (IOException | URISyntaxException e1) {
 						AlertControl.infoBox("Error connection to Google Maps", "Error connection");
 					}

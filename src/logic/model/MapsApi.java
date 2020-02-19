@@ -25,7 +25,7 @@ public class MapsApi{
     }
     
     public Double calculateDistance(List<Double> origin, List<Double> destination) {
-    	
+    	final int ERROR = 1;
     	double r = 6371e3 / 1000; // km
     	double d1 = origin.get(0) * 3.14 / 180;
     	double d2 = destination.get(0) * 3.14 / 180;
@@ -38,7 +38,7 @@ public class MapsApi{
     	
     	double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-    	return r * c;
+    	return (r * c)+ERROR;
     	
     }
 }

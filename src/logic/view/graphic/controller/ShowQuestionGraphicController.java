@@ -53,6 +53,7 @@ public class ShowQuestionGraphicController extends GraphicController {
 				Label text = new Label("Image");
 				TextArea image = new TextArea();
 				image.setMaxHeight(100);
+				image.setEditable(false);
 				image.setText((String)returned);
 				box.getChildren().addAll(text,image);
 				
