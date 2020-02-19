@@ -30,7 +30,7 @@ public class TestStringParser {
 	@Test
 	public void testStringParsedWithAnErroNumberOfStreet() {
 		StringParser strCtrl = new StringParser();
-		//Set a specific address
+		//Set a specific address with number of street wrong
 		Address addrTest = new Address("Via 12","ciao","Napoli");
 		String output = strCtrl.parseStringMaps(addrTest);
 		//Check the value take by google maps with misure distance

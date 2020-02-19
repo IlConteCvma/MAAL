@@ -30,11 +30,9 @@ public class TestTypeQuestSelenium {
 		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("cvma");
 		driver.findElement(By.xpath("//*[@id=\"login\"]")).click();
 		//
-		WebElement TxtBoxContent = driver.findElement(By.xpath("//h2"));
+		WebElement txtBoxContent = driver.findElement(By.xpath("//h2"));
 		//test
-		System.out.println(TxtBoxContent.getText());
-		
-		assertEquals("Marco Calavaro",TxtBoxContent.getText());
+		assertEquals("Marco Calavaro",txtBoxContent.getText());
 		driver.quit();
 		
 		

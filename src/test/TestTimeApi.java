@@ -28,7 +28,7 @@ public class TestTimeApi {
 	@Test
 	public void testGetTimeMinuteDiffOnSpecificCase() {
 		TimeApi timeCtrl = new TimeApi();
-		//SpecificCase = 19:55 - 19:50;
+		//SpecificCase with time 19:55 and 19:50;
 		long result = timeCtrl.getTimeMinuteDiff("19:55", "19:50");
 		assertEquals(EXPECTEDDIFF, result,0);
 	}
