@@ -17,8 +17,6 @@ import logic.view.NamePage;
 
 public class NavbarGraphicController extends GraphicController{
 
-
-
 	@FXML Button homeButton;
 	@FXML Button calButton;
 	@FXML Button profButton;
@@ -39,17 +37,13 @@ public class NavbarGraphicController extends GraphicController{
 		
 		String visual = app.getName()+" "+app.getSurname()+" ("+app.getUsername()+")";
 		nameLab.setText(visual);
-		
 	}
 	
 	@FXML
 	public void homeButton(ActionEvent e){
-
 			goToPage(NamePage.HOME);
 			clearButton();
 			homeButton.setDisable(true);
-		
-
 	}	
 	
 	public void calendarButton() {
@@ -102,8 +96,5 @@ public class NavbarGraphicController extends GraphicController{
 		clearButton();
 		calButton.setStyle(CLICKON);
 	}
-
-
-	
 			
 }

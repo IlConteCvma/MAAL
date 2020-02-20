@@ -28,40 +28,40 @@
 
 		<div style="background-color: #A22531; border: solid; position: absolute; top:25%;left: 45%; width: 50%; text-align: center;">
 			<center>
-				<h1>Compile form</h1>
+				<h1 style="color:white">Compile form</h1>
 				<table>
 					<tr>
-						<th><label>Name</label></th>
+						<th><label style="color:white">Name</label></th>
 						<th><input style="margin: 5px;" name="name" type="text">
 						</th>
-						<th><label>Surname</label></th>
+						<th><label style="color:white">Surname</label></th>
 						<th><input style="margin: 5px;" name="surname" type="text">
 						</th>
 					</tr>
 					<tr>
-						<th><label>Address</label></th>
+						<th><label style="color:white">Address</label></th>
 						<th><input style="margin: 5px;" name="street" type="text">
 							<input style="width: 40px; margin: 5px;" name="streetNumber"
 							type="text"></th>
-						<th><label>City</label></th>
+						<th><label style="color:white">City</label></th>
 						<th><input style="margin: 5px;" name="city" type="text">
 						</th>
 					</tr>
 					<tr>
-						<th><label>Username</label></th>
+						<th><label style="color:white">Username</label></th>
 						<th><input style="margin: 5px;" name="username" type="text">
 						</th>
-						<th><label>Password</label></th>
+						<th><label style="color:white">Password</label></th>
 						<th><input style="margin: 5px;" name="password" type="text">
 						</th>
 					</tr>
 					<tr>
-						<th><label>Who are you? </label></th>
+						<th><label style="color:white">Who are you? </label></th>
 						<th><select name="profession" style="margin: 5px;">
 								<option>Student</option>
 								<option>Professor</option>
 						</select></th>
-						<th><label>Which vehicle you use? </label></th>
+						<th><label style="color:white">Which vehicle you use? </label></th>
 						<th><select name="vehicle" style="margin: 5px;">
 								<option>BUS</option>
 								<option>CAR</option>
@@ -69,7 +69,7 @@
 						</select></th>
 					</tr>
 					<tr>
-						<th><label> Select course: </label></th>
+						<th><label style="color:white"> Select course: </label></th>
 						<th><select name="course" style="margin: 5px;">
 								<option>Software engineer</option>
 								<option>Civil engineer</option>

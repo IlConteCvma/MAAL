@@ -28,7 +28,7 @@
 
 		<div style="background-color: #A22531; border: solid; position: absolute; top:25%;left: 45%; width: 50%; text-align: center;">
 			<center>
-				<h1>Choose subject to follow</h1>
+				<h1 style="color:white">Choose subject to follow</h1>
 				<table>
 					<form>
 						<%
@@ -37,7 +37,7 @@
 						%>
 					
 					<tr>
-						<th><input type="checkbox" name="subject" value="<%=courseBean.getSubjectOfCourse().get(i).getName()%>"> <%=courseBean.getSubjectOfCourse().get(i).getName()%>
+						<th><input type="checkbox" name="subject" value="<%=courseBean.getSubjectOfCourse().get(i).getName()%>">  <span style="color:white"><%=courseBean.getSubjectOfCourse().get(i).getName()%> </span>
 						</th>
 					</tr>
 					<%
