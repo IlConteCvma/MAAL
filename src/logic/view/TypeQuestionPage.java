@@ -15,7 +15,7 @@ public class TypeQuestionPage extends Page {
 	@Override
 	protected void createPage() throws IOException {
 		
-		Navbar nav = new Navbar();
+		Navbar nav = Navbar.getNavbar();
 		nav.controller().setForum();
 		
 		GraphicElementInterface typepage = new SimpleGraphicElement("../../resources/TypeQuestionView.fxml");

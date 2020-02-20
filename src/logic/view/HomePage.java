@@ -16,7 +16,7 @@ public class HomePage extends Page{
 	@Override
 	protected void createPage() throws IOException {
 		
-		Navbar nav = new Navbar();
+		Navbar nav = Navbar.getNavbar();
 		
 		GraphicElementInterface hm = new SimpleGraphicElement("../../resources/HomeMenuView.fxml");
 		GraphicElementInterface hb = new SimpleGraphicElement("../../resources/HomeBoxView.fxml");

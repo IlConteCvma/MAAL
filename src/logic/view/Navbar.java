@@ -4,16 +4,28 @@ import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+
 import logic.view.graphic.controller.NavbarGraphicController;
 
 
 public class Navbar extends Page{
-	
+	private static Navbar instance = null;
 	private NavbarGraphicController controller;
 	
-	public Navbar() throws IOException{
+	private Navbar() {
 		controller  = new NavbarGraphicController();
-		createPage();
+		try {
+			createPage();
+		} catch (IOException e) {
+			AlertControl.infoBox("Internal error on create navbar","ERROR");
+		}
+	}
+	
+	public static synchronized Navbar getNavbar() {
+		if (Navbar.instance == null) {
+			Navbar.instance = new Navbar();
+			}
+		return instance;
 	}
 	
 

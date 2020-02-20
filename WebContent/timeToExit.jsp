@@ -183,7 +183,7 @@
 										if (req.getNextLesson().getRoomLesson().getPlaces().get(i).getState()) {
 												if (Session.getSession().getIndexOfSeat() == (i+1)) {
 									%>
-									<input style="display: inline; background-color: red"
+									<input style="display: inline; background-color: #EDC32C"
 										type="submit" name="seat" value="<%=i + 1%>">
 									<%
 										} else {

@@ -17,7 +17,7 @@ public class QuestionPage extends Page {
 	
 	private void createPage(String param,String destination) throws IOException {
 		
-		Navbar nav = new Navbar();
+		Navbar nav = Navbar.getNavbar();
 		nav.controller().setForum();
 		
 		

@@ -20,7 +20,7 @@ public class HomeTimePage extends Page {
 	
 	public void createPage(TimeToExitBean tBean) throws IOException {
 		
-		Navbar nav = new Navbar();
+		Navbar nav = Navbar.getNavbar();
 		nav.controller().setHome();
 		
 		GraphicElementInterface home = new SimpleGraphicElement("../../resources/HomeMenuView.fxml");

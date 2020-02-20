@@ -16,7 +16,7 @@ public class ShowQuestionPage extends Page {
 
 	
 	protected void createPage(Object arg) throws IOException {
-		Navbar nav = new Navbar();
+		Navbar nav = Navbar.getNavbar();
 		nav.controller().setForum();
 		NoControllerGrapichElement qPage = new NoControllerGrapichElement("../../resources/ShowQuestionView.fxml");
 		GraphicController controller;

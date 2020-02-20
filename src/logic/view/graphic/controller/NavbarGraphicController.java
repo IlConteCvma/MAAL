@@ -43,7 +43,8 @@ public class NavbarGraphicController extends GraphicController{
 	public void homeButton(ActionEvent e){
 			goToPage(NamePage.HOME);
 			clearButton();
-			homeButton.setDisable(true);
+		
+			homeButton.setStyle(CLICKON);
 	}	
 	
 	public void calendarButton() {
@@ -70,6 +71,7 @@ public class NavbarGraphicController extends GraphicController{
 	}
 	
 	private void clearButton() {
+		
 		homeButton.setStyle(CLICKOFF);
 		profButton.setStyle(CLICKOFF);
 		calButton.setStyle(CLICKOFF);

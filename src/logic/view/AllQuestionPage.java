@@ -17,7 +17,7 @@ public class AllQuestionPage extends Page {
 
 	@Override
 	protected void createPage() throws IOException {
-		Navbar nav = new Navbar();
+		Navbar nav =  Navbar.getNavbar();
 		GraphicElementInterface hm = new SimpleGraphicElement("../../resources/AllQuestionView.fxml");
 		
 		nav.controller().setForum();
