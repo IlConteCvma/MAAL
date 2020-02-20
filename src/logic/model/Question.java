@@ -3,11 +3,11 @@ package logic.model;
 
 
 public abstract class Question {
-	protected int id;
-	protected boolean solved; 
-	protected String title;
-	protected Subject questionSubuject;
-	protected Student student;
+	private int id;
+	private boolean solved; 
+	private String title;
+	private Subject questionSubuject;
+	private Student student;
 	
 	public Question() {
 

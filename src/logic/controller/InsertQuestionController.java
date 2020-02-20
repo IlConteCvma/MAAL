@@ -16,9 +16,10 @@ import logic.model.dao.SubjectDao;
 
 
 public class InsertQuestionController {
-	protected QuestionBean dataBean;
-	protected Question question;
-	protected QuestionFactory factory;
+	
+	private QuestionBean dataBean;
+	private Question question;
+	private QuestionFactory factory;
 	
 	 
 	
