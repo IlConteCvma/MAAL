@@ -7,6 +7,7 @@ import logic.bean.StudentBean;
 import logic.controller.LoginController;
 import logic.view.AlertControl;
 import logic.view.NamePage;
+import logic.view.Navbar;
 import logic.view.graphic.elements.PhraseSelector;
 
 import java.net.URL;
@@ -52,6 +53,7 @@ public class LoginGraphicController extends GraphicController{
 		possibleStudent.setPassword(psw.getText());
 		try {
 			lg.login(possibleStudent);
+			Navbar.getNavbar().controller().setMyStudent();
 			goToPage(NamePage.HOME);
 		} catch (SQLException e1) {
 			AlertControl.infoBox("Ops.. connection failed", ERROR);

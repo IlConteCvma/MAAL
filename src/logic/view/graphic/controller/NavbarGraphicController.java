@@ -33,10 +33,7 @@ public class NavbarGraphicController extends GraphicController{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		homeButton.setStyle(CLICKON);
-		Student app = Session.getSession().getStudent();
 		
-		String visual = app.getName()+" "+app.getSurname()+" ("+app.getUsername()+")";
-		nameLab.setText(visual);
 	}
 	
 	@FXML
@@ -65,7 +62,7 @@ public class NavbarGraphicController extends GraphicController{
 	}
 	public void logOutButton() throws IOException {
 		if(AlertControl.confirmation()) {
-			Session.getSession().setStudent(null);
+			
 			goToPage(NamePage.LOGIN);
 		}
 	}
@@ -97,6 +94,13 @@ public class NavbarGraphicController extends GraphicController{
 	public void setCalendar() {
 		clearButton();
 		calButton.setStyle(CLICKON);
+	}
+	
+	public void setMyStudent(){
+		Student app = Session.getSession().getStudent();
+		
+		String visual = app.getName()+" "+app.getSurname()+" ("+app.getUsername()+")";
+		nameLab.setText(visual);
 	}
 			
 }

@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
-import logic.Session;
+
 import logic.view.AlertControl;
 import logic.view.NamePage;
 
@@ -51,7 +51,7 @@ public class HomeMenuGraphicController extends GraphicController{
 	public void logOutButton(){
 		if(AlertControl.confirmation()) {
 			goToPage(NamePage.LOGIN);
-			Session.getSession().setStudent(null);
+			
 			
 		}
 	}
